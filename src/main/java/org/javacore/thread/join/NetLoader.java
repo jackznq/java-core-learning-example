@@ -10,7 +10,7 @@ public class NetLoader implements Runnable {
     public void run() {
         System.out.println("begining the NetLoader");
         try {
-            TimeUnit.SECONDS.sleep(6);
+            TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }

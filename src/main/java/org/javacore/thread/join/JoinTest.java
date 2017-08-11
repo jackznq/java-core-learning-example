@@ -9,11 +9,12 @@ public class JoinTest {
         Thread t2 = new Thread(new NetLoader());
 
         t1.start();
+        t1.join();
         t2.start();
 
         //可以注释其中一个加深理解
-        t1.join();
-        //t2.join();
+
+        t2.join();
 
         System.out.println("ending all");
     }

@@ -8,9 +8,9 @@ import java.util.HashMap;
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -25,18 +25,18 @@ import java.util.HashMap;
  */
 public class HashMapObjT{
 	public static void main(String[] args){
-		HashMap<A, Integer> hashMapA = new HashMap<A, Integer>();
-		hashMapA.put(new A(), 10);
-		hashMapA.put(new A(), 5);
+		HashMap<String, Integer> hashMapA = new HashMap<String, Integer>();
+		hashMapA.put("a", 10);
+		hashMapA.put("a", 5);
 		System.out.println("HashMapA Elements:");
 		System.out.print("\t" + hashMapA + "\n");
-		
+
 		HashMap<B, Integer> hashMapB = new HashMap<B, Integer>();
 		hashMapB.put(new B(), 10);
 		hashMapB.put(new B(), 5);
 		System.out.println("HashMapB Elements:");
 		System.out.print("\t" + hashMapB + "\n");
-		
+
 		HashMap<C, Integer> hashMapC = new HashMap<C, Integer>();
 		hashMapC.put(new C(), 10);
 		hashMapC.put(new C(), 5);

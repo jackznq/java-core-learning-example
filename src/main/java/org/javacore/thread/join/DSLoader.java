@@ -10,7 +10,7 @@ public class DSLoader implements Runnable {
     public void run() {
         System.out.println("begining the DSLoader");
         try {
-            TimeUnit.SECONDS.sleep(4);
+            TimeUnit.SECONDS.sleep(1);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
