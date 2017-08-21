@@ -1,6 +1,7 @@
 package org.javacore.collection.hash;
 
 /**
+ * ll
  * Created by bysocket on 16/9/26.
  */
 public class SkuObj {
