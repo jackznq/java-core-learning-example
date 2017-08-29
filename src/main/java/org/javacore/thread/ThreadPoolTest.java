@@ -1,14 +1,18 @@
 package org.javacore.thread;
 
-import java.util.concurrent.ArrayBlockingQueue;
-import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
+import java.util.concurrent.*;
 
 public class ThreadPoolTest {
      public static void main(String[] args) {
          ThreadPoolExecutor executor = new ThreadPoolExecutor(5, 10, 200, TimeUnit.MILLISECONDS,
                  new ArrayBlockingQueue<Runnable>(5));
 
+        ExecutorService threadPoolExecutor = Executors.newSingleThreadExecutor();
+        threadPoolExecutor.submit(new Runnable() {
+            @Override
+            public void run() {
+            }
+        });
          for(int i=0;i<15;i++){
              MyTask myTask = new MyTask(i);
              executor.execute(myTask);
