@@ -1,8 +1,9 @@
 package org.javacore.pattern.decorator;
 
 /**
- * 装饰模式的抽象构件
+ * 抽象组件
+ * Created by ddfhznq on 2017/9/13.
  */
-interface Component {
-    void display();
+public interface Component {
+    void operation();
 }

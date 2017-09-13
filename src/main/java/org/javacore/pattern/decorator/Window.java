@@ -1,8 +1,11 @@
 package org.javacore.pattern.decorator;
 
-//窗体类：具体构件类
+/**
+ * Created by ddfhznq on 2017/9/13.
+ */
 public class Window implements Component {
-    public void display() {
-        System.out.println("显示窗体！");
+    @Override
+    public void operation() {
+        System.out.println("添加窗口");
     }
 }
