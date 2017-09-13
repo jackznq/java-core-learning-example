@@ -41,7 +41,9 @@ public class CountDownLatchT {
         service.shutdown();
 
         System.out.println("同步线程执行组结束!");
-
+        String one = "someString";
+        String two = "someString";
+        System.out.println(one==two);
     }
 }
 
