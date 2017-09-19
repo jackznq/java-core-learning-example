@@ -10,7 +10,7 @@ public class SocketAdapter implements DBSocketInterface {
 
     /**
      * 在创建适配器对象时，必须传入一个新街口的实现类
-     * @param gbSocketInterface
+     * @param gbSocketInterface gbSocketInterface
      */
     public SocketAdapter(GBSocketInterface gbSocketInterface) {
         this.gbSocketInterface = gbSocketInterface;
