@@ -1,7 +1,6 @@
 package org.javacore.io.test.netty;
 
 import io.netty.buffer.ByteBuf;
-import io.netty.buffer.ChannelBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
@@ -10,34 +9,6 @@ import java.io.UnsupportedEncodingException;
 
 public class ClientHandler extends ChannelInboundHandlerAdapter {
 
-    @Override
-    public ChannelBuf newInboundBuffer(ChannelHandlerContext ctx) throws Exception {
-        return null;
-    }
-
-    public ClientHandler() {
-        super();
-    }
-
-    @Override
-    public void beforeAdd(ChannelHandlerContext ctx) throws Exception {
-        super.beforeAdd(ctx);
-    }
-
-    @Override
-    public void afterAdd(ChannelHandlerContext ctx) throws Exception {
-        super.afterAdd(ctx);
-    }
-
-    @Override
-    public void beforeRemove(ChannelHandlerContext ctx) throws Exception {
-        super.beforeRemove(ctx);
-    }
-
-    @Override
-    public void afterRemove(ChannelHandlerContext ctx) throws Exception {
-        super.afterRemove(ctx);
-    }
 
     @Override
     public void userEventTriggered(ChannelHandlerContext ctx, Object evt) throws Exception {
@@ -59,10 +30,7 @@ public class ClientHandler extends ChannelInboundHandlerAdapter {
         super.channelInactive(ctx);
     }
 
-    @Override
-    public void inboundBufferUpdated(ChannelHandlerContext ctx) throws Exception {
 
-    }
 
     ChannelHandlerContext ctx;
 	/**

@@ -1,5 +1,6 @@
 package org.javacore.redis;
 
+import org.junit.Before;
 import org.junit.Test;
 import redis.clients.jedis.Jedis;
 
@@ -8,25 +9,25 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-public class RedisTest {
-    Jedis jedis = new Jedis("172.16.1.130");
+/**
+ * redis 案例
+ * Created by ddfhznq on 2017/10/25.
+ */
+public class RedisTestA {
 
-//    @Before
-    public void setup() {
-        //连接redis服务器，192.168.0.100:6379
-//        jedis = new Jedis("172.161.130");
-        //权限认证
-//        jedis.auth("admin");
+    private Jedis jedis;
+
+    private final String host ="172.16.1.130";
+
+    private final int port = 6379;
+    @Before
+    public void connect(){
+        jedis = new Jedis(host,port);
     }
 
-    /**
-     * redis存储字符串
-     */
     @Test
-    public void testString() {
-        Jedis jedis = new Jedis("172.161.130");
+    public void testString(){
         System.out.println(jedis.ping());
-        //-----添加数据----------
         jedis.set("name","xinxin");//向key-->name中放入了value-->xinxin
         System.out.println(jedis.get("name"));//执行结果：xinxin
 
@@ -35,24 +36,15 @@ public class RedisTest {
 
         jedis.del("name");  //删除某个键
         System.out.println(jedis.get("name"));
-        //设置多个键值对
-        jedis.mset("name","liuling","age","23","qq","476777XXX");
-        jedis.incr("age"); //进行加1操作
-        System.out.println(jedis.get("name") + "-" + jedis.get("age") + "-" + jedis.get("qq"));
-
     }
 
-    /**
-     * redis操作Map
-     */
     @Test
     public void testMap() {
-        Jedis jedis = new Jedis("172.161.130");
         //-----添加数据----------
         Map<String, String> map = new HashMap<String, String>();
-        map.put("name", "xinxin");
-        map.put("age", "22");
-        map.put("qq", "123456");
+        map.put("name1", "xinxin");
+        map.put("age1", "22");
+        map.put("qq1", "123456");
         jedis.hmset("user",map);
         //取出user中的name，执行结果:[minxr]-->注意结果是一个泛型的List
         //第一个参数是存入redis中map对象的key，后面跟的是放入map中的对象的key，后面的key可以跟多个，是可变参数
@@ -97,59 +89,9 @@ public class RedisTest {
         System.out.println(jedis.lrange("java framework",0,-1));
     }
 
-    /**
-     * jedis操作Set
-     */
-    @Test
-    public void testSet(){
-        //添加
-        jedis.sadd("user","liuling");
-        jedis.sadd("user","xinxin");
-        jedis.sadd("user","ling");
-        jedis.sadd("user","zhangxinxin");
-        jedis.sadd("user","who");
-        //移除noname
-        jedis.srem("user","who");
-        System.out.println(jedis.smembers("user"));//获取所有加入的value
-        System.out.println(jedis.sismember("user", "who"));//判断 who 是否是user集合的元素
-        System.out.println(jedis.srandmember("user"));
-        System.out.println(jedis.scard("user"));//返回集合的元素个数
-    }
-
-    @Test
-    public void test() throws InterruptedException {
-        //jedis 排序
-        //注意，此处的rpush和lpush是List的操作。是一个双向链表（但从表现来看的）
-        jedis.del("a");//先清除数据，再加入数据进行测试
-        jedis.rpush("a", "1");
-        jedis.lpush("a","6");
-        jedis.lpush("a","3");
-        jedis.lpush("a","9");
-        System.out.println(jedis.lrange("a",0,-1));// [9, 3, 6, 1]
-        System.out.println(jedis.sort("a")); //[1, 3, 6, 9]  //输入排序后结果
-        System.out.println(jedis.lrange("a",0,-1));
-    }
-
     @Test
     public void testRedisPool() {
         RedisUtil.getJedis().set("newname", "中文测试");
         System.out.println(RedisUtil.getJedis().get("newname"));
-    }
-    @Test
-    public void connectRedis(){
-        Jedis jedis = new Jedis("172.16.1.130");
-        System.out.println(jedis.ping());
-        jedis.set("name","xinxin");//向key-->name中放入了value-->xinxin
-        System.out.println(jedis.get("name"));//执行结果：xinxin
-
-        jedis.append("name", " is my lover"); //拼接
-        System.out.println(jedis.get("name"));
-
-        jedis.del("name");  //删除某个键
-        System.out.println(jedis.get("name"));
-        //设置多个键值对
-        jedis.mset("name","liuling","age","23","qq","476777XXX");
-        jedis.incr("age"); //进行加1操作
-        System.out.println(jedis.get("name") + "-" + jedis.get("age") + "-" + jedis.get("qq"));
     }
 }

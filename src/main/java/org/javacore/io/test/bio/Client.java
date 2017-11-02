@@ -6,19 +6,19 @@ import java.io.PrintWriter;
 import java.net.Socket;
 
 /**
- * ����ʽI/O�����Ŀͻ���
+ * ?????I/O??????????
  * @author yangtao__anxpp.com
  * @version 1.0
  */
 public class Client {
-	//Ĭ�ϵĶ˿ں�
+	//???????
 	private static int DEFAULT_SERVER_PORT = 12345;
 	private static String DEFAULT_SERVER_IP = "127.0.0.1";
 	public static void send(String expression){
 		send(DEFAULT_SERVER_PORT,expression);
 	}
 	public static void send(int port,String expression){
-		System.out.println("�������ʽΪ��" + expression);
+		System.out.println("???????????" + expression);
 		Socket socket = null;
 		BufferedReader in = null;
 		PrintWriter out = null;
@@ -27,11 +27,11 @@ public class Client {
 			in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			out = new PrintWriter(socket.getOutputStream(),true);
 			out.println(expression);
-			System.out.println("___���Ϊ��" + in.readLine());
+			System.out.println("___??????" + in.readLine());
 		}catch(Exception e){
 			e.printStackTrace();
 		}finally{
-			//һ�±�Ҫ��������
+			//??��??????????
 			if(in != null){
 				try {
 					in.close();

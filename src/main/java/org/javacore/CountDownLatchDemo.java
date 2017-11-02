@@ -27,11 +27,15 @@ import java.util.concurrent.Executors;
          ExecutorService exe = Executors.newFixedThreadPool(PLAYER_AMOUNT);
          for(Player p:plays){
              exe.execute(p);
+//             System.out.println("执行过程中----"+begin.getCount());
+//             System.out.println("执行过程中----"+end.getCount());
          }
                       //分配线程
          System.out.println("Race begins!");
          begin.countDown();
+         System.out.println("执行过程中begin----"+begin.getCount());
          try{
+             System.out.println("执行过程中end----"+end.getCount());
              end.await();            //等待end状态变为0，即为比赛结束
          }catch (InterruptedException e) {
              // TODO: handle exception

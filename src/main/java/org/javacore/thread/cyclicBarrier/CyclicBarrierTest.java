@@ -10,17 +10,14 @@ public class CyclicBarrierTest {
 
     public static void main(String[] args) {
         CyclicBarrier cyclicBarrier = new CyclicBarrier(2);
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
+        new Thread(() -> {
 
-                try{
-                    cyclicBarrier.await();
-                }catch (Exception e){
+            try{
+                cyclicBarrier.await();
+            }catch (Exception e){
 
-                }
-                System.out.println(1);
             }
+            System.out.println(1);
         }).start();
 
         try{

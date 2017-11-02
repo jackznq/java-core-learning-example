@@ -13,7 +13,7 @@ public class AsyncServerHandler implements Runnable {
 			channel = AsynchronousServerSocketChannel.open();
 			//�󶨶˿�
 			channel.bind(new InetSocketAddress(port));
-			System.out.println("���������������˿ںţ�" + port);
+			System.out.println("������˿ںţ�" + port);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

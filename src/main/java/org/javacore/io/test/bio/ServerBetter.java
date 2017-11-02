@@ -16,7 +16,7 @@ public final class ServerBetter {
 	//������ServerSocket
 	private static ServerSocket server;
 	//�̳߳� ����ʽ�ĵ���
-	private static ExecutorService executorService = Executors.newFixedThreadPool(60);
+	private static ExecutorService executorService = Executors.newCachedThreadPool();
 	//���ݴ���������ü����˿ڣ����û�в����������·�����ʹ��Ĭ��ֵ
 	public static void start() throws IOException{
 		//ʹ��Ĭ��ֵ

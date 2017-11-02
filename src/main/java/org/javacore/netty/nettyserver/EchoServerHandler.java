@@ -1,4 +1,4 @@
-package org.javacore.io.test.netty;
+package org.javacore.netty.nettyserver;
 
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
@@ -9,26 +9,25 @@ import org.javacore.io.utils.Calculator;
 import java.io.UnsupportedEncodingException;
 
 /**
- * Handles a server-side channel.
+ * Created by ddfhznq on 2017/9/26.
  */
-public class ServerHandler extends ChannelInboundHandlerAdapter {
+public class EchoServerHandler extends ChannelInboundHandlerAdapter {
 
 
     /**
      * 收到客户端消息
-     *
      * @throws UnsupportedEncodingException
      */
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws UnsupportedEncodingException {
         ByteBuf in = (ByteBuf) msg;
         byte[] req = new byte[in.readableBytes()];
         in.readBytes(req);
-        String body = new String(req, "utf-8");
-        System.out.println("收到客户端消息:" + body);
+        String body = new String(req,"utf-8");
+        System.out.println("收到客户端消息:"+body);
         String calrResult = null;
-        try {
+        try{
             calrResult = Calculator.Instance.cal(body).toString();
-        } catch (Exception e) {
+        }catch(Exception e){
             calrResult = "错误的表达式：" + e.getMessage();
         }
         ctx.write(Unpooled.copiedBuffer(calrResult.getBytes()));

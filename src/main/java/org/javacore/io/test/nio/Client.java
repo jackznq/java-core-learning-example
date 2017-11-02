@@ -11,6 +11,7 @@ public class Client {
 			clientHandle.stop();
 		clientHandle = new ClientHandle(ip,port);
 		new Thread(clientHandle,"Server").start();
+		System.out.println("客戶端启动");
 	}
 	//�������������Ϣ
 	public static boolean sendMsg(String msg) throws Exception{
@@ -18,7 +19,8 @@ public class Client {
 		clientHandle.sendMsg(msg);
 		return true;
 	}
-	public static void main(String[] args){
+	public static void main(String[] args) throws Exception{
 		start();
+		sendMsg("znq");
 	}
 }

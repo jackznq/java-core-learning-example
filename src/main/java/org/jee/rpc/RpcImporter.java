@@ -2,8 +2,6 @@ package org.jee.rpc;
 
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
-import java.lang.reflect.InvocationHandler;
-import java.lang.reflect.Method;
 import java.lang.reflect.Proxy;
 import java.net.InetSocketAddress;
 import java.net.Socket;
@@ -21,40 +19,36 @@ public class RpcImporter<S> {
         // JDK动态代理,实现接口的远程调用
         return (S) Proxy.newProxyInstance(serviceClass.getClassLoader(),
                 new Class<?>[]{serviceClass.getInterfaces()[0]},
-                new InvocationHandler() {
+            (proxy, method, args) -> {
+                Socket socket = null;
+                ObjectOutputStream output = null;
+                ObjectInputStream  input  = null;
 
-                    @Override
-                    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                        Socket socket = null;
-                        ObjectOutputStream output = null;
-                        ObjectInputStream  input  = null;
+                try {
+                    // 连接远程服务提供者
+                    socket = new Socket();
+                    socket.connect(address);
 
-                        try {
-                            // 连接远程服务提供者
-                            socket = new Socket();
-                            socket.connect(address);
+                    // 对象输出流
+                    output = new ObjectOutputStream(socket.getOutputStream());
+                    output.writeUTF(serviceClass.getName());
+                    output.writeUTF(method.getName());
+                    output.writeObject(method.getParameterTypes());
+                    output.writeObject(args);
 
-                            // 对象输出流
-                            output = new ObjectOutputStream(socket.getOutputStream());
-                            output.writeUTF(serviceClass.getName());
-                            output.writeUTF(method.getName());
-                            output.writeObject(method.getParameterTypes());
-                            output.writeObject(args);
-
-                            input = new ObjectInputStream(socket.getInputStream());
-                            return input.readObject();
-                        } finally {
-                            if (socket != null) {
-                                socket.close();
-                            }
-                            if (output != null) {
-                                output.close();
-                            }
-                            if (input != null) {
-                                input.close();
-                            }
-                        }
+                    input = new ObjectInputStream(socket.getInputStream());
+                    return input.readObject();
+                } finally {
+                    if (socket != null) {
+                        socket.close();
                     }
-                });
+                    if (output != null) {
+                        output.close();
+                    }
+                    if (input != null) {
+                        input.close();
+                    }
+                }
+            });
     }
 }

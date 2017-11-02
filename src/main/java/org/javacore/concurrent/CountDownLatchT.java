@@ -14,7 +14,7 @@ import java.util.concurrent.TimeUnit;
 public class CountDownLatchT {
 
     // 线程中止的计数器
-    private final static int COUNT = 10;
+    private final static int COUNT = 5;
     private final static CountDownLatch count = new CountDownLatch(COUNT);
 
     // 线程池
@@ -28,6 +28,7 @@ public class CountDownLatchT {
                     TimeUnit.SECONDS.sleep(time);
                     System.out.printf("Thread %s ## 耗时:%d\n", Thread.currentThread().getId(), time);
                     // 线程结束后,计数器减一
+                    System.out.println("执行过程中----"+count.getCount());
                     count.countDown();
                 } catch (InterruptedException e) {
                     e.printStackTrace();
@@ -35,7 +36,7 @@ public class CountDownLatchT {
 
             });
         }
-
+        System.out.println(count.getCount());
         // 主线程一直被阻塞,直到count为0,实现线程同步
         count.await();
         service.shutdown();

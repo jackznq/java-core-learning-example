@@ -1,21 +1,32 @@
 package org.javacore.thread.join;
+// JoinTest.java的源码
+public class JoinTest{
 
-/**
- * Created by bysocket on 16/3/3.
- */
-public class JoinTest {
-    public static void main(String[] args) throws InterruptedException {
-        Thread t1 = new Thread(new DSLoader());
-        Thread t2 = new Thread(new NetLoader());
+    public static void main(String[] args){
+        try {
+            ThreadA t1 = new ThreadA("t1"); // 新建“线程t1”
 
-        t1.start();
-        t1.join();
-        t2.start();
+            t1.start();                     // 启动“线程t1”
+            t1.join();                        // 将“线程t1”加入到“主线程main”中，并且“主线程main()会等待它的完成”
+            System.out.printf("%s finish\n", Thread.currentThread().getName());
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+    }
 
-        //可以注释其中一个加深理解
+    static class ThreadA extends Thread{
 
-        t2.join();
+        public ThreadA(String name){
+            super(name);
+        }
+        public void run(){
+            System.out.printf("%s start\n", this.getName());
 
-        System.out.println("ending all");
+            // 延时操作
+            for(int i=0; i <1000000; i++)
+                ;
+
+            System.out.printf("%s finish\n", this.getName());
+        }
     }
 }

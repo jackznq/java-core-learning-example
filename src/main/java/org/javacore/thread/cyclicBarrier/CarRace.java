@@ -18,7 +18,7 @@ public class CarRace {
     /**
      * 指定赛道长度
      */
-    private static final int   FINISH_LINE = 75;
+    private static final int   FINISH_LINE = 20;
 
     /**
      * 赛道标尺线
@@ -89,6 +89,6 @@ public class CarRace {
     }
 
     public static void main(String[] args) {
-        new CarRace(7);
+        new CarRace(2);
     }
 }

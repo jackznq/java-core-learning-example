@@ -26,15 +26,23 @@ import java.lang.reflect.Method;
 public class ShowMethods {
     public static void main(String[] args) {
         try {
-            Class<?> c = Class.forName("org.javacore.rtti.ShowMethods");
+            ShowMethods showMethods = new ShowMethods();
+            Class<?> c = showMethods.getClass();
+            Method [] priMethods=c.getDeclaredMethods();
             Method[] methods = c.getMethods();
             Constructor[] constructors = c.getConstructors();
-            for (Method m : methods)
-                System.out.println(m.toGenericString());
-            for (Constructor constructor : constructors)
-                System.out.println(constructor.toGenericString());
-        } catch (ClassNotFoundException e) {
+            for (Method method:priMethods) {
+                System.out.println(method.toGenericString());
+            }
+            for (Method m : methods);
+//                System.out.println(m.toGenericString());
+            for (Constructor constructor : constructors);
+//                System.out.println(constructor.toGenericString());
+        } catch (Exception e) {
             e.printStackTrace();
         }
     }
+
+    public void test(){}
+    private void test2(){}
 }
