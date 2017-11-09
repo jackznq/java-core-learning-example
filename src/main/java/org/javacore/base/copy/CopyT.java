@@ -100,11 +100,12 @@ public class CopyT {
         Student student1 = new Student();
         student1.setFamily(family);
         student1.setName("Jeff");
-
+        Class []clazz = student1.getClass().getInterfaces();
+        System.out.println(clazz.length);
         Student student2 = (Student) student1.clone();
         student2.setName("Jeff2");
         student2.getFamily().setName("Jeff2 Family");
-        System.out.println(student1.getName() + " " + student1.getFamily().getName());
-        System.out.println(student2.getName() + " " + student2.getFamily().getName());
+//        System.out.println(student1.getName() + " " + student1.getFamily().getName());
+//        System.out.println(student2.getName() + " " + student2.getFamily().getName());
     }
 }

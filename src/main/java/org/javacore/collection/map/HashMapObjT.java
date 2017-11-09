@@ -27,7 +27,7 @@ public class HashMapObjT{
 	public static void main(String[] args){
 		HashMap<String, Integer> hashMapA = new HashMap<String, Integer>();
 		hashMapA.put("a", 10);
-		hashMapA.put("a", 5);
+		hashMapA.put(null, 5);
 		System.out.println("HashMapA Elements:");
 		System.out.print("\t" + hashMapA + "\n");
 

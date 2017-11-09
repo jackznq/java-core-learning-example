@@ -23,6 +23,7 @@
     <!--<bean id="testC" class="org.javacore.circle.TestC">-->
     <!--<constructor-arg index="0" ref="testA"/>-->
     <!--</bean>-->
+    <alias name="testA" alias="testa"/>
     <bean id="testA" class="org.javacore.circle.TestA">
         <property name="testB" ref="testB"></property>
     </bean>
@@ -31,5 +32,8 @@
     </bean>
     <bean id="testC" class="org.javacore.circle.TestC">
         <property name="testA" ref="testA"/>
+    </bean>
+    <bean id="user" class="org.javacore.spring.UserFactoryBean">
+        <property name="userInfo" value="znq,25,男"/>
     </bean>
 </beans>
