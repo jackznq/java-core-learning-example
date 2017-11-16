@@ -1,12 +1,11 @@
 package org.javacore.netty.nettyserver;
 
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.Channel;
-import io.netty.channel.ChannelFuture;
-import io.netty.channel.ChannelInitializer;
-import io.netty.channel.EventLoopGroup;
+import io.netty.channel.*;
 import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import org.javacore.io.test.netty.ServerHandler;
 
 /**
  *  netty服务端
@@ -22,33 +21,53 @@ public class EchoServer {
 
     public void start() throws Exception {
 
-        EventLoopGroup eventLoopGroup = new NioEventLoopGroup();
+        EventLoopGroup boss = new NioEventLoopGroup(1);
+        EventLoopGroup work = new NioEventLoopGroup();
         try {
 
 
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap
-                .group(eventLoopGroup)
+                .group(boss,work)
                 .channel(NioServerSocketChannel.class)
-                .localAddress(port)
-                .childHandler(new ChannelInitializer<Channel>() {
+//                .localAddress(port)
+                .handler(new SimpleServerHandler())
+                .childHandler(new ChannelInitializer<SocketChannel>() {
 
                     @Override
-                    public void initChannel(Channel ch) throws Exception {
-                        ch.pipeline().addLast(new EchoServerHandler());
+                    public void initChannel(SocketChannel ch) throws Exception {
+                        ch.pipeline().addLast(new ServerHandler());
                     }
                 });
 
-            ChannelFuture channelFuture = serverBootstrap.bind().sync();
-            System.out.print(EchoServer.class.getName()+"started and listen on "
-            +channelFuture.channel().localAddress());
+            ChannelFuture channelFuture = serverBootstrap.bind(port).sync();
+//            System.out.print(EchoServer.class.getName()+"started and listen on "
+//            +channelFuture.channel().localAddress());
             channelFuture.channel().closeFuture().sync();
         } finally {
-            eventLoopGroup.shutdown();
+            boss.shutdownGracefully();
+            work.shutdownGracefully();
+        }
+    }
+    private static class SimpleServerHandler extends ChannelInboundHandlerAdapter {
+        @Override
+        public void channelActive(ChannelHandlerContext ctx) throws Exception {
+            System.out.println("channelActive");
+        }
+
+        @Override
+        public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
+            System.out.println("channelRegistered");
+        }
+
+        @Override
+        public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+            System.out.println("handlerAdded");
         }
     }
 
+
     public static void main(String []args)throws Exception{
-        new EchoServer(65535).start();
+        new EchoServer(8090).start();
     }
 }

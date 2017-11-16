@@ -1,7 +1,6 @@
 package org.jee.rpc;
 
 import java.io.IOException;
-import java.io.ObjectInput;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.lang.reflect.Method;
@@ -30,7 +29,7 @@ public class RpcExporter {
                 executor.execute(new ExporterTask(serverSocket.accept()));
             }
         } finally {
-          serverSocket.close();  
+          serverSocket.close();
         }
     }
 

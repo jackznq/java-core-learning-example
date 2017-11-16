@@ -18,7 +18,7 @@ public class MyFetcher implements Fetcher {
         } catch (Exception e) {
             callback.onError(e);
         } finally {
-
+            System.out.println("有错误");
         }
     }
 }

@@ -1,6 +1,7 @@
 package org.javacore.netty.callbacks;
 
 /**
+ *  回调函数
  * Created by ddfhznq on 2017/9/26.
  */
 public class Worker {
@@ -10,7 +11,7 @@ public class Worker {
         fetcher.fetchData(new FetcherCallback() {
             @Override
             public void onData(Data data) throws Exception {
-                System.out.println("data receive"+data);
+                System.out.println("data receive"+1/0);
             }
 
             @Override

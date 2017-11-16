@@ -1,6 +1,7 @@
 package org.javacore.netty.callbacks;
 
 /**
+ *  回调的数据模型
  * Created by ddfhznq on 2017/9/26.
  */
 public class Data {

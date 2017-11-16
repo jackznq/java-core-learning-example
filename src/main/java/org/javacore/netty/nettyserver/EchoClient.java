@@ -30,8 +30,8 @@ public class EchoClient {
         try {
 
 
-            Bootstrap serverBootstrap = new Bootstrap();
-            serverBootstrap
+            Bootstrap clientBootstrap = new Bootstrap();
+            clientBootstrap
                 .group(eventLoopGroup)
                 .channel(NioSocketChannel.class).remoteAddress(new InetSocketAddress(host, port))
                 .handler(new ChannelInitializer<SocketChannel>() {
@@ -42,15 +42,27 @@ public class EchoClient {
                     }
                 });
 
-            ChannelFuture channelFuture = serverBootstrap.connect();
+            System.out.println("created..");
+            ChannelFuture channelFuture = clientBootstrap.connect().sync();
+            System.out.println("connected..."); // 连接完成
             channelFuture.channel().closeFuture().sync();
+            System.out.println("closed.."); // 关闭完成
         } finally {
-            eventLoopGroup.shutdown();
+            eventLoopGroup.shutdownGracefully().sync();
         }
     }
 
     public static void main(String args[]) throws Exception {
-        new EchoClient("localhost", 2000).start();
+
+        for (int i = 0; i < 1000; i++) {
+            new Thread(() -> {
+                try {
+                    new EchoClient("localhost", 8090).start();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }).start();
+        }
     }
 }
 
