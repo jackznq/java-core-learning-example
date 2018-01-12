@@ -15,7 +15,7 @@ public class Server {
 		if(serverHandle!=null)
 			return;
 		serverHandle = new AsyncServerHandler(port);
-		new Thread(serverHandle,"Server").start();
+		new Thread(serverHandle,"PbrpcServer").start();
 	}
 	public static void main(String[] args){
 		Server.start();

@@ -10,7 +10,7 @@ public class Client {
 		if(clientHandle!=null)
 			clientHandle.stop();
 		clientHandle = new ClientHandle(ip,port);
-		new Thread(clientHandle,"Server").start();
+		new Thread(clientHandle,"PbrpcServer").start();
 		System.out.println("客戶端启动");
 	}
 	//�������������Ϣ

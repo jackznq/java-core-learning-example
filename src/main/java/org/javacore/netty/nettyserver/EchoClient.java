@@ -53,16 +53,7 @@ public class EchoClient {
     }
 
     public static void main(String args[]) throws Exception {
-
-        for (int i = 0; i < 1000; i++) {
-            new Thread(() -> {
-                try {
-                    new EchoClient("localhost", 8090).start();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }).start();
-        }
+        new  EchoClient("localhost",8001).start();
     }
 }
 

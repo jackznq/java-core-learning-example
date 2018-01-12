@@ -36,7 +36,8 @@ public class EchoClientHandler extends SimpleChannelInboundHandler<ByteBuf> {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        System.out.println("---" + msg);
+        System.out.println("---客户端开始接收数据--->>服务器的数据为"+msg.toString());
+        ctx.channel().writeAndFlush("lisi");
     }
 
     @Override

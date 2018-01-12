@@ -4,7 +4,6 @@ import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
-import org.javacore.io.utils.Calculator;
 
 import java.io.UnsupportedEncodingException;
 
@@ -26,12 +25,12 @@ public class ServerHandler extends ChannelInboundHandlerAdapter {
         String body = new String(req, "utf-8");
         System.out.println("收到客户端消息:" + body);
         String calrResult = null;
-        try {
-            calrResult = Calculator.Instance.cal(body).toString();
-        } catch (Exception e) {
-            calrResult = "错误的表达式：" + e.getMessage();
-        }
-        ctx.write(Unpooled.copiedBuffer(calrResult.getBytes()));
+//        try {
+//            calrResult = Calculator.Instance.cal(body).toString();
+//        } catch (Exception e) {
+//            calrResult = "错误的表达式：" + e.getMessage();
+//        }
+        ctx.write(Unpooled.copiedBuffer(body.getBytes()));
     }
 
     public void channelReadComplete(ChannelHandlerContext ctx) throws Exception {

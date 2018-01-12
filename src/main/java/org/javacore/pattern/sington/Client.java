@@ -15,10 +15,10 @@ class Client {
         }
 
         //增加服务器
-        balancer1.addServer("Server 1");
-        balancer1.addServer("Server 2");
-        balancer1.addServer("Server 3");
-        balancer1.addServer("Server 4");
+        balancer1.addServer("PbrpcServer 1");
+        balancer1.addServer("PbrpcServer 2");
+        balancer1.addServer("PbrpcServer 3");
+        balancer1.addServer("PbrpcServer 4");
 
         //模拟客户端请求的分发
         for (int i = 0; i < 10; i++) {

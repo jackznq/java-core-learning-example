@@ -36,8 +36,8 @@ public class Server {
             System.out.println("服务器开启："+port);
 //            f.channel().closeFuture().sync();
         } finally {
-//            workerGroup.shutdownGracefully();
-//            bossGroup.shutdownGracefully();
+            workerGroup.shutdownGracefully();
+            bossGroup.shutdownGracefully();
         }
     }
 

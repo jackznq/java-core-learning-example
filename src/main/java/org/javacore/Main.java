@@ -6,12 +6,12 @@ package org.javacore;
 public class Main {
     public static void main(String[] args) {
 
-        Fun<String, String> fun = Main::myMethod;
+//        Fun<String, String> fun = Main::myMethod;
 
-        String result = fun.run("This is arg");
+//        String result = fun.run("This is arg");
 
-        System.out.println(result);
-
+//        BigDecimal.ZERO.compareTo(BigDecimal.valueONf(100));
+        myMethod1();
     }
 
     /**
@@ -29,5 +29,8 @@ public class Main {
 
     public static String myMethod(String arg){
         return arg;
+    }
+    public static void myMethod1(){
+        myMethod1();
     }
 }

@@ -9,7 +9,7 @@ public class Server {
 		if(serverHandle!=null)
 			serverHandle.stop();
 		serverHandle = new ServerHandle(port);
-		new Thread(serverHandle,"Server").start();
+		new Thread(serverHandle,"PbrpcServer").start();
 	}
 	public static void main(String[] args){
 		start();

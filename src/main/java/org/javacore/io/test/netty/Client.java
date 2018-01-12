@@ -42,7 +42,7 @@ public class Client implements Runnable{
         } catch (Exception e) {
 			e.printStackTrace();
 		} finally {
-//            workerGroup.shutdownGracefully();
+            workerGroup.shutdownGracefully();
         }
 	}
 }
