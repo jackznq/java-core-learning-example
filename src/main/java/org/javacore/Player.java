@@ -9,7 +9,6 @@ public class Player implements Runnable {
      private CountDownLatch end;
      public Player(int i, CountDownLatch begin, CountDownLatch end) {
          // TODO Auto-generated constructor stub
-         super();
          this.id = i;
          this.begin = begin;
          this.end = end;

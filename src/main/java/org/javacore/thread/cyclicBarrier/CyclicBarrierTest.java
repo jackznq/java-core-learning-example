@@ -8,23 +8,41 @@ import java.util.concurrent.CyclicBarrier;
  */
 public class CyclicBarrierTest {
 
-    public static void main(String[] args) {
-        CyclicBarrier cyclicBarrier = new CyclicBarrier(2);
-        new Thread(() -> {
-
-            try{
-                cyclicBarrier.await();
-            }catch (Exception e){
-
-            }
-            System.out.println(1);
-        }).start();
-
-        try{
-            cyclicBarrier.await();
-        }catch (Exception e){
-
+    private static CyclicBarrier cyclicBarrier;
+    static class SumCalculatorThread extends Thread{
+        private int a;
+        private int b;
+        SumCalculatorThread(int a,int b){
+            this.a=a;
+            this.b=b;
+            System.out.println("计算的值为"+sumResult(a,b));
         }
-        System.out.println(2);
+        @Override
+        public void run() {
+            System.out.println(Thread.currentThread().getName()+"计算完成");
+            try {
+
+                cyclicBarrier.await();
+            } catch (Exception e){
+                e.printStackTrace();
+            }
+        }
+    }
+    public static void main(String[] args) {
+        cyclicBarrier = new CyclicBarrier(2, new Runnable() {
+            @Override
+            public void run() {
+                System.out.println("计算完成，进行合并");
+            }
+        });
+            new SumCalculatorThread(1,50).start();
+            new SumCalculatorThread(51,100).start();
+    }
+    public static int sumResult(int a,int b){
+        int total =0;
+        for (int i=a;i<=b;i++){
+            total+=i;
+        }
+        return total;
     }
 }
