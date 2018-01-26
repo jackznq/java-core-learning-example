@@ -43,7 +43,7 @@ public final class ThreadPoolManager {
 	}
 
 	// 任务缓冲队列
-	private final Queue<Runnable> mTaskQueue = new LinkedList<Runnable>();
+	private final Queue<Runnable> mTaskQueue = new LinkedList<>();
 
 	/*
 	 * 线程池超出界线时将任务加入缓冲队列

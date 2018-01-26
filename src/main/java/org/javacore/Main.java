@@ -1,17 +1,19 @@
 package org.javacore;
 
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+
 /**
  * Created by ddfhznq on 2017/9/15.
  */
 public class Main {
     public static void main(String[] args) {
 
-//        Fun<String, String> fun = Main::myMethod;
-
-//        String result = fun.run("This is arg");
-
-//        BigDecimal.ZERO.compareTo(BigDecimal.valueONf(100));
-        myMethod1();
+        try (ByteArrayOutputStream outputStream = new ByteArrayOutputStream()) {
+            //获取kryo对象
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
     }
 
     /**
