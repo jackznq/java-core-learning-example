@@ -12,14 +12,14 @@ public class Client {
         a.setPersonInfo(20,"nan");
         a.setWorkExperience(new Date(),"坐力");
 
-        Resume b =a.clone();
+        Resume b =a;
         b.setPersonInfo(27,"女");
         b.setWorkExperience(new Date(),"佐力");
 
         a.display();
         b.display();
-//        System.out.println(a);
-//        System.out.println(b);
+        System.out.println(a);
+        System.out.println(b);
     }
 }
 
