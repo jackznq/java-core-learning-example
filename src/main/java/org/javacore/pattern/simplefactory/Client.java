@@ -6,7 +6,11 @@ package org.javacore.pattern.simplefactory;
 public class Client {
 
     public static void main(String [] args){
-        CashSuper cashSuper = CashFactory.createCashAccept("正常收费");
-        System.out.println(cashSuper.acceptCash(100));
+        Product product = SimpleFactory.getProduct("A");
+        product.methodSame();
+        product.methodDiff();
+        Product B = SimpleFactory.getProduct("B");
+        B.methodSame();
+        B.methodDiff();
     }
 }

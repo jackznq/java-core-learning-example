@@ -19,7 +19,7 @@ class Player implements Observer {
 
     //支援盟友方法的实现
     public void help() {
-        System.out.println("坚持住，" + this.name + "来救你！");
+        System.out.println("坚持住，" +getName() + "来救你！");
     }
 
     //遭受攻击方法的实现，当遭受攻击时将调用战队控制中心类的通知方法notifyObserver()来通知盟友
