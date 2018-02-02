@@ -6,8 +6,7 @@ package org.javacore.pattern.factorymethod;
 public class Client {
 
     public static void main(String [] args){
-//        Factory factory = new ConcreteFactory();
-//         factory.getProduct();
+//
         LoggerFactory factory;
         Logger logger;
         factory = new FileLoggerFactory(); //可引入配置文件实现
