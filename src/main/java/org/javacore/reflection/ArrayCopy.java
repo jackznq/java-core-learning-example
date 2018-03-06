@@ -35,7 +35,7 @@ public class ArrayCopy {
         System.out.println(Arrays.toString(str));
     }
 
-    public static Object goodCopyOf(Object a,int newLength){
+     static Object goodCopyOf(Object a,int newLength){
         // 获取Class对象
         Class cl = a.getClass();
         // 如果不是数组对象，则返回null;

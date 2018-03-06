@@ -25,5 +25,7 @@ class Client {
         addBT.changed();
         System.out.println("-----------------------------");
         list.changed();
+        System.out.println("-------df----------------------");
+        cb.changed();
     }
 }
