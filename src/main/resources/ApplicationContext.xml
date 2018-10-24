@@ -33,7 +33,6 @@
     <bean id="testC" class="org.javacore.circle.TestC">
         <property name="testA" ref="testA"/>
     </bean>
-    <bean id="user" class="org.javacore.spring.UserFactoryBean">
-        <property name="userInfo" value="znq,25,男"/>
-    </bean>
+
+    <bean id="user" class="org.javacore.reflection.User" />
 </beans>

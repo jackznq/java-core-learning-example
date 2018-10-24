@@ -1,5 +1,7 @@
 package org.javacore.prictice;
 
+import java.util.Arrays;
+
 /**
  * 给定一个整数数组，返回两个数字的索引，使它们加起来成为一个特定的目标。
  * <p>
@@ -14,15 +16,29 @@ package org.javacore.prictice;
  */
 public class TwoSum {
     public static void main(String[] args) {
+        int nums[] = {2, 7, 11, 15, 14, 17, 16};
+        long l = System.nanoTime();
+        System.out.println(Arrays.toString(twoSum(nums, 32)));
+        long end  = System.nanoTime();
+        System.out.println(end-l);
 
-
-        }
+    }
 
     public static int[] twoSum(int[] nums, int target) {
-        int a;
-        int b;
-        int twoSum[] = new  int[2];
-        int len = nums.length;
+
+        int a[] = new int[2];
+        //取第二个数字
+        int secondNum = 0;
+        for (int i = 0; i < nums.length; i++) {
+            secondNum = target - nums[i];
+            for (int j = i + 1; j < nums.length; j++) {
+                if (secondNum == nums[j]) {
+                    a[0] = i;
+                    a[1] = j;
+                    return a;
+                }
+            }
+        }
         return null;
     }
 }

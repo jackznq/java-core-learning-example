@@ -3,12 +3,12 @@
 		 xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>org.javacore</groupId>
-	<artifactId>java-core-learning-example</artifactId>
+	<groupId>org.saturn</groupId>
+	<artifactId>saturn-job</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 
-	<name>java core learning example</name>
-	<description>java core learning example</description>
+	<name>saturn-job</name>
+	<description>saturn-job</description>
 	<packaging>jar</packaging>
 
 	<properties>
@@ -194,6 +194,22 @@
 			<artifactId>rocketmq-client</artifactId>
 			<version>3.5.3</version>
 		</dependency>
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-api</artifactId>
+			<version>1.7.7</version>
+		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>com.vip.saturn</groupId>-->
+			<!--<artifactId>saturn-job-api</artifactId>-->
+			<!--<version>3.0.1</version>-->
+		<!--</dependency>-->
+		<!-- https://mvnrepository.com/artifact/org.apache.tomcat/tomcat-catalina -->
+		<dependency>
+			<groupId>org.apache.tomcat</groupId>
+			<artifactId>tomcat-catalina</artifactId>
+			<version>8.5.34</version>
+		</dependency>
 
 	</dependencies>
 
@@ -238,6 +254,13 @@
 					</execution>
 				</executions>
 			</plugin>
+			<!--<plugin>-->
+				<!--<groupId>com.vip.saturn</groupId>-->
+				<!--<artifactId>saturn-plugin</artifactId>-->
+				<!--&lt;!&ndash; 版本与saturn-job-api一致 &ndash;&gt;-->
+				<!--<version>3.0.1</version>-->
+
+			<!--</plugin>-->
 		</plugins>
 	</build>
 </project>
