@@ -1,7 +1,11 @@
 package org.javacore.leetCode;
 
+import lombok.Data;
+
 import java.math.BigInteger;
+import java.util.HashMap;
 import java.util.HashSet;
+import java.util.Map;
 import java.util.Set;
 
 /**
@@ -70,12 +74,12 @@ public class Solution {
 //        int[] nums = {4, 4, 1, 2, 1, 2, 5};
 //        int i = singleNumber(nums);
 //        System.out.println(i);
-        int nums1 []= {1,2,2,1};
-        int nums2[] ={2,2};
+        int nums1[] = {1, 2, 2, 1};
+        int nums2[] = {2, 2};
 //        System.out.println(Arrays.toString(intersect(nums1,nums2)));
-        String con= "盗抢";
-        String con1= "43434盗抢1";
-        System.out.println(con1.contains(con));
+//        String con = "盗抢";
+//        String con1 = "43434盗抢1";
+//        System.out.println(con1.contains(con));
 
 
     }
@@ -181,7 +185,7 @@ public class Solution {
     public static int[] intersect(int[] nums1, int[] nums2) {
         int size = nums1.length < nums2.length ? nums2.length : nums1.length;
         int result[] = {};
-        int count =0;
+        int count = 0;
         for (int i = 0; i < nums1.length; i++) {
             for (int aNums2 : nums2) {
                 if (nums1[i] == aNums2) {
@@ -192,4 +196,6 @@ public class Solution {
         }
         return result;
     }
+
+
 }
