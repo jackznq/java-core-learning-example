@@ -1,5 +1,6 @@
 package org.javacore.leetCode;
 
+import com.google.common.base.Joiner;
 import lombok.Data;
 
 import java.math.BigInteger;
@@ -80,6 +81,9 @@ public class Solution {
 //        String con = "盗抢";
 //        String con1 = "43434盗抢1";
 //        System.out.println(con1.contains(con));
+        String mobiles [] = {"er","er","gf"};
+        String join = Joiner.on(",").join(mobiles);
+        System.out.println(join);
 
 
     }
