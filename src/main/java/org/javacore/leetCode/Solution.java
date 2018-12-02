@@ -202,4 +202,17 @@ public class Solution {
     }
 
 
+    /**
+     *
+     * 458. Poor Pigs
+     * @param buckets
+     * @param minutesToDie
+     * @param minutesToTest
+     * @return
+     */
+    public int poorPigs(int buckets, int minutesToDie, int minutesToTest) {
+        int i = minutesToTest / minutesToDie;
+        return buckets/i;
+    }
+
 }

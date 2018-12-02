@@ -1,7 +1,8 @@
 package org.javacore.leetCode.queue;
 
-import java.util.ArrayDeque;
-import java.util.Deque;
+import java.awt.*;
+import java.util.*;
+import java.util.List;
 import java.util.concurrent.LinkedBlockingDeque;
 
 /**
@@ -13,40 +14,108 @@ public class SlidingWindowMaximum {
 
 
     //双端队列初始化
-    private  Deque deque;
+    private static Deque<Integer> deque;
+
     /**
      * 239. Sliding Window Maximum
      * 解法:用有限队列或者双端队列
-     * @see java.util.PriorityQueue
-     * @see java.util.Deque
-     * Input: nums = [1,3,-1,-3,5,3,6,7], and k = 3
+     *
      * @param nums
      * @param k
      * @return
+     * @see java.util.PriorityQueue
+     * @see java.util.Deque
+     * Input: nums = [1,3,-1,-3,5,3,6,7], and k = 3
      */
-    public int[] maxSlidingWindow(int[] nums, int k) {
+    public static int[] maxSlidingWindow(int[] nums, int k) {
 
-        if (nums == null) return null;
-        int[] resultNums ={nums.length};
-        deque= new LinkedBlockingDeque(k);
-        for (int i = 0;i<nums.length;i++){
-            if (deque.size()<k){
+        if (nums == null || nums.length == 0) {
+            return nums;
+        }
+        if (nums.length == 1 && k == 1) {
+            return nums;
+        }
+        if (nums.length > 1 && k == 1) {
+            return nums;
+        }
+        int[] resultNums = new int[nums.length - k + 1];
+        deque = new ArrayDeque(k);
+        int j = 1;
+        int max = Integer.MIN_VALUE;
+        for (int i = 0; i < nums.length; i++) {
+
+            if (i <= k - 1) {
+                if (deque.isEmpty()) {
+                    deque.add(nums[i]);
+                    max = nums[i];
+                    continue;
+                }
                 deque.add(nums[i]);
-            }
+                if (max < nums[i]) {
+                    max = nums[i];
+                }
 
+            }
+            resultNums[0] = max;
+
+            //Input: nums = [1,3,-1,-3,5,3,6,7], and k = 3
+            if (i > k - 1) {
+                if (deque.size() == 1) {
+                    Integer peek = deque.peek();
+                    deque.add(nums[i]);
+                    if (peek > nums[i]) {
+                        resultNums[j] = peek;
+                    } else {
+                        resultNums[j] = nums[i];
+                    }
+                    j++;
+                    continue;
+                }
+                Integer pollFirst = deque.pollFirst();
+//                if (deque.isEmpty()) {
+//                    deque.add(nums[i]);
+//                    resultNums[j] = pollFirst;
+//                    j++;
+//                    continue;
+//                }
+                Integer peekFirst;
+                if (pollFirst < nums[i]) {
+                    resultNums[j] = nums[i];
+                    peekFirst = deque.peekFirst();
+                    while (peekFirst < nums[i] && deque.size() > 0) {
+                        if (!deque.isEmpty()) {
+                            deque.pollFirst();
+                        }
+                    }
+                    deque.add(nums[i]);
+                } else {
+                    peekFirst = deque.peekFirst();
+                    if (peekFirst > nums[i]) {
+                        resultNums[j] = peekFirst;
+                    } else {
+                        resultNums[j] = nums[i];
+                        while (peekFirst < nums[i] && deque.size() > 0) {
+                            if (!deque.isEmpty()) {
+                                deque.pollFirst();
+                            }
+                        }
+                    }
+                    deque.add(nums[i]);
+                }
+                j++;
+            }
         }
         return resultNums;
     }
 
     public static void main(String[] args) {
-        Deque deque =  new ArrayDeque();
-        deque.add(3);
-        deque.add(10);
-        deque.add(5);
-        deque.add(6);
-        deque.add(20);
-        while (!deque.isEmpty()){
-            System.out.println(deque.pop());
-        }
+//        int[] nums = {1, 3, -1, -3, 5, 3, 6, 7};
+//        int[] nums = {7, 2, 4};
+//        int[] nums = {1, -1};
+        int[] nums = {1,3,1,2,0,5};
+        int k = 3;
+        int[] ints = maxSlidingWindow(nums, k);
+        Arrays.toString(ints);
+
     }
 }
