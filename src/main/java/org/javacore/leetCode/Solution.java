@@ -4,10 +4,7 @@ import com.google.common.base.Joiner;
 import lombok.Data;
 
 import java.math.BigInteger;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 /**
  * @Auther: znq
@@ -75,16 +72,9 @@ public class Solution {
 //        int[] nums = {4, 4, 1, 2, 1, 2, 5};
 //        int i = singleNumber(nums);
 //        System.out.println(i);
-        int nums1[] = {1, 2, 2, 1};
-        int nums2[] = {2, 2};
-//        System.out.println(Arrays.toString(intersect(nums1,nums2)));
-//        String con = "盗抢";
-//        String con1 = "43434盗抢1";
-//        System.out.println(con1.contains(con));
-        String mobiles [] = {"er","er","gf"};
-        String join = Joiner.on(",").join(mobiles);
-        System.out.println(join);
+        int nums[] = {2, 7, 11, 15};
 
+        twoSum(nums, 26);
 
     }
 
@@ -203,8 +193,8 @@ public class Solution {
 
 
     /**
-     *
      * 458. Poor Pigs
+     *
      * @param buckets
      * @param minutesToDie
      * @param minutesToTest
@@ -212,7 +202,50 @@ public class Solution {
      */
     public int poorPigs(int buckets, int minutesToDie, int minutesToTest) {
         int i = minutesToTest / minutesToDie;
-        return buckets/i;
+        return buckets / i;
+    }
+
+    /**
+     * Given an array of integers, return indices of
+     * the two numbers such that they add up to a specific target.
+     * <p>
+     * You may assume that each input would have exactly one solution,
+     * and you may not use the same element twice.
+     * <p>
+     * Example:
+     * <p>
+     * Given nums = [2, 7, 11, 15], target = 9,
+     * <p>
+     * Because nums[0] + nums[1] = 2 + 7 = 9,
+     * return [0, 1].
+     *
+     * @param nums
+     * @param target
+     * @return
+     */
+    public static int[] twoSum(int[] nums, int target) {
+
+        if (null == nums) {
+            return null;
+        }
+        int result[] = new int[2];
+        int length = nums.length;
+        for (int i = 0; i < length; i++) {
+            int a = target - nums[i];
+            result[0] = i;
+            Boolean isTrue = false;
+            for (int j = i + 1; j < nums.length; j++) {
+                if (a == nums[j]) {
+                    result[1] = j;
+                    isTrue = true;
+                    break;
+                }
+            }
+            if (isTrue) {
+                return result;
+            }
+        }
+        return null;
     }
 
 }
