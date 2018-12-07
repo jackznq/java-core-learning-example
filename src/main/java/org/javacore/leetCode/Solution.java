@@ -1,7 +1,9 @@
 package org.javacore.leetCode;
 
 import com.google.common.base.Joiner;
+import com.sun.org.apache.bcel.internal.generic.RETURN;
 import lombok.Data;
+import org.javacore.prictice.binarytree.TreeNode;
 
 import java.math.BigInteger;
 import java.util.*;
@@ -74,8 +76,21 @@ public class Solution {
 //        System.out.println(i);
         int nums[] = {2, 7, 11, 15};
 
-        twoSum(nums, 26);
-
+//        twoSum(nums, 26);
+        TreeNode left = new TreeNode(5);
+        TreeNode root = new TreeNode(10);
+        TreeNode right = new TreeNode(15);
+        root.left = left;
+        root.right = right;
+//        TreeNode leftRight = new TreeNode(7);
+        TreeNode rightRight = new TreeNode(20);
+//        left.right = leftRight;
+        TreeNode rightLeft = new TreeNode(6);
+//        TreeNode leftLeft = new TreeNode(4);
+//        left.left = leftLeft;
+        right.left = rightLeft;
+        right.right = rightRight;
+        isValidBS(root);
     }
 
     public static int removeDuplicates(int[] nums) {
@@ -248,4 +263,49 @@ public class Solution {
         return null;
     }
 
+    /**
+     * 98. Validate Binary Search Tree
+     *
+     * @param root
+     * @return
+     */
+    public static boolean isValidBST(TreeNode root) {
+        if (root == null)
+            return true;
+        return preOrderRec(root);
+
+    }
+
+    public static Boolean preOrderRec(TreeNode root) {
+        Boolean isLarger = true;
+        Boolean isSmaller = true;
+        if (root != null) {
+            TreeNode left = root.left;
+            int val = root.val;
+            TreeNode right = root.right;
+
+            if (left != null && left.val > val) {
+                isSmaller = false;
+            }
+            if (right != null && right.val < val) {
+                isLarger = false;
+
+            }
+            preOrderRec(left);
+            System.out.println(val);
+            preOrderRec(right);
+        }
+        return isLarger && isSmaller;
+    }
+
+
+    public static boolean  isValidBS(TreeNode root) {
+        return isValidBS(root, Long.MIN_VALUE, Long.MAX_VALUE);
+    }
+
+    public static boolean isValidBS(TreeNode root, long minVal, long maxVal) {
+        if (root == null) return true;
+        if (root.val >= maxVal || root.val <= minVal) return false;
+        return isValidBS(root.left, minVal, root.val) && isValidBS(root.right, root.val, maxVal);
+    }
 }
