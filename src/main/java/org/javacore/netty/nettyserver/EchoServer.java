@@ -7,16 +7,21 @@ import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
+import io.netty.handler.codec.DelimiterBasedFrameDecoder;
+import io.netty.handler.codec.Delimiters;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
+import io.netty.util.CharsetUtil;
 
 /**
- *  netty服务端
+ * netty服务端
  * Created by ddfhznq on 2017/9/26.
  */
 public class EchoServer {
 
     private final int port;
 
-    EchoServer(int port){
+    EchoServer(int port) {
         this.port = port;
     }
 
@@ -26,23 +31,21 @@ public class EchoServer {
         EventLoopGroup work = new NioEventLoopGroup();
         try {
 
-
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap
-                .group(boss,work)
+                .group(boss, work)
                 .channel(NioServerSocketChannel.class)
-//                .localAddress(port)
                 .childHandler(new ChannelInitializer<SocketChannel>() {
 
                     @Override
                     public void initChannel(SocketChannel ch) throws Exception {
                         ch.pipeline().addLast(new EchoServerHandler());
+                        ch.pipeline().addLast(new StringDecoder(CharsetUtil.UTF_8));
+                        ch.pipeline().addLast(new StringEncoder(CharsetUtil.UTF_8));
+                        ch.pipeline().addLast(new DelimiterBasedFrameDecoder(4096,Delimiters.lineDelimiter()));
                     }
                 });
-
             ChannelFuture channelFuture = serverBootstrap.bind(port).sync();
-//            System.out.print(EchoServer.class.getName()+"started and listen on "
-//            +channelFuture.channel().localAddress());
             channelFuture.channel().closeFuture().sync();
         } finally {
             boss.shutdownGracefully();
@@ -50,8 +53,7 @@ public class EchoServer {
         }
     }
 
-    public static void main(String []args)throws Exception{
-        System.out.println(args.length);
-        new EchoServer(8090).start();
+    public static void main(String[] args) throws Exception {
+        new EchoServer(8099).start();
     }
 }

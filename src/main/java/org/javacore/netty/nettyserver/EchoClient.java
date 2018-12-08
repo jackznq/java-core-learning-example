@@ -1,13 +1,21 @@
 package org.javacore.netty.nettyserver;
 
 import io.netty.bootstrap.Bootstrap;
+import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.DelimiterBasedFrameDecoder;
+import io.netty.handler.codec.Delimiters;
+import io.netty.handler.codec.string.StringDecoder;
+import io.netty.handler.codec.string.StringEncoder;
+import io.netty.util.CharsetUtil;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.net.InetSocketAddress;
 
 /**
@@ -33,27 +41,31 @@ public class EchoClient {
             Bootstrap clientBootstrap = new Bootstrap();
             clientBootstrap
                 .group(eventLoopGroup)
-                .channel(NioSocketChannel.class).remoteAddress(new InetSocketAddress(host, port))
+                .channel(NioSocketChannel.class)
                 .handler(new ChannelInitializer<SocketChannel>() {
-
                     @Override
                     public void initChannel(SocketChannel ch) throws Exception {
+                        ch.pipeline().addLast(new StringDecoder(CharsetUtil.UTF_8));
+                        ch.pipeline().addLast(new StringEncoder(CharsetUtil.UTF_8));
+                        ch.pipeline().addLast(new DelimiterBasedFrameDecoder(4096, Delimiters.lineDelimiter()));
                         ch.pipeline().addLast(new EchoClientHandler());
+
                     }
                 });
 
-            System.out.println("created..");
-            ChannelFuture channelFuture = clientBootstrap.connect().sync();
-            System.out.println("connected..."); // 连接完成
-            channelFuture.channel().closeFuture().sync();
-            System.out.println("closed.."); // 关闭完成
+            Channel channel = clientBootstrap.connect(host, port).sync().channel();
+            BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
+            for (; ; ) {
+
+                channel.writeAndFlush(br.read() + "\r\n");
+            }
         } finally {
             eventLoopGroup.shutdownGracefully().sync();
         }
     }
 
     public static void main(String args[]) throws Exception {
-        new  EchoClient("localhost",8001).start();
+        new EchoClient("localhost", 8099).start();
     }
 }
 

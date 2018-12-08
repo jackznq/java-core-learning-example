@@ -9,7 +9,7 @@ import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 
 /**
- *  简单的netty服务启动
+ * 简单的netty服务启动
  * Created by ddfhznq on 2017/11/16.
  */
 public class MyNettyServer {
@@ -17,20 +17,22 @@ public class MyNettyServer {
     private int port;
 
     private String host;
-    public MyNettyServer(int port,String host){
+
+    public MyNettyServer(int port, String host) {
         this.port = port;
         this.host = host;
     }
-    public void start() throws Exception{
+
+    public void start() throws Exception {
         EventLoopGroup boss = new NioEventLoopGroup(1);
         EventLoopGroup work = new NioEventLoopGroup();
 
         try {
-            ServerBootstrap serverBootstrap =new ServerBootstrap();
+            ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap
-                .group(boss,work)
+                .group(boss, work)
                 .channel(NioServerSocketChannel.class)
-                .handler(new  MyHandler())
+                .handler(new MyHandler())
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
@@ -50,7 +52,7 @@ public class MyNettyServer {
     }
 
 
-    private static class  MyHandler extends ChannelInboundHandlerAdapter{
+    private static class MyHandler extends ChannelInboundHandlerAdapter {
         @Override
         public void channelRegistered(ChannelHandlerContext ctx) throws Exception {
             System.out.println("channelRegistered");
@@ -65,9 +67,19 @@ public class MyNettyServer {
         public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
             System.out.println("handlerAdded");
         }
+
+        @Override
+        public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
+            System.out.println("channelUnregistered");
+        }
+
+        @Override
+        public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+            System.out.println("channelInactive");
+        }
     }
 
-    public static void main(String[] args)throws Exception {
-        new MyNettyServer(8001,"localhost").start();
+    public static void main(String[] args) throws Exception {
+        new MyNettyServer(8001, "localhost").start();
     }
 }
