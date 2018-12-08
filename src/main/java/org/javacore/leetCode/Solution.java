@@ -88,9 +88,22 @@ public class Solution {
         TreeNode rightLeft = new TreeNode(6);
 //        TreeNode leftLeft = new TreeNode(4);
 //        left.left = leftLeft;
-        right.left = rightLeft;
-        right.right = rightRight;
-        isValidBS(root);
+//        right.left = rightLeft;
+//        right.right = rightRight;
+//        isValidBS(root);
+        ListNode one = new ListNode(1);
+        ListNode two = new ListNode(1);
+        ListNode three = new ListNode(3);
+        ListNode four = new ListNode(2);
+        ListNode five = new ListNode(5);
+        ListNode six = new ListNode(2);
+        one.next = two;
+        two.next = three;
+        three.next = four;
+        four.next = five;
+        five.next = six;
+        ListNode partition = partition1(one, 3);
+        System.out.println(partition.toString());
     }
 
     public static int removeDuplicates(int[] nums) {
@@ -299,7 +312,14 @@ public class Solution {
     }
 
 
-    public static boolean  isValidBS(TreeNode root) {
+    /**
+     * 判断是否是二叉搜索树
+     * 用中序遍历
+     *
+     * @param root
+     * @return
+     */
+    public static boolean isValidBS(TreeNode root) {
         return isValidBS(root, Long.MIN_VALUE, Long.MAX_VALUE);
     }
 
@@ -307,5 +327,100 @@ public class Solution {
         if (root == null) return true;
         if (root.val >= maxVal || root.val <= minVal) return false;
         return isValidBS(root.left, minVal, root.val) && isValidBS(root.right, root.val, maxVal);
+    }
+
+
+    /**
+     * Given a linked list and a value x,
+     * partition it such that all nodes less than x come before nodes greater than or equal to x.
+     * <p>
+     * You should preserve the original relative order of the nodes in each of the two partitions.
+     * <p>
+     * Example:
+     * <p>
+     * Input: head = 1->4->3->2->5->2, x = 3
+     * Output: 1->2->2->4->3->5
+     *
+     * @param head
+     * @param x
+     * @return
+     */
+    public static ListNode partition(ListNode head, int x) {
+        if (head == null) return null;
+        if (head.next == null) return head;
+        ListNode smalNode = null;
+        ListNode lagerNode = null;
+        while (head != null) {
+            int val1 = head.val;
+            head = head.next;
+            if (val1 < x) {
+                if (smalNode == null) {
+                    smalNode = new ListNode(val1);
+                    continue;
+                }
+                insertListNode(smalNode, val1);
+            } else {
+                if (lagerNode == null) {
+                    lagerNode = new ListNode(val1);
+                    continue;
+                }
+                insertListNode(lagerNode, val1);
+            }
+        }
+        if (lagerNode == null) return smalNode;
+        if (smalNode == null) return lagerNode;
+        ListNode cur = smalNode;
+        while (cur.next != null) {
+            cur = cur.next;
+        }
+        cur.next = lagerNode;
+        return smalNode;
+    }
+
+    private static void insertListNode(ListNode cur, int val) {
+        while (cur.next != null) {
+            cur = cur.next;
+        }
+        cur.next = new ListNode(val);
+    }
+
+    public static class ListNode {
+        int val;
+        ListNode next;
+
+        ListNode(int x) {
+            val = x;
+        }
+
+        @Override
+        public String toString() {
+            return "当前节点的值为" + val;
+        }
+    }
+
+    /**
+     * example
+     * @param head
+     * @param x
+     * @return
+     */
+    public static ListNode  partition1(ListNode head, int x) {
+        ListNode less = new ListNode(0);
+        ListNode greater = new ListNode(0);
+        ListNode curr1 = less, curr2 = greater;
+
+        while (head!=null) {
+            if (head.val<x) {
+                curr1.next = new ListNode(head.val);
+                curr1 = curr1.next;
+            }
+            else {
+                curr2.next = new ListNode(head.val);
+                curr2 = curr2.next;
+            }
+            head = head.next;
+        }
+        curr1.next = greater.next;
+        return less.next;
     }
 }
