@@ -4,6 +4,7 @@ import com.google.common.base.Joiner;
 import com.sun.org.apache.bcel.internal.generic.RETURN;
 import lombok.Data;
 import org.javacore.prictice.binarytree.TreeNode;
+import org.springframework.util.StringUtils;
 
 import java.math.BigInteger;
 import java.util.*;
@@ -91,19 +92,23 @@ public class Solution {
 //        right.left = rightLeft;
 //        right.right = rightRight;
 //        isValidBS(root);
-        ListNode one = new ListNode(1);
-        ListNode two = new ListNode(1);
-        ListNode three = new ListNode(3);
-        ListNode four = new ListNode(2);
-        ListNode five = new ListNode(5);
-        ListNode six = new ListNode(2);
-        one.next = two;
-        two.next = three;
-        three.next = four;
-        four.next = five;
-        five.next = six;
-        ListNode partition = partition1(one, 3);
-        System.out.println(partition.toString());
+//        ListNode one = new ListNode(1);
+//        ListNode two = new ListNode(1);
+//        ListNode three = new ListNode(3);
+//        ListNode four = new ListNode(2);
+//        ListNode five = new ListNode(5);
+//        ListNode six = new ListNode(2);
+//        one.next = two;
+//        two.next = three;
+//        three.next = four;
+//        four.next = five;
+//        five.next = six;
+//        ListNode partition = partition1(one, 3);
+//        System.out.println(partition.toString());
+
+        String s ="10499412030277 9.2";
+        String replace = s.replace(" ", "");
+        System.out.println(replace);
     }
 
     public static int removeDuplicates(int[] nums) {

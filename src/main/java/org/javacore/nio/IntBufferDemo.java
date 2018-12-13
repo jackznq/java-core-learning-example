@@ -45,5 +45,6 @@ public class IntBufferDemo {
             int i = ib.get();
             System.out.println(i);
         }
+
     }
 }
