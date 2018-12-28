@@ -12,9 +12,9 @@ import java.nio.channels.FileChannel;
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
  * You may obtain a copy of the License at
- * 
+ *
  *   http://www.apache.org/licenses/LICENSE-2.0
- * 
+ *
  * Unless required by applicable law or agreed to in writing, software
  * distributed under the License is distributed on an "AS IS" BASIS,
  * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
@@ -29,7 +29,7 @@ import java.nio.channels.FileChannel;
  */
 public class FileChannelTransferTo {
 	// 读取的文件
-	private static final String sourceFile = 
+	private static final String sourceFile =
 			"src" + File.separator +
 			"org" + File.separator +
 			"javacore" + File.separator +
@@ -37,7 +37,7 @@ public class FileChannelTransferTo {
 			"FileChannelTransferTo.java";
 	// 输出的文件
 	private static final String targetFile = "data.txt";
-	
+
 	@SuppressWarnings("resource")
 	public static void main(String[] args) throws IOException {
 		// 创建用于读写的Channel
@@ -48,6 +48,6 @@ public class FileChannelTransferTo {
 		in.transferTo(0, in.size(),out);
 		// or
 		// 将字节从给定的可读取字节通道传输到此通道的文件中。
-		// out.transferFrom(in, 0, in.size());
+		 out.transferFrom(in, 0, in.size());
 	}
 }

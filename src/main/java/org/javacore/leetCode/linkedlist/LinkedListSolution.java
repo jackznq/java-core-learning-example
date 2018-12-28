@@ -1,9 +1,10 @@
 package org.javacore.leetCode.linkedlist;
 
-import org.javacore.leetCode.Solution;
+import lombok.Setter;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Stack;
 
 /**
  * @Date 18/11/26 下午9:55
@@ -23,7 +24,23 @@ public class LinkedListSolution {
         node3.next = node4;
         node4.next = node5;
         node5.next = null;
-        swapPairs(node1);
+//        swapPairs(node1);
+
+        ListNode two = new ListNode(2);
+        ListNode four = new ListNode(4);
+        ListNode three = new ListNode(7);
+        two.setNext(four);
+        four.setNext(three);
+
+        ListNode five = new ListNode(5);
+        ListNode six = new ListNode(6);
+        ListNode four1 = new ListNode(4);
+        five.setNext(six);
+        six.setNext(four1);
+        ListNode listNode = addTwoNumbers(two, five);
+        System.out.println("----------");
+
+
     }
 
     /**
@@ -42,6 +59,10 @@ public class LinkedListSolution {
         ListNode cur = head;
         while (cur != null) {
             ListNode next = cur.next;
+            if (next != null && next.val == 10) {
+                cur.val++;
+                next.val = 0;
+            }
             cur.next = pre;
             pre = cur;
             cur = next;
@@ -59,7 +80,7 @@ public class LinkedListSolution {
     private static ListNode swapPairs(ListNode head) {
         ListNode pre = null;
         ListNode cur = head;
-        int count =1;
+        int count = 1;
         while (cur != null) {
             ListNode next = cur.next;
             if (next == null) {
@@ -103,12 +124,51 @@ public class LinkedListSolution {
 
     static class ListNode {
         int val;
+        @Setter
         ListNode next;
 
         ListNode(int x) {
             val = x;
-            next = null;
         }
+
     }
+
+    /**
+     * 2
+     * You are given two non-empty linked lists representing two non-negative integers.
+     * The digits are stored in reverse order and each of their nodes contain a single digit.
+     * Add the two numbers and return it as a linked list.
+     * <p>
+     * You may assume the two numbers do not contain any leading zero, except the number 0 itself.
+     * <p>
+     * Example:
+     * <p>
+     * Input: (2 -> 4 -> 3) + (5 -> 6 -> 4)
+     * Output: 7 -> 0 -> 8
+     * Explanation: 342 + 465 = 807.
+     *
+     * @param l1
+     * @param l2
+     * @return
+     */
+    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+        ListNode prev = new ListNode(0);
+        ListNode head = prev;
+        int carry = 0;
+        while (l1 != null || l2 != null || carry != 0) {
+            ListNode cur = new ListNode(0);
+            int sum = ((l2 == null) ? 0 : l2.val) + ((l1 == null) ? 0 : l1.val) + carry;
+            cur.val = sum % 10;
+            carry = sum / 10;
+            prev.next = cur;
+            prev = cur;
+
+            l1 = (l1 == null) ? l1 : l1.next;
+            l2 = (l2 == null) ? l2 : l2.next;
+        }
+        return head.next;
+    }
+
+
 }
 

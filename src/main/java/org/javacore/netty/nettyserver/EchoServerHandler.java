@@ -1,6 +1,7 @@
 package org.javacore.netty.nettyserver;
 
 import io.netty.channel.Channel;
+import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.SimpleChannelInboundHandler;
 import io.netty.channel.group.ChannelGroup;
@@ -23,22 +24,15 @@ public class EchoServerHandler extends SimpleChannelInboundHandler<String> {
      * @throws Exception
      */
     @Override
-    protected void channelRead0(ChannelHandlerContext ctx, String msg) throws Exception {
+    protected void channelRead0(ChannelHandlerContext ctx, String msg) {
         Channel channel = ctx.channel();
-        for (Channel ch : channels) {
+        channels.forEach(ch -> {
             if (channel != ch) {
                 ch.writeAndFlush(channel.remoteAddress() + "发消息" + msg + "\n");
             } else {
                 ch.writeAndFlush("【自己】" + msg + "\n");
             }
-        }
-//        channels.forEach(ch -> {
-//            if (channel != ch) {
-//                ch.writeAndFlush(channel.remoteAddress() + "发消息" + msg + "\n");
-//            } else {
-//                ch.writeAndFlush("【自己】" + msg + "\n");
-//            }
-//        });
+        });
     }
 
     /**
@@ -52,13 +46,13 @@ public class EchoServerHandler extends SimpleChannelInboundHandler<String> {
 
 
     @Override
-    public void channelInactive(ChannelHandlerContext ctx) throws Exception {
+    public void channelInactive(ChannelHandlerContext ctx) {
         Channel channel = ctx.channel();
         System.out.println(channel.remoteAddress() + "下线");
     }
 
     @Override
-    public void handlerAdded(ChannelHandlerContext ctx) throws Exception {
+    public void handlerAdded(ChannelHandlerContext ctx) {
 
         Channel channel = ctx.channel();
         channels.writeAndFlush("服务器 -" + channel.remoteAddress() + "加入\n");
@@ -66,7 +60,7 @@ public class EchoServerHandler extends SimpleChannelInboundHandler<String> {
     }
 
     @Override
-    public void handlerRemoved(ChannelHandlerContext ctx) throws Exception {
+    public void handlerRemoved(ChannelHandlerContext ctx) {
         Channel channel = ctx.channel();
         channels.writeAndFlush(channel.remoteAddress() + "离开\n");
         channels.remove(channel);
@@ -74,7 +68,7 @@ public class EchoServerHandler extends SimpleChannelInboundHandler<String> {
     }
 
     @Override
-    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+    public void channelActive(ChannelHandlerContext ctx) {
         Channel channel = ctx.channel();
         System.out.println(channel.remoteAddress() + "上线\n");
     }

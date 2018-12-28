@@ -12,6 +12,8 @@ import io.netty.handler.codec.Delimiters;
 import io.netty.handler.codec.string.StringDecoder;
 import io.netty.handler.codec.string.StringEncoder;
 import io.netty.util.CharsetUtil;
+import io.netty.util.concurrent.Future;
+import io.netty.util.concurrent.GenericFutureListener;
 
 /**
  * netty服务端
@@ -27,10 +29,13 @@ public class EchoServer {
 
     public void start() throws Exception {
 
+        //创建boss线程池，一般只传一个线程
         EventLoopGroup boss = new NioEventLoopGroup(1);
+        //创建work线程
         EventLoopGroup work = new NioEventLoopGroup();
         try {
 
+            //启动服务
             ServerBootstrap serverBootstrap = new ServerBootstrap();
             serverBootstrap
                 .group(boss, work)
@@ -38,7 +43,7 @@ public class EchoServer {
                 .childHandler(new ChannelInitializer<SocketChannel>() {
 
                     @Override
-                    public void initChannel(SocketChannel ch) throws Exception {
+                    public void initChannel(SocketChannel ch)  {
                         ch.pipeline().addLast(new EchoServerHandler());
                         ch.pipeline().addLast(new StringDecoder(CharsetUtil.UTF_8));
                         ch.pipeline().addLast(new StringEncoder(CharsetUtil.UTF_8));
