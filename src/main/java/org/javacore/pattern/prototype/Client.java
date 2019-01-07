@@ -3,24 +3,32 @@ package org.javacore.pattern.prototype;
 import java.util.Date;
 
 /**
- * Created by znq on 2018/1/25.
- */
+ * @Date 19/1/7 上午11:32
+ * @Auther znq
+ * @ClassName Client
+ **/
 public class Client {
 
-    public static void main(String[] args) throws Exception{
-        Resume a = new Resume("znq");
-        a.setPersonInfo(20,"nan");
-        a.setWorkExperience(new Date(),"坐力");
+    public static void main(String[] args) {
+        WeeklyLog weeklyLog = new WeeklyLog();
+        weeklyLog.setName("znq");
+        weeklyLog.setDate("12周");
+        weeklyLog.setContent("加班");
+        System.out.println("周次：" + weeklyLog.getDate());
+        System.out.println("姓名：" + weeklyLog.getName());
+        System.out.println("内容：" + weeklyLog.getContent());
 
-        Resume b =a;
-        b.setPersonInfo(27,"女");
-        b.setWorkExperience(new Date(),"佐力");
+        WeeklyLog cloneWeeklyLog = weeklyLog.clone();
+//        weeklyLog.setName("zwj");
+//        cloneWeeklyLog.setDate("13周");
+//        weeklyLog.setContent("加班,加班");
+        System.out.println("周次：" + cloneWeeklyLog.getDate());
+        System.out.println("姓名：" + cloneWeeklyLog.getName());
+        System.out.println("内容：" + cloneWeeklyLog.getContent());
 
-        a.display();
-        b.display();
-        System.out.println(a);
-        System.out.println(b);
+        System.out.println(weeklyLog.equals(cloneWeeklyLog));
+        System.out.println(weeklyLog.getDate().equals(cloneWeeklyLog.getDate()));
+        System.out.println(weeklyLog.getContent().equals(cloneWeeklyLog.getContent()));
+        System.out.println(weeklyLog.getName().equals(cloneWeeklyLog.getName()));
     }
 }
-
-
