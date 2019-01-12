@@ -16,13 +16,18 @@ package org.javacore.lambda;
  * limitations under the License.
  */
 
+import org.apache.commons.collections.CollectionUtils;
+
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 /**
  * List 比较器
- *
+ * <p>
  * Created by bysocket on 16/7/12.
  */
 public class LambdaListCompare {
@@ -39,7 +44,12 @@ public class LambdaListCompare {
 //                return Integer.compare(o1, o2);
 //            }
 //        });
+        List<Integer> collect = list.stream().filter(param -> param < 6).collect(Collectors.toList());
+        collect.forEach(a ->
+            System.out.println(a)
+        );
 
+        System.out.println();
         /** Lambda表达式格式:
          * (Type1 param1, Type2 param2, ..., TypeN paramN) -> {
          *  statment1;
@@ -56,5 +66,9 @@ public class LambdaListCompare {
         list.sort(Comparator.comparingInt(o -> o));
 
         System.out.println(list.toString());
+
+
+        int sumValue = Stream.of(1, 2, 3, 4).reduce(0, Integer::sum);
+        System.out.println(sumValue);
     }
 }

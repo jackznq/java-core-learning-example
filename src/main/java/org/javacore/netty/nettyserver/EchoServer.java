@@ -15,6 +15,8 @@ import io.netty.util.CharsetUtil;
 import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
 
+import java.util.Arrays;
+
 /**
  * netty服务端
  * Created by ddfhznq on 2017/9/26.
@@ -44,10 +46,10 @@ public class EchoServer {
 
                     @Override
                     public void initChannel(SocketChannel ch)  {
-                        ch.pipeline().addLast(new EchoServerHandler());
                         ch.pipeline().addLast(new StringDecoder(CharsetUtil.UTF_8));
                         ch.pipeline().addLast(new StringEncoder(CharsetUtil.UTF_8));
                         ch.pipeline().addLast(new DelimiterBasedFrameDecoder(4096,Delimiters.lineDelimiter()));
+                        ch.pipeline().addLast(new EchoServerHandler());
                     }
                 });
             ChannelFuture channelFuture = serverBootstrap.bind(port).sync();
@@ -61,4 +63,5 @@ public class EchoServer {
     public static void main(String[] args) throws Exception {
         new EchoServer(8099).start();
     }
+
 }

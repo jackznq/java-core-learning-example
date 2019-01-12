@@ -19,6 +19,7 @@ package org.javacore.lambda;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * Lambda 操作符
@@ -33,6 +34,8 @@ public class LambdaOperators {
         list.add("b");
         list.add("eeeee");
 
+        List<String> collect = list.stream()
+            .filter(w -> "aaa".equals(w)).collect(Collectors.toList());
         /**
          * :: 操作符格式 => 三种情况
          *    对象::实例方法

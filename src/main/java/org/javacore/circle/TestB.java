@@ -5,12 +5,12 @@ package org.javacore.circle;
  */
 //@Service("testB")
 public class TestB {
-//    @Resource
+    //    @Resource
     private TestC testC;
 
-//    TestB(TestC testC){
-//        this.testC = testC;
-//    }
+    //    TestB(TestC testC){
+    //        this.testC = testC;
+    //    }
     public TestC getTestC() {
         return testC;
     }
@@ -19,7 +19,14 @@ public class TestB {
         this.testC = testC;
     }
 
-    public void  b(){
+    /**
+      * @Author znq
+      * @Description //TODO
+      * @Date 下午2:32 19/1/12
+      * @param
+      * @Return
+      * */
+    public void boi() {
         testC.c();
     }
 }

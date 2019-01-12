@@ -19,5 +19,8 @@ public class SelfDecreasingDecrement {
         int y = 2 * b++; //9
         System.out.println("自增运算符前缀运算后a=" + a + ",x=" + x); // a= 5,x =10
         System.out.println("自增运算符后缀运算后b=" + b + ",y=" + y); // b= 5,y =8
+
+        assert -1 > 0 : "something goes wrong here, a cannot be less than 0";
+        System.out.println(a);
     }
 }
