@@ -1,6 +1,7 @@
 package org.javacore.pattern.decorator;
 
 class ConcreteDecorator extends Decorator {
+
     public ConcreteDecorator(Component component) {
         super(component);
     }

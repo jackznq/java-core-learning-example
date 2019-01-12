@@ -17,7 +17,7 @@ public class CriteriaPatternDemo {
      */
     //todo
     public static void main(String[] args) {
-        List<Person> persons = new ArrayList<Person>();
+        List<Person> persons = new ArrayList<>();
 
         persons.add(new Person("Robert", "Male", "Single"));
         persons.add(new Person("John", "Male", "Married"));
@@ -50,7 +50,7 @@ public class CriteriaPatternDemo {
     /**
      * @param persons p
      */
-    public static void printPersons(List<Person> persons) {
+    private static void printPersons(List<Person> persons) {
         for (Person person : persons) {
 
             System.out.println("Person : [ Name : " + person.getName()

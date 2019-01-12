@@ -20,6 +20,6 @@ public class TestA {
     }
 
     public void a(){
-        testB.b();
+        testB.boi();
     }
 }
