@@ -1,0 +1,5 @@
+<?xml version="1.0"?>
+<config>
+    <className>org.javacore.pattern.command.HelpCommand</className>
+    <className>org.javacore.pattern.command.MinimizeCommand</className>
+</config>
