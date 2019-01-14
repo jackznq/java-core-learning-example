@@ -20,7 +20,8 @@ class FunctionButton {
 
     //发送请求的方法
     public void onClick() {
-        System.out.print("点击功能键：");
+        System.out.print("点击功能键:" + this.name);
+        System.out.println();
         command.execute();
     }
 }

@@ -6,7 +6,7 @@ class Client {
 
         FunctionButton fb1, fb2;
         fb1 = new FunctionButton("功能键1");
-        fb2 = new FunctionButton("功能键1");
+        fb2 = new FunctionButton("功能键2");
 
         Command command1, command2;
         //通过读取配置文件和反射生成具体命令对象

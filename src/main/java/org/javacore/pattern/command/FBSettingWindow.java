@@ -32,8 +32,8 @@ class FBSettingWindow {
     public void display() {
         System.out.println("显示窗口：" + this.title);
         System.out.println("显示功能键：");
-        for (Object obj : functionButtons) {
-            System.out.println(((FunctionButton) obj).getName());
+        for (FunctionButton obj : functionButtons) {
+            System.out.println(obj.getName());
         }
         System.out.println("------------------------------");
     }
