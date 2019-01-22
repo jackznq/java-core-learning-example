@@ -99,8 +99,27 @@ public class Code_00_BubbleSort {
 
         int[] arr = generateRandomArray(maxSize, maxValue);
         printArray(arr);
-        bubbleSort(arr);
+        bubbledSort(arr);
         printArray(arr);
     }
 
+    /**
+     * @param * @param null
+     * @author znq
+     * @description //
+     * @date 下午9:14 19/1/22
+     * @Return
+     */
+    public static void bubbledSort(int arr[]) {
+        if (null == arr) {
+            return;
+        }
+        for (int i = 0; i < arr.length - 1; i++) {
+            for (int j = 0; j < arr.length - i - 1; j++) {
+                if (arr[j] < arr[j + 1]) {
+                    swap(arr, j, j + 1);
+                }
+            }
+        }
+    }
 }

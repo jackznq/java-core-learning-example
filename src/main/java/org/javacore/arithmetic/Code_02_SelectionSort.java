@@ -101,8 +101,30 @@ public class Code_02_SelectionSort {
 
         int[] arr = generateRandomArray(maxSize, maxValue);
         printArray(arr);
-        selectionSort(arr);
-        printArray(arr);
+//        selectionSort(arr);
+        int [] a ={10,20,6,7,34,2,90};
+        selectSort(a);
+        printArray(a);
     }
 
+    /**
+     * 自己实现的
+     * @param arr
+     */
+    public static void selectSort(int arr[]) {
+        if (null == arr) {
+            return;
+        }
+
+        for (int i = 0; i < arr.length; i++) {
+            int min = i;
+            for (int j = i; j < arr.length - 1 ; j++) {
+                if (arr[j] < arr[min]) {
+                    min = j ;
+                }
+            }
+            swap(arr, i, min);
+
+        }
+    }
 }
