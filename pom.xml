@@ -172,10 +172,10 @@
 			<version>1.1.1</version>
 		</dependency>
 		<!--<dependency>-->
-			<!--<groupId>io.grpc</groupId>-->
-			<!--<artifactId>grpc-netty</artifactId>-->
-			<!--<version>${grpc.version}</version>-->
-			<!--<scope>provided</scope>-->
+		<!--<groupId>io.grpc</groupId>-->
+		<!--<artifactId>grpc-netty</artifactId>-->
+		<!--<version>${grpc.version}</version>-->
+		<!--<scope>provided</scope>-->
 		<!--</dependency>-->
 		<dependency>
 			<groupId>io.grpc</groupId>
@@ -189,12 +189,13 @@
 			<version>${grpc.version}</version>
 			<scope>provided</scope>
 		</dependency>
-		<!-- https://mvnrepository.com/artifact/com.alibaba.rocketmq/rocketmq-client -->
+		<!-- https://mvnrepository.com/artifact/org.apache.rocketmq/rocketmq-client -->
 		<dependency>
-			<groupId>com.alibaba.rocketmq</groupId>
+			<groupId>org.apache.rocketmq</groupId>
 			<artifactId>rocketmq-client</artifactId>
-			<version>3.5.3</version>
+			<version>4.4.0</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-api</artifactId>
@@ -235,9 +236,11 @@
 				<artifactId>protobuf-maven-plugin</artifactId>
 				<version>0.5.0</version>
 				<configuration>
-					<protocArtifact>com.google.protobuf:protoc:${protobuf.version}:exe:${os.detected.classifier}</protocArtifact>
+					<protocArtifact>com.google.protobuf:protoc:${protobuf.version}:exe:${os.detected.classifier}
+					</protocArtifact>
 					<pluginId>grpc-java</pluginId>
-					<pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}}:exe:${os.detected.classifier}</pluginArtifact>
+					<pluginArtifact>io.grpc:protoc-gen-grpc-java:${grpc.version}}:exe:${os.detected.classifier}
+					</pluginArtifact>
 				</configuration>
 				<executions>
 					<execution>
@@ -250,10 +253,10 @@
 			</plugin>
 
 			<!--<plugin>-->
-				<!--<groupId>com.vip.saturn</groupId>-->
-				<!--<artifactId>saturn-plugin</artifactId>-->
-				<!--&lt;!&ndash; 版本与saturn-job-api一致 &ndash;&gt;-->
-				<!--<version>3.0.1</version>-->
+			<!--<groupId>com.vip.saturn</groupId>-->
+			<!--<artifactId>saturn-plugin</artifactId>-->
+			<!--&lt;!&ndash; 版本与saturn-job-api一致 &ndash;&gt;-->
+			<!--<version>3.0.1</version>-->
 
 			<!--</plugin>-->
 		</plugins>
