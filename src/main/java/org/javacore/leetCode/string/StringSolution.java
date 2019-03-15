@@ -1,9 +1,6 @@
 package org.javacore.leetCode.string;
 
-import java.util.Arrays;
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @Date 18/11/27 下午9:07
@@ -19,7 +16,16 @@ public class StringSolution {
 //        System.out.println(valid);
         String s = "anagram";
         String t = "nagaram";
-        System.out.println(isAnagram(s, t));
+//        System.out.println(isAnagram(s, t));
+        String[] data = {"eat", "tea", "tan", "ate", "nat", "bat"};
+//        groupAnagrams(data);
+//        isAnagram(s, t);
+        List<String> dict = new ArrayList<>();
+        dict.add("cat");
+        dict.add("bat");
+        dict.add("rat");
+        String s1 = replaceWords(dict, "the cattle was rattled by the battery");
+        System.out.println(s1);
     }
 
     /**
@@ -72,9 +78,6 @@ public class StringSolution {
         char[] tChar = t.toCharArray();
         Arrays.sort(sChar);
         Arrays.sort(tChar);
-
-//        return Arrays.equals(sChar, tChar);
-//        org.apache.commons.collections.CollectionUtils.isEqualCollection(getMap(s),getMap(t));
         return getMap(s).equals(getMap(t));
     }
 
@@ -93,4 +96,61 @@ public class StringSolution {
         }
         return smap;
     }
+
+    public int singleNumber(int[] nums) {
+
+        return 0;
+    }
+
+    /**
+     * Input: ["eat", "tea", "tan", "ate", "nat", "bat"],
+     * Output:
+     * [
+     * ["ate","eat","tea"],
+     * ["nat","tan"],
+     * ["bat"]
+     * ]
+     *
+     * @param strs
+     * @return
+     */
+    public static List<List<String>> groupAnagrams(String[] strs) {
+        if (strs.length == 0) {
+            return new ArrayList<>();
+        }
+        Map<String, List<String>> map = new HashMap<>();
+        for (String a : strs) {
+            char[] chars = a.toCharArray();
+            Arrays.sort(chars);
+            String key = String.valueOf(chars);
+            if (!map.containsKey(key)) {
+                map.put(key, new ArrayList<>());
+            }
+            map.get(key).add(a);
+        }
+        return new ArrayList<>(map.values());
+    }
+
+    /**
+     * 648. Replace Words
+     * @param dict
+     * @param sentence
+     * @return
+     */
+    public static String replaceWords(List<String> dict, String sentence) {
+
+        if (dict.size() == 0) {
+            return sentence;
+        }
+        String[] split = sentence.split(" ");
+        for (String s : dict) {
+            for (int i = 0; i < split.length; i++) {
+                if (split[i].startsWith(s)) {
+                    split[i] = split[i].replaceAll(split[i], s);
+                }
+            }
+        }
+        return Arrays.toString(split).replace(",", "").replace("[", "").replace("]", "");
+    }
+
 }
