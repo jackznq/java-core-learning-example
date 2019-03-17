@@ -1,10 +1,6 @@
 package org.javacore.leetCode;
 
-import com.google.common.base.Joiner;
-import com.sun.org.apache.bcel.internal.generic.RETURN;
-import lombok.Data;
 import org.javacore.prictice.binarytree.TreeNode;
-import org.springframework.util.StringUtils;
 
 import java.math.BigInteger;
 import java.util.*;
@@ -78,15 +74,6 @@ public class Solution {
         int nums[] = {2, 7, 11, 15};
 
 //        twoSum(nums, 26);
-        TreeNode left = new TreeNode(5);
-        TreeNode root = new TreeNode(10);
-        TreeNode right = new TreeNode(15);
-        root.left = left;
-        root.right = right;
-//        TreeNode leftRight = new TreeNode(7);
-        TreeNode rightRight = new TreeNode(20);
-//        left.right = leftRight;
-        TreeNode rightLeft = new TreeNode(6);
 //        TreeNode leftLeft = new TreeNode(4);
 //        left.left = leftLeft;
 //        right.left = rightLeft;
@@ -105,10 +92,8 @@ public class Solution {
 //        five.next = six;
 //        ListNode partition = partition1(one, 3);
 //        System.out.println(partition.toString());
-
-        String s ="10499412030277 9.2";
-        String replace = s.replace(" ", "");
-        System.out.println(replace);
+        int a[] = {4, 6, 7, 3, 5, 8};
+        Arrays.toString(sortArrayByParityII(a));
     }
 
     public static int removeDuplicates(int[] nums) {
@@ -405,21 +390,21 @@ public class Solution {
 
     /**
      * example
+     *
      * @param head
      * @param x
      * @return
      */
-    public static ListNode  partition1(ListNode head, int x) {
+    public static ListNode partition1(ListNode head, int x) {
         ListNode less = new ListNode(0);
         ListNode greater = new ListNode(0);
         ListNode curr1 = less, curr2 = greater;
 
-        while (head!=null) {
-            if (head.val<x) {
+        while (head != null) {
+            if (head.val < x) {
                 curr1.next = new ListNode(head.val);
                 curr1 = curr1.next;
-            }
-            else {
+            } else {
                 curr2.next = new ListNode(head.val);
                 curr2 = curr2.next;
             }
@@ -427,5 +412,64 @@ public class Solution {
         }
         curr1.next = greater.next;
         return less.next;
+    }
+
+    /**
+     * 718. Maximum Length of Repeated Subarray
+     *
+     * @param A
+     * @param B
+     * @return
+     */
+    public int findLength(int[] A, int[] B) {
+
+        if (A.length == 0 || B.length == 0) {
+            return 0;
+        }
+
+        for (int i = 0; i < A.length; i++) {
+            int[] sub = Arrays.copyOfRange(A, 0, i);
+
+        }
+
+        for (int j = 0; j < A.length; j++) {
+
+        }
+        return 0;
+    }
+
+
+    /**
+     * 922. Sort Array By Parity II
+     *
+     * @param A
+     * @return
+     */
+    public static int[] sortArrayByParityII(int[] A) {
+        int length = A.length;
+        if (length == 0) return null;
+        List<Integer> odd = new ArrayList<>();
+        List<Integer> even = new ArrayList<>();
+        for (int i : A) {
+            if (i % 2 == 0) {
+                even.add(i);
+                continue;
+            }
+            odd.add(i);
+
+        }
+        int oddN = 0;
+        int evenN = 0;
+        for (int i = 0; i < length; i++) {
+            if (i % 2 == 0) {
+                A[i] = even.get(evenN);
+                evenN++;
+            } else {
+                A[i] = odd.get(oddN);
+                oddN++;
+            }
+        }
+
+        return A;
     }
 }
