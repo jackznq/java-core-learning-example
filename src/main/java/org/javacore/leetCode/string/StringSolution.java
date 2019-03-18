@@ -24,8 +24,10 @@ public class StringSolution {
         dict.add("cat");
         dict.add("bat");
         dict.add("rat");
-        String s1 = replaceWords(dict, "the cattle was rattled by the battery");
-        System.out.println(s1);
+//        String s1 = replaceWords(dict, "the cattle was rattled by the battery");
+//        System.out.println(s1);
+        int[] nums = {1,1,1,2,2,3};
+        System.out.println(topKFrequent(nums, 2).toString());
     }
 
     /**
@@ -133,6 +135,7 @@ public class StringSolution {
 
     /**
      * 648. Replace Words
+     *
      * @param dict
      * @param sentence
      * @return
@@ -152,5 +155,48 @@ public class StringSolution {
         }
         return Arrays.toString(split).replace(",", "").replace("[", "").replace("]", "");
     }
+
+
+    /**
+     * 347. Top K Frequent Elements
+     * Example 1:
+     * <p> Input: nums = [1,1,1,2,2,3], k = 2
+     * Output: [1,2]
+     * Example 2:
+     * <p>
+     * Input: nums = [1], k = 1
+     * Output: [1]
+     *
+     * @param nums
+     * @param k
+     * @return
+     */
+    public static List<Integer> topKFrequent(int[] nums, int k) {
+        if (nums.length == 0) {
+            return Collections.EMPTY_LIST;
+        }
+        List<Integer> res = new ArrayList<>();
+        if (nums.length == 1) {
+            res.add(nums[0]);
+            return res;
+        }
+        Map<Integer, Integer> map = new TreeMap();
+        for (int i : nums) {
+            map.put(i, map.getOrDefault(i, 0) + 1);
+        }
+        PriorityQueue<Integer> heap = new PriorityQueue<>((a, b) -> map.get(a) - map.get(b));
+        for (int count : map.keySet()) {
+            heap.add(count);
+            if (heap.size() > k) {
+                heap.poll();
+            }
+        }
+        List<Integer> top_k = new LinkedList();
+        while (!heap.isEmpty())
+            top_k.add(heap.poll());
+        Collections.reverse(top_k);
+        return top_k;
+    }
+
 
 }
