@@ -26,7 +26,7 @@ public class StringSolution {
         dict.add("rat");
 //        String s1 = replaceWords(dict, "the cattle was rattled by the battery");
 //        System.out.println(s1);
-        int[] nums = {1, 1, 1, 2, 2, 3};
+        int[] nums = {1, 1, 1, 5,5,5,5,2, 2, 3};
         System.out.println(topKFrequent(nums, 2).toString());
     }
 

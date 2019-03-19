@@ -92,8 +92,9 @@ public class Solution {
 //        five.next = six;
 //        ListNode partition = partition1(one, 3);
 //        System.out.println(partition.toString());
-        int a[] = {4, 6, 7, 3, 5, 8};
-        Arrays.toString(sortArrayByParityII(a));
+//        int a[] = {4, 6, 7, 3, 5, 8};
+//        Arrays.toString(sortArrayByParityII(a));
+        frequencySort("Aabb");
     }
 
     public static int removeDuplicates(int[] nums) {
@@ -471,5 +472,38 @@ public class Solution {
         }
 
         return A;
+    }
+
+
+    /**
+     * 451. Sort Characters By Frequency
+     *
+     * @param s
+     * @return
+     */
+    public static String frequencySort(String s) {
+        if (s == null) {
+            return s;
+        }
+
+        char[] chars = s.toCharArray();
+        Map<Character, Integer> count = new TreeMap();
+        for (char a : chars) {
+            count.put(a, count.getOrDefault(a, 0) + 1);
+        }
+        PriorityQueue<Character> heap = new PriorityQueue<>((a, b) -> count.get(b) - count.get(a));
+
+        count.keySet().forEach(i -> {
+            heap.add(i);
+        });
+        StringBuilder sb = new StringBuilder();
+        while (!heap.isEmpty()) {
+            Character poll = heap.poll();
+            Integer amount = count.get(poll);
+            for (int i = 0; i < amount; i++) {
+                sb.append(poll);
+            }
+        }
+        return sb.toString();
     }
 }
