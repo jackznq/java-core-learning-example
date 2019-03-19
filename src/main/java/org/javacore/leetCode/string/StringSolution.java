@@ -26,7 +26,7 @@ public class StringSolution {
         dict.add("rat");
 //        String s1 = replaceWords(dict, "the cattle was rattled by the battery");
 //        System.out.println(s1);
-        int[] nums = {1,1,1,2,2,3};
+        int[] nums = {1, 1, 1, 2, 2, 3};
         System.out.println(topKFrequent(nums, 2).toString());
     }
 
@@ -199,4 +199,20 @@ public class StringSolution {
     }
 
 
+    /**
+     * 217. Contains Duplicate
+     * @param nums
+     * @return
+     */
+    public boolean containsDuplicate(int[] nums) {
+        Set containsDuplicate = new HashSet();
+        for (int i : nums) {
+            if (containsDuplicate.contains(i)) {
+                return true;
+            }
+            containsDuplicate.add(i);
+
+        }
+        return false;
+    }
 }

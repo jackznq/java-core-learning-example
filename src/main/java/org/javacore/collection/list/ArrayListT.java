@@ -2,6 +2,7 @@ package org.javacore.collection.list;
 
 import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.LinkedList;
 import java.util.List;
 
 /**
@@ -12,7 +13,7 @@ import java.util.List;
 public class ArrayListT {
 
     private static final int COUNT = 10000;
-    private static List<Integer> persons = new ArrayList<>();
+    private static List<Integer> persons = new LinkedList<>();
 
     public static void main(String[] args) {
         init();
@@ -102,7 +103,7 @@ public class ArrayListT {
         }
         //执行完后的时间
         long end = System.currentTimeMillis();
-        return end - start;
+        return (long)(end - start);
 
     }
 

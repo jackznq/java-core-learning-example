@@ -1,32 +1,45 @@
 package org.javacore.thread;
 
-/*
- * Copyright [2015] [Jeff Lee]
- *
- * Licensed under the Apache License, Version 2.0 (the "License");
- * you may not use this file except in compliance with the License.
- * You may obtain a copy of the License at
- * 
- *   http://www.apache.org/licenses/LICENSE-2.0
- * 
- * Unless required by applicable law or agreed to in writing, software
- * distributed under the License is distributed on an "AS IS" BASIS,
- * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
- * See the License for the specific language governing permissions and
- * limitations under the License.
- */
+import java.util.concurrent.atomic.AtomicInteger;
 
 /**
- * @author Jeff Lee
- * @since 2015-7-4 16:14:51
- * 	Thread的简单使用
- * 	测试 --> {@link MyThreadTest}
+ * @author SnailClimb
+ * @date 2018年10月30日
+ * @Description: 多个线程之间不共享变量线程安全的情况
  */
-public class MyThread extends Thread{
+public class MyThread extends Thread {
 
-	@Override
-	public void run() {
-		System.out.println("MyThread --> run()");
-	}
+    private AtomicInteger count = new AtomicInteger(5);
 
+    public MyThread() {
+        super();
+    }
+
+    @Override
+    public void run() {
+        super.run();
+//        while (count > 0) {
+        System.out.println("由 " + MyThread.currentThread().getName() + " 计算，count=" + count.decrementAndGet());
+//        }
+    }
+
+    public static void main(String[] args) {
+//        MyThread a = new MyThread("A");
+//        MyThread b = new MyThread("B");
+//        MyThread c = new MyThread("C");
+//        MyThread d = new MyThread("D");
+//        MyThread e = new MyThread("E");
+//        MyThread f = new MyThread("F");
+        MyThread share = new MyThread();
+        Thread a = new Thread(share);
+        Thread b = new Thread(share);
+        Thread c = new Thread(share);
+        Thread d = new Thread(share);
+        Thread e = new Thread(share);
+        a.start();
+        b.start();
+        c.start();
+        d.start();
+        e.start();
+    }
 }
