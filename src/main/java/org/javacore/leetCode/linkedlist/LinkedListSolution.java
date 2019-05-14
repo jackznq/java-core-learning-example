@@ -2,9 +2,7 @@ package org.javacore.leetCode.linkedlist;
 
 import lombok.Setter;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.Stack;
+import java.util.*;
 
 /**
  * @Date 18/11/26 下午9:55
@@ -169,6 +167,28 @@ public class LinkedListSolution {
         return head.next;
     }
 
+    /**
+     * 148. Sort List
+     *
+     * @param head
+     * @return
+     */
+    public ListNode sortList(ListNode head) {
+
+        List<Integer> list = new ArrayList();
+        while (head != null) {
+            list.add(head.val);
+            head = head.next;
+        }
+        Collections.sort(list);
+        ListNode pre = new ListNode(-1);
+        ListNode resl = pre;
+        for (Integer i : list) {
+            pre.next = new ListNode(i);
+            pre = pre.next;
+        }
+        return resl.next;
+    }
 
 }
 
