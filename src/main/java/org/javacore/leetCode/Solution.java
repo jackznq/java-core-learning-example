@@ -506,4 +506,13 @@ public class Solution {
         }
         return sb.toString();
     }
+
+    public int maximumGap(int[] nums) {
+
+        if (nums == null || nums.length < 2) {
+            return 0;
+        }
+
+        return 0;
+    }
 }

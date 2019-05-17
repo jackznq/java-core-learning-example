@@ -46,7 +46,6 @@ public class Code_08_NetherlandsFlag {
 
     public static void main(String[] args) {
         int[] test = generateArray();
-
         printArray(test);
         int[] res = partition(test, 0, test.length - 1, 1);
         printArray(test);
