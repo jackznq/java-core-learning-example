@@ -23,36 +23,17 @@ public class InterViewCode {
         two.next = three;
         three.next = four;
         four.next = five;
-        removeLastKthNode(one, 2);
-        System.out.println();
+//        removeLastKthNode(one, 2);
+//        revertList(one);
+        ListNode head1 = new ListNode(10);
+        head1.next = one;
+        ListNode head2 = new ListNode(9);
+        head2.next = one;
+//        printCommonPart(head1, head2);
+//        printListCommonPart(head1, head2);
+        printListNode(removeLastKthNode(one,3));
     }
 
-
-    /**
-     * @param * @param null
-     * @author znq
-     * @description //打印两个链表的公共部分
-     * @date 下午4:12 19/5/19
-     * @Return
-     */
-    private static void printListCommonPart(ListNode l1, ListNode l2) {
-
-        if (l1 == null && l2 == null) {
-            return;
-        }
-        while (l1 != null && l2 != null) {
-            if (l1.val == l2.val) {
-                System.out.println(l1.val);
-                l1 = l1.next;
-                l2 = l2.next;
-            } else if (l1.val < l2.val) {
-                l1 = l1.next;
-            } else {
-
-                l2 = l2.next;
-            }
-        }
-    }
 
     /**
      * 在单链表和双链表中删除倒数第K个节点
@@ -99,4 +80,64 @@ public class InterViewCode {
         }
     }
 
+
+    /**
+     * 反转单向链表
+     * 1->2->3->4->5
+     *
+     * @param head
+     */
+    public static ListNode revertList(ListNode head) {
+
+        if (head == null) {
+            return null;
+        }
+
+        ListNode pre = null;
+        ListNode cur = null;
+        while (head != null) {
+            cur = head.next;
+            head.next = pre;
+            pre = head;
+            head = cur;
+        }
+
+        return pre;
+    }
+
+    /**
+     * 程序员代码面试指南 打印公共的部分
+     *
+     * @param one
+     * @param two
+     */
+    public static void printCommonPart(ListNode one, ListNode two) {
+        if (one == null || two == null) {
+            System.out.println("non common part");
+            return;
+        }
+        System.out.println("print common part");
+        while (one != null && two != null) {
+            if (one.val == two.val) {
+                System.out.println("commont part is " + one.val);
+                one = one.next;
+                two = two.next;
+            } else if (one.val < two.val) {
+                two = two.next;
+            } else {
+                one = one.next;
+            }
+            System.out.println();
+        }
+    }
+
+
+    public static void printListNode(ListNode l) {
+        if (l == null) return;
+        while (l != null) {
+            System.out.println(l.val);
+            l = l.next;
+
+        }
+    }
 }
