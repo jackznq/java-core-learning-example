@@ -1,9 +1,8 @@
 package org.javacore.leetCode.queue;
 
-import java.awt.*;
-import java.util.*;
-import java.util.List;
-import java.util.concurrent.LinkedBlockingDeque;
+import java.util.ArrayDeque;
+import java.util.Arrays;
+import java.util.Deque;
 
 /**
  * @Date 18/11/29 下午10:31

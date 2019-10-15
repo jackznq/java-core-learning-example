@@ -1,15 +1,6 @@
 package org.javacore.pattern.decorator;
 
-import java.io.BufferedInputStream;
-import java.io.BufferedReader;
-import java.io.DataInputStream;
-import java.io.FileInputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.LineNumberReader;
-import java.io.PushbackInputStream;
-import java.io.PushbackReader;
+import java.io.*;
 
 public class IOTest {
 

@@ -2,7 +2,8 @@ package org.javacore.sort;
 
 import org.javacore.utils.MapUtil;
 
-import java.util.*;
+import java.util.Map;
+import java.util.TreeMap;
 
 /**
  * @Date 18/9/6 下午4:44

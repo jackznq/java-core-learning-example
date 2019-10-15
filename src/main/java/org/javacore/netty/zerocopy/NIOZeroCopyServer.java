@@ -1,7 +1,5 @@
 package org.javacore.netty.zerocopy;
 
-import io.netty.buffer.ByteBufUtil;
-
 import java.net.InetSocketAddress;
 import java.net.ServerSocket;
 import java.nio.ByteBuffer;

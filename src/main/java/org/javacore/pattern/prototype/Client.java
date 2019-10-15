@@ -1,7 +1,5 @@
 package org.javacore.pattern.prototype;
 
-import java.util.Date;
-
 /**
  * @Date 19/1/7 上午11:32
  * @Auther znq

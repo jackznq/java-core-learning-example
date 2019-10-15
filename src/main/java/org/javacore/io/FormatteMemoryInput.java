@@ -1,10 +1,6 @@
 package org.javacore.io;
 
-import java.io.ByteArrayInputStream;
-import java.io.DataInputStream;
-import java.io.EOFException;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 /**
  * @author Jeff Lee
  * @since 2015-7-15 20:42:47

@@ -26,7 +26,7 @@ public class StringSolution {
         dict.add("rat");
 //        String s1 = replaceWords(dict, "the cattle was rattled by the battery");
 //        System.out.println(s1);
-        int[] nums = {1, 1, 1, 5,5,5,5,2, 2, 3};
+        int[] nums = {1, 1, 1, 5, 5, 5, 5, 2, 2, 3};
         System.out.println(topKFrequent(nums, 2).toString());
     }
 
@@ -45,17 +45,18 @@ public class StringSolution {
         validCharacter.put(')', '(');
         validCharacter.put('}', '{');
         validCharacter.put(']', '[');
-        char[] chars = s.toCharArray();
         Stack<Character> stack = new Stack();
-        for (int i = 0; i < chars.length; i++) {
-            if (validCharacter.containsValue(chars[i])) {
-                stack.push(chars[i]);
+
+        for (int i = 0; i < s.length(); i++) {
+            char c = s.charAt(i);
+            if (validCharacter.containsValue(c)) {
+                stack.push(c);
                 continue;
             }
             if (stack.isEmpty()) {
                 return false;
             }
-            if (stack.peek().equals(validCharacter.get(chars[i]))) {
+            if (stack.peek().equals(validCharacter.get(c))) {
                 stack.pop();
             } else {
                 return false;
@@ -201,6 +202,7 @@ public class StringSolution {
 
     /**
      * 217. Contains Duplicate
+     *
      * @param nums
      * @return
      */

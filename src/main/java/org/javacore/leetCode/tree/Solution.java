@@ -1,9 +1,10 @@
 package org.javacore.leetCode.tree;
 
 import com.google.common.collect.Lists;
-import org.apache.commons.collections.CollectionUtils;
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Objects;
 
 /**
  * Definition for a binary tree node.

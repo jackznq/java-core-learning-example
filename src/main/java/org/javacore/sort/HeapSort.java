@@ -1,8 +1,5 @@
 package org.javacore.sort;
 
-import org.junit.Test;
-
-import javax.swing.plaf.PanelUI;
 import java.util.Arrays;
 import java.util.Random;
 

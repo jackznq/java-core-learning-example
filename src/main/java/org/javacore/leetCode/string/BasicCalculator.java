@@ -1,8 +1,5 @@
 package org.javacore.leetCode.string;
 
-import lombok.val;
-
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**

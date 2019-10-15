@@ -3,8 +3,6 @@ package org.javacore.utils;
 import org.javacore.sort.MapKeyComparator;
 
 import java.util.*;
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class MapUtil {
     /**

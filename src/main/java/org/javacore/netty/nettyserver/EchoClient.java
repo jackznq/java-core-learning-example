@@ -2,7 +2,6 @@ package org.javacore.netty.nettyserver;
 
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
-import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelInitializer;
 import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
@@ -16,7 +15,6 @@ import io.netty.util.CharsetUtil;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
-import java.net.InetSocketAddress;
 
 /**
  * Created by ddfhznq on 2017/9/26.

@@ -1,10 +1,7 @@
 package org.javacore.pattern.prototype;
 
-import lombok.Data;
 import lombok.Getter;
 import lombok.Setter;
-
-import java.util.Date;
 
 /**
  * @Date 19/1/7 上午11:29
