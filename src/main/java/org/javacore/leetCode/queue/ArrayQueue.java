@@ -1,7 +1,5 @@
 package org.javacore.leetCode.queue;
 
-import org.javacore.thread.oneByOne.A;
-
 import java.util.ArrayList;
 import java.util.List;
 
