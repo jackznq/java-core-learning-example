@@ -46,4 +46,6 @@ public interface Queue<E> {
      * @return
      */
     int size();
+
+     int getCapacity();
 }

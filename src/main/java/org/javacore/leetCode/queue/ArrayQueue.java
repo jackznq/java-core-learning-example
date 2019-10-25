@@ -60,6 +60,11 @@ public class ArrayQueue<E> implements Queue<E> {
         return list.size();
     }
 
+    @Override
+    public int getCapacity() {
+        return 0;
+    }
+
     public static void main(String[] args) {
         ArrayQueue arrayQueue = new ArrayQueue(10);
         System.out.println(arrayQueue.isEmpty());
