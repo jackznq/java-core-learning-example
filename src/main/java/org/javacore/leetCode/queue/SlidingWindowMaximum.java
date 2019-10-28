@@ -71,12 +71,6 @@ public class SlidingWindowMaximum {
                     continue;
                 }
                 Integer pollFirst = deque.pollFirst();
-//                if (deque.isEmpty()) {
-//                    deque.add(nums[i]);
-//                    resultNums[j] = pollFirst;
-//                    j++;
-//                    continue;
-//                }
                 Integer peekFirst;
                 if (pollFirst < nums[i]) {
                     resultNums[j] = nums[i];
