@@ -104,6 +104,7 @@ public class LinkedList<E> {
         }
         Node delNode = pre.next;
         pre.next = delNode.next;
+        delNode.next = null;
         size--;
         return (E) delNode;
     }
@@ -113,7 +114,7 @@ public class LinkedList<E> {
     }
 
     public E removeLast() {
-        return this.remove(size);
+        return this.remove(size - 1);
     }
 
     public boolean contains(E e) {
