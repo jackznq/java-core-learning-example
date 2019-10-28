@@ -31,7 +31,7 @@ public class LinkedList<E> {
         }
     }
 
-    private Node dummyHead;
+    private Node<E> dummyHead;
 
     private int size;
 
@@ -92,6 +92,28 @@ public class LinkedList<E> {
 
     public E getLast() {
         return get(size - 1);
+    }
+
+    public E remove(int index) {
+        if (index < 0 || index > size) {
+            throw new IllegalArgumentException("get faild");
+        }
+        Node pre = dummyHead;
+        for (int i = 0; i < index; i++) {
+            pre = pre.next;
+        }
+        Node delNode = pre.next;
+        pre.next = delNode.next;
+        size--;
+        return (E) delNode;
+    }
+
+    public E removeFirst() {
+        return this.remove(0);
+    }
+
+    public E removeLast() {
+        return this.remove(size);
     }
 
     public boolean contains(E e) {
