@@ -10,6 +10,8 @@ public class Solution {
     public static void main(String[] args) {
 
         System.out.println(recursion(6));
+        int[] arr ={1,20,9,8};
+        System.out.println(arrSum(arr));
     }
 
     /**
@@ -32,7 +34,18 @@ public class Solution {
         return fabonacii(n - 1) + fabonacii(n - 2);
     }
 
-    private static void divideAndConquer(){
+    private static void divideAndConquer() {
 
+    }
+
+    private static int arrSum(int arr []) {
+        return sum(arr, 0);
+    }
+
+    private static int sum(int arr [], int l) {
+        if (l == arr.length) {
+            return 0;
+        }
+        return arr[l] + sum(arr, l + 1);
     }
 }

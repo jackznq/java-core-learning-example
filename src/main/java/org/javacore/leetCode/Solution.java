@@ -394,7 +394,7 @@ public class Solution {
             ListNode cur = this;
             for (int i = 1; i < arr.length; i++) {
                 cur.next = new ListNode(arr[i]);
-                cur=cur.next;
+                cur = cur.next;
             }
         }
 
@@ -532,6 +532,7 @@ public class Solution {
     }
 
     /**
+     * 203
      * Remove all elements from a linked list of integers that have value val.
      * <p>
      * Example:
@@ -555,5 +556,17 @@ public class Solution {
             }
         }
         return dummyHead.next;
+    }
+
+    /**
+     * @param head
+     * @param val
+     * @return
+     * @see org.javacore.leetCode.Solution#removeElements
+     */
+    public static ListNode removeElementsRecurSion(ListNode head, int val) {
+        if (head == null) return null;
+        head.next = removeElementsRecurSion(head.next, val);
+        return head.val == val ? head.next : head;
     }
 }
