@@ -94,6 +94,9 @@ public class Solution {
 //        System.out.println(partition.toString());
 //        int a[] = {4, 6, 7, 3, 5, 8};
 //        Arrays.toString(sortArrayByParityII(a));
+        int arr[] = {1, 2, 3, 6, 6, 7};
+        ListNode listNode = new ListNode(arr);
+        removeElements(listNode, 6);
         frequencySort("Aabb");
     }
 
@@ -383,6 +386,18 @@ public class Solution {
             val = x;
         }
 
+        ListNode(int arr[]) {
+            if (arr.length == 0 || arr == null) {
+                throw new IllegalArgumentException("empty param");
+            }
+            this.val = arr[0];
+            ListNode cur = this;
+            for (int i = 1; i < arr.length; i++) {
+                cur.next = new ListNode(arr[i]);
+                cur=cur.next;
+            }
+        }
+
         @Override
         public String toString() {
             return "当前节点的值为" + val;
@@ -514,5 +529,31 @@ public class Solution {
         }
 
         return 0;
+    }
+
+    /**
+     * Remove all elements from a linked list of integers that have value val.
+     * <p>
+     * Example:
+     * <p>
+     * Input:  1->2->6->3->4->5->6, val = 6
+     * Output: 1->2->3->4->5
+     *
+     * @param head
+     * @param val
+     * @return
+     */
+    public static ListNode removeElements(ListNode head, int val) {
+        ListNode dummyHead = new ListNode(-1);
+        dummyHead.next = head;
+        ListNode pre = dummyHead;
+        while (pre.next != null) {
+            if (pre.next.val == val) {
+                pre.next = pre.next.next;
+            } else {
+                pre = pre.next;
+            }
+        }
+        return dummyHead.next;
     }
 }
