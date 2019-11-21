@@ -1,6 +1,5 @@
 package org.javacore.leetCode.linkedlist;
 
-import lombok.ToString;
 
 /**
  * 关于链表的18个问题 @see http://cslibrary.stanford.edu/105/LinkedListProblems.pdf
@@ -12,32 +11,12 @@ import lombok.ToString;
  **/
 public class LinkedList<E> {
 
-    @ToString
-    private class Node<E> {
 
-        public E e;
-
-        public Node<E> next;
-
-        Node() {
-            this(null, null);
-        }
-
-        Node(E e) {
-            this(e, null);
-        }
-
-        Node(E e, Node next) {
-            this.e = e;
-            this.next = next;
-        }
-    }
-
-    private Node<E> dummyHead;
+    private ListNode<E> dummyHead;
 
     private int size;
 
-    public LinkedList(Node head) {
+    public LinkedList(ListNode head) {
         this.dummyHead = head;
     }
 
@@ -64,11 +43,11 @@ public class LinkedList<E> {
             throw new IllegalArgumentException("add failed");
         }
         //找到要插入的前一个节点
-        Node pre = dummyHead;
+        ListNode pre = dummyHead;
         for (int i = 0; i < index; i++) {
             pre = pre.next;
         }
-        pre.next = new Node(e, pre.next);
+        pre.next = new ListNode(e, pre.next);
         size++;
 
     }
@@ -81,7 +60,7 @@ public class LinkedList<E> {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("get faild");
         }
-        Node cur = dummyHead.next;
+        ListNode cur = dummyHead.next;
         for (int i = 0; i < index; i++) {
             cur = cur.next;
         }
@@ -100,11 +79,11 @@ public class LinkedList<E> {
         if (index < 0 || index > size) {
             throw new IllegalArgumentException("get faild");
         }
-        Node pre = dummyHead;
+        ListNode pre = dummyHead;
         for (int i = 0; i < index; i++) {
             pre = pre.next;
         }
-        Node delNode = pre.next;
+        ListNode delNode = pre.next;
         pre.next = delNode.next;
         delNode.next = null;
         size--;
@@ -120,7 +99,7 @@ public class LinkedList<E> {
     }
 
     public boolean contains(E e) {
-        Node cur = dummyHead.next;
+        ListNode cur = dummyHead.next;
         while (cur != null) {
             if (cur.e.equals(e)) {
                 return true;
@@ -131,9 +110,9 @@ public class LinkedList<E> {
     }
 
     public void clear() {
-        Node cur = dummyHead.next;
+        ListNode cur = dummyHead.next;
         while (cur != null) {
-            Node next = cur.next;
+            ListNode next = cur.next;
             cur.next = null;
             cur = next;
         }

@@ -35,14 +35,14 @@ public class LinkedListSolution {
      * @param head
      * @return
      */
-    public static ListNode reverseList(ListNode head) {
+    public static ListNode reverseList(ListNode<Integer> head) {
         ListNode pre = null;
-        ListNode cur = head;
+        ListNode<Integer> cur = head;
         while (cur != null) {
-            ListNode next = cur.next;
-            if (next != null && next.val == 10) {
-                cur.val++;
-                next.val = 0;
+            ListNode<Integer> next = cur.next;
+            if (next != null && next.e == 10) {
+                cur.e++;
+                next.e = 0;
             }
             cur.next = pre;
             pre = cur;
@@ -121,14 +121,14 @@ public class LinkedListSolution {
      * @param l2
      * @return
      */
-    public static ListNode addTwoNumbers(ListNode l1, ListNode l2) {
+    public static ListNode addTwoNumbers(ListNode<Integer> l1, ListNode<Integer> l2) {
         ListNode prev = new ListNode(0);
         ListNode head = prev;
         int carry = 0;
         while (l1 != null || l2 != null || carry != 0) {
             ListNode cur = new ListNode(0);
-            int sum = ((l2 == null) ? 0 : l2.val) + ((l1 == null) ? 0 : l1.val) + carry;
-            cur.val = sum % 10;
+            int sum = ((l2 == null) ? 0 : l2.e) + ((l1 == null) ? 0 : l1.e) + carry;
+            cur.e = sum % 10;
             carry = sum / 10;
             prev.next = cur;
             prev = cur;
@@ -145,11 +145,11 @@ public class LinkedListSolution {
      * @param head
      * @return
      */
-    public ListNode sortList(ListNode head) {
+    public ListNode sortList(ListNode<Integer> head) {
 
         List<Integer> list = new ArrayList();
         while (head != null) {
-            list.add(head.val);
+            list.add(head.e);
             head = head.next;
         }
         Collections.sort(list);
@@ -175,12 +175,12 @@ public class LinkedListSolution {
      * @param val
      * @return
      */
-    public static ListNode removeElements(ListNode head, int val) {
+    public static ListNode removeElements(ListNode<Integer> head, int val) {
         ListNode dummyHead = new ListNode(-1);
         dummyHead.next = head;
-        ListNode pre = dummyHead;
+        ListNode<Integer> pre = dummyHead;
         while (pre.next != null) {
-            if (pre.next.val == val) {
+            if (pre.next.e == val) {
                 pre.next = pre.next.next;
             } else {
                 pre = pre.next;
@@ -195,7 +195,7 @@ public class LinkedListSolution {
      * @return
      * @see org.javacore.leetCode.linkedlist.LinkedListSolution#removeElements
      */
-    public static ListNode removeElementsRecurSion(ListNode head, int val, int depth) {
+    public static ListNode removeElementsRecurSion(ListNode<Integer> head, int val, int depth) {
         String depthString = getDepthString(depth);
         System.out.print(depthString);
         System.out.println("call:remove " + val + " in " + head);
@@ -208,7 +208,7 @@ public class LinkedListSolution {
         System.out.print(depthString);
         System.out.println("after:remove " + rest);
         ListNode restult;
-        if (head.val == val) {
+        if (head.e == val) {
             restult = rest;
         } else {
             head.next = rest;

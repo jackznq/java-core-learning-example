@@ -1,10 +1,10 @@
 package org.javacore.prictice.list;
 
-import org.javacore.leetCode.Solution;
 import org.javacore.leetCode.linkedlist.ListNode;
 
 import java.util.HashSet;
 import java.util.Stack;
+
 /**
  * 出自<程序员代码面试指南>
  *
@@ -89,7 +89,6 @@ public class InterViewCode {
     }
 
 
-
     /**
      * 反转单向链表
      * 1->2->3->4->5
@@ -120,18 +119,18 @@ public class InterViewCode {
      * @param one
      * @param two
      */
-    public static void printCommonPart(ListNode one, ListNode two) {
+    public static void printCommonPart(ListNode<Integer> one, ListNode<Integer> two) {
         if (one == null || two == null) {
             System.out.println("non common part");
             return;
         }
         System.out.println("print common part");
         while (one != null && two != null) {
-            if (one.val == two.val) {
-                System.out.println("commont part is " + one.val);
+            if (one.e == two.e) {
+                System.out.println("commont part is " + one.e);
                 one = one.next;
                 two = two.next;
-            } else if (one.val < two.val) {
+            } else if (one.e < two.e) {
                 two = two.next;
             } else {
                 one = one.next;
@@ -144,7 +143,7 @@ public class InterViewCode {
     public static void printListNode(ListNode l) {
         if (l == null) return;
         while (l != null && l != l.next) {
-            System.out.println(l.val);
+            System.out.println(l.e);
             l = l.next;
         }
     }
@@ -241,7 +240,7 @@ public class InterViewCode {
             cur = cur.next;
         }
         while (head != null) {
-            if (head.val != stack.pop().val) {
+            if (head.e != stack.pop().e) {
                 return false;
             }
             head = head.next;
@@ -272,7 +271,7 @@ public class InterViewCode {
             right = right.next;
         }
         while (!stack.isEmpty()) {
-            if (head.val != stack.pop().val) {
+            if (head.e != stack.pop().e) {
                 return false;
             }
             head = head.next;
@@ -284,18 +283,18 @@ public class InterViewCode {
      * 两个单链表相加的问题
      * 利用栈结构处理
      */
-    public static ListNode addList(ListNode head1, ListNode head2) {
+    public static ListNode addList(ListNode<Integer> head1, ListNode<Integer> head2) {
         if (head1 == null) return head2;
         if (head2 == null) return head1;
 
         Stack<Integer> s1 = new Stack<>();
         Stack<Integer> s2 = new Stack<>();
         while (head1 != null) {
-            s1.push(head1.val);
+            s1.push(head1.e);
             head1 = head1.next;
         }
         while (head2 != null) {
-            s2.push(head2.val);
+            s2.push(head2.e);
             head2 = head2.next;
         }
 
@@ -379,12 +378,12 @@ public class InterViewCode {
         HashSet hashSet = new HashSet();
         ListNode pre = head;
         ListNode cur = head.next;
-        hashSet.add(head.val);
+        hashSet.add(head.e);
         while (cur != null) {
-            if (hashSet.contains(cur.val)) {
+            if (hashSet.contains(cur.e)) {
                 pre.next = cur.next;
             } else {
-                hashSet.add(cur.val);
+                hashSet.add(cur.e);
                 pre = cur;
             }
 
@@ -396,20 +395,20 @@ public class InterViewCode {
     /**
      * 在链表中删除指定节点
      */
-    public static ListNode removeValue(ListNode head, int k) {
+    public static ListNode removeValue(ListNode<Integer> head, int k) {
         if (head == null) {
             return head;
         }
         while (head != null) {
-            if (head.val != k) {
+            if (head.e != k) {
                 break;
             }
             head = head.next;
         }
         ListNode pre = head;
-        ListNode cur = head;
+        ListNode<Integer> cur = head;
         while (cur != null) {
-            if (cur.val == k) {
+            if (cur.e == k) {
                 pre.next = cur.next;
             } else {
                 pre = cur;

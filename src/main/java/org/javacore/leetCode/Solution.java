@@ -336,13 +336,13 @@ public class Solution {
      * @param x
      * @return
      */
-    public static ListNode partition(ListNode head, int x) {
+    public static ListNode partition(ListNode<Integer> head, int x) {
         if (head == null) return null;
         if (head.next == null) return head;
         ListNode smalNode = null;
         ListNode lagerNode = null;
         while (head != null) {
-            int val1 = head.val;
+            int val1 = head.e;
             head = head.next;
             if (val1 < x) {
                 if (smalNode == null) {
@@ -382,17 +382,17 @@ public class Solution {
      * @param x
      * @return
      */
-    public static ListNode partition1(ListNode head, int x) {
+    public static ListNode partition1(ListNode<Integer> head, int x) {
         ListNode less = new ListNode(0);
         ListNode greater = new ListNode(0);
         ListNode curr1 = less, curr2 = greater;
 
         while (head != null) {
-            if (head.val < x) {
-                curr1.next = new ListNode(head.val);
+            if (head.e < x) {
+                curr1.next = new ListNode(head.e);
                 curr1 = curr1.next;
             } else {
-                curr2.next = new ListNode(head.val);
+                curr2.next = new ListNode(head.e);
                 curr2 = curr2.next;
             }
             head = head.next;
