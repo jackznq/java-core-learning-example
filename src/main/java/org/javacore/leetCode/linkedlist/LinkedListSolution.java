@@ -21,9 +21,14 @@ public class LinkedListSolution {
 
 //        swapPairs(node1);
         ListNode listNode = addTwoNumbers(listNode1, listNode2);
-        System.out.println("----------");
-
-
+        //1
+        System.out.println(count(listNode1));
+        //2
+        System.out.println(getNth(listNode1, 3));
+        //3
+//        delelteNode(listNode1);
+        //4
+        System.out.println(pop(listNode1));
     }
 
     /**
@@ -208,7 +213,7 @@ public class LinkedListSolution {
         }
         ListNode rest = removeElementsRecurSion(head.next, val, depth + 1);
         System.out.print(depthString);
-        System.out.println("after:remove "  + rest);
+        System.out.println("after:remove " + rest);
         ListNode restult;
         if (head.val == val) {
             restult = rest;
@@ -227,6 +232,60 @@ public class LinkedListSolution {
             sb.append("-");
         }
         return sb.toString();
+    }
+
+    //关于链表的18个问题 @see http://cslibrary.stanford.edu/105/LinkedListProblems.pdf
+    public static int count(ListNode listNode) {
+        int count = 0;
+        while (listNode != null) {
+            count++;
+            listNode = listNode.next;
+        }
+        return count;
+    }
+
+
+    /**
+     * @param head
+     * @param index
+     * @return int
+     * @description 返回指定得索引对应的节点值
+     * @author ddfhznq
+     * @date 2019-11-21 15:27:36
+     */
+    public static int getNth(ListNode head, int index) {
+        if (index <= 0) {
+            return -1;
+        }
+        ListNode cur = head;
+        int size = 0;
+        while (cur != null) {
+            if (size == index) {
+                return cur.val;
+            }
+            size++;
+            cur = cur.next;
+        }
+        return -1;
+    }
+
+    public static void delelteNode(ListNode head) {
+        if (head == null) return;
+        while (head != null) {
+            ListNode next = head.next;
+            head.next = null;
+            head = next;
+        }
+    }
+
+    public static int pop(ListNode node) {
+        if (node == null)
+            throw new NoSuchElementException();
+        int result = node.val;
+        ListNode next = node.next;
+        node.next = null;
+        node =next;
+        return result;
     }
 }
 
