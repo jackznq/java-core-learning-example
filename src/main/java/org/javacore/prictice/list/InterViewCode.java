@@ -1,10 +1,11 @@
 package org.javacore.prictice.list;
 
-import lombok.Getter;
+import org.javacore.leetCode.Solution;
 
 import java.util.HashSet;
 import java.util.Stack;
 
+import org.javacore.leetCode.Solution.ListNode;
 /**
  * 出自<程序员代码面试指南>
  *
@@ -18,8 +19,8 @@ public class InterViewCode {
 
 //        printListCommonPart(new ListNode(1), new ListNode(1));
         ListNode one = new ListNode(1);
-        ListNode two = new ListNode(2);
-        ListNode three = new ListNode(3);
+        ListNode two = new Solution.ListNode(2);
+        Solution.ListNode three = new ListNode(3);
         ListNode four = new ListNode(4);
         ListNode five = new ListNode(5);
         one.next = two;
@@ -88,21 +89,6 @@ public class InterViewCode {
         return head;
     }
 
-    public static class ListNode {
-
-        public int val;
-        @Getter
-        public ListNode next;
-
-        public ListNode(int x) {
-            val = x;
-        }
-
-        @Override
-        public String toString() {
-            return "当前节点的值为" + val;
-        }
-    }
 
 
     /**

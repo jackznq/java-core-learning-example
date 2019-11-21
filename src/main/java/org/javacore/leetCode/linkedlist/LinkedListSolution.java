@@ -1,6 +1,8 @@
 package org.javacore.leetCode.linkedlist;
 
 import lombok.Setter;
+import org.javacore.leetCode.Solution;
+import org.javacore.leetCode.Solution.ListNode;
 
 import java.util.*;
 
@@ -102,11 +104,11 @@ public class LinkedListSolution {
      * @param head
      * @return
      */
-    public static boolean hasCycle(ListNode head) {
+    public static boolean hasCycle(Solution.ListNode head) {
         if (head == null) return false;
         if (head.next == null) return false;
         if (head.next == head) return true;
-        Map<ListNode, Integer> listNodes = new HashMap<>();
+        Map<Solution.ListNode, Integer> listNodes = new HashMap<>();
         Boolean hasCycle = false;
         while (null != head) {
             if (listNodes.containsKey(head)) {
@@ -118,17 +120,6 @@ public class LinkedListSolution {
             head = head.next;
         }
         return hasCycle;
-    }
-
-    static class ListNode {
-        int val;
-        @Setter
-        ListNode next;
-
-        ListNode(int x) {
-            val = x;
-        }
-
     }
 
     /**

@@ -1,5 +1,7 @@
 package org.javacore.leetCode;
 
+import lombok.Getter;
+import lombok.Setter;
 import lombok.ToString;
 import org.javacore.prictice.binarytree.TreeNode;
 
@@ -381,10 +383,12 @@ public class Solution {
 
     @ToString
     public static class ListNode {
-        int val;
-        ListNode next;
+        public int val;
+        @Setter
+        @Getter
+        public ListNode next;
 
-        ListNode(int x) {
+        public ListNode(int x) {
             val = x;
         }
 
