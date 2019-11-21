@@ -1,8 +1,11 @@
 package org.javacore.leetCode.linkedlist;
 
 import lombok.ToString;
+import org.javacore.leetCode.Solution;
 
 /**
+ * 关于链表的18个问题 @see http://cslibrary.stanford.edu/105/LinkedListProblems.pdf
+ *
  * @program: java-core-learning-example
  * @description: 自定义链表实现
  * @author: znq
@@ -126,5 +129,14 @@ public class LinkedList<E> {
             cur = cur.next;
         }
         return false;
+    }
+
+    public void clear() {
+        Node cur = dummyHead.next;
+        while (cur != null) {
+            Node next = cur.next;
+            cur.next = null;
+            cur = next;
+        }
     }
 }
