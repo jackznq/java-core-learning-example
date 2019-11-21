@@ -1,6 +1,5 @@
 package org.javacore.leetCode.linkedlist;
 
-import lombok.Setter;
 import org.javacore.leetCode.Solution;
 import org.javacore.leetCode.Solution.ListNode;
 
@@ -88,7 +87,7 @@ public class LinkedListSolution {
      * @param head
      * @return
      */
-    public static boolean hasCycle(Solution.ListNode head) {
+    public static boolean hasCycle(ListNode head) {
         if (head == null) return false;
         if (head.next == null) return false;
         if (head.next == head) return true;
@@ -165,5 +164,69 @@ public class LinkedListSolution {
         return resl.next;
     }
 
+    /**
+     * 203
+     * Remove all elements from a linked list of integers that have value val.
+     * <p>
+     * Example:
+     * <p>
+     * Input:  1->2->6->3->4->5->6, val = 6
+     * Output: 1->2->3->4->5
+     *
+     * @param head
+     * @param val
+     * @return
+     */
+    public static ListNode removeElements(ListNode head, int val) {
+        ListNode dummyHead = new ListNode(-1);
+        dummyHead.next = head;
+        ListNode pre = dummyHead;
+        while (pre.next != null) {
+            if (pre.next.val == val) {
+                pre.next = pre.next.next;
+            } else {
+                pre = pre.next;
+            }
+        }
+        return dummyHead.next;
+    }
+
+    /**
+     * @param head
+     * @param val
+     * @return
+     * @see org.javacore.leetCode.linkedlist.LinkedListSolution#removeElements
+     */
+    public static ListNode removeElementsRecurSion(ListNode head, int val, int depth) {
+        String depthString = getDepthString(depth);
+        System.out.print(depthString);
+        System.out.println("call:remove " + val + " in " + head);
+        if (head == null) {
+            System.out.print(depthString);
+            System.out.println("return: " + head);
+            return null;
+        }
+        ListNode rest = removeElementsRecurSion(head.next, val, depth + 1);
+        System.out.print(depthString);
+        System.out.println("after:remove "  + rest);
+        ListNode restult;
+        if (head.val == val) {
+            restult = rest;
+        } else {
+            head.next = rest;
+            restult = head;
+        }
+        System.out.print(depthString);
+        System.out.println("return:  " + restult);
+        return restult;
+    }
+
+    private static String getDepthString(int depth) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < depth; i++) {
+            sb.append("-");
+        }
+        return sb.toString();
+    }
 }
 

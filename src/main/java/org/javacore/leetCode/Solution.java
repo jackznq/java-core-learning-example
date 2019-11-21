@@ -74,7 +74,6 @@ public class Solution {
 //        int[] nums = {4, 4, 1, 2, 1, 2, 5};
 //        int i = singleNumber(nums);
 //        System.out.println(i);
-        int nums[] = {2, 7, 11, 15};
 
 //        twoSum(nums, 26);
 //        TreeNode leftLeft = new TreeNode(4);
@@ -97,9 +96,6 @@ public class Solution {
 //        System.out.println(partition.toString());
 //        int a[] = {4, 6, 7, 3, 5, 8};
 //        Arrays.toString(sortArrayByParityII(a));
-        int arr[] = {1, 2, 3, 6, 6, 7};
-        ListNode listNode = new ListNode(arr);
-        removeElementsRecurSion(listNode, 6, 0);
         frequencySort("Aabb");
     }
 
@@ -547,68 +543,5 @@ public class Solution {
         return 0;
     }
 
-    /**
-     * 203
-     * Remove all elements from a linked list of integers that have value val.
-     * <p>
-     * Example:
-     * <p>
-     * Input:  1->2->6->3->4->5->6, val = 6
-     * Output: 1->2->3->4->5
-     *
-     * @param head
-     * @param val
-     * @return
-     */
-    public static ListNode removeElements(ListNode head, int val) {
-        ListNode dummyHead = new ListNode(-1);
-        dummyHead.next = head;
-        ListNode pre = dummyHead;
-        while (pre.next != null) {
-            if (pre.next.val == val) {
-                pre.next = pre.next.next;
-            } else {
-                pre = pre.next;
-            }
-        }
-        return dummyHead.next;
-    }
 
-    /**
-     * @param head
-     * @param val
-     * @return
-     * @see org.javacore.leetCode.Solution#removeElements
-     */
-    public static ListNode removeElementsRecurSion(ListNode head, int val, int depth) {
-        String depthString = getDepthString(depth);
-        System.out.print(depthString);
-        System.out.println("call:remove " + val + " in " + head);
-        if (head == null) {
-            System.out.print(depthString);
-            System.out.println("return: " + head);
-            return null;
-        }
-        ListNode rest = removeElementsRecurSion(head.next, val, depth + 1);
-        System.out.print(depthString);
-        System.out.println("after:remove "  + rest);
-        ListNode restult;
-        if (head.val == val) {
-            restult = rest;
-        } else {
-            head.next = rest;
-            restult = head;
-        }
-        System.out.print(depthString);
-        System.out.println("return:  " + restult);
-        return restult;
-    }
-
-    private static String getDepthString(int depth) {
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < depth; i++) {
-            sb.append("-");
-        }
-        return sb.toString();
-    }
 }
