@@ -392,7 +392,7 @@ public class Solution {
             val = x;
         }
 
-        ListNode(int arr[]) {
+        public ListNode(int arr[]) {
             if (arr.length == 0 || arr == null) {
                 throw new IllegalArgumentException("empty param");
             }

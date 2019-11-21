@@ -14,30 +14,14 @@ import java.util.*;
 public class LinkedListSolution {
 
     public static void main(String[] args) {
-        ListNode node1 = new ListNode(1);
-        ListNode node2 = new ListNode(2);
-        ListNode node3 = new ListNode(3);
-        ListNode node4 = new ListNode(4);
-        ListNode node5 = new ListNode(5);
-        node1.next = node2;
-        node2.next = node3;
-        node3.next = node4;
-        node4.next = node5;
-        node5.next = null;
+        int arr1[] = {1, 2, 3, 4, 5};
+        ListNode listNode1 = new ListNode(arr1);
+        int arr2[] = {2, 4, 7};
+
+        ListNode listNode2 = new ListNode(arr2);
+
 //        swapPairs(node1);
-
-        ListNode two = new ListNode(2);
-        ListNode four = new ListNode(4);
-        ListNode three = new ListNode(7);
-        two.setNext(four);
-        four.setNext(three);
-
-        ListNode five = new ListNode(5);
-        ListNode six = new ListNode(6);
-        ListNode four1 = new ListNode(4);
-        five.setNext(six);
-        six.setNext(four1);
-        ListNode listNode = addTwoNumbers(two, five);
+        ListNode listNode = addTwoNumbers(listNode1, listNode2);
         System.out.println("----------");
 
 
