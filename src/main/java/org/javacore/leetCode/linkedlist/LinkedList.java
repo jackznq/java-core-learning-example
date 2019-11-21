@@ -117,4 +117,20 @@ public class LinkedList<E> {
             cur = next;
         }
     }
+
+    /**
+     * 给一个链表排序
+     *
+     * @param listNode
+     */
+    public void insertSorted(ListNode listNode) {
+
+    }
+
+    /**
+     * @param listNode
+     */
+    public void sortedInsert(ListNode listNode, int data) {
+
+    }
 }
