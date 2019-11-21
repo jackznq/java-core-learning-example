@@ -1,11 +1,10 @@
 package org.javacore.prictice.list;
 
 import org.javacore.leetCode.Solution;
+import org.javacore.leetCode.linkedlist.ListNode;
 
 import java.util.HashSet;
 import java.util.Stack;
-
-import org.javacore.leetCode.Solution.ListNode;
 /**
  * 出自<程序员代码面试指南>
  *
@@ -19,8 +18,8 @@ public class InterViewCode {
 
 //        printListCommonPart(new ListNode(1), new ListNode(1));
         ListNode one = new ListNode(1);
-        ListNode two = new Solution.ListNode(2);
-        Solution.ListNode three = new ListNode(3);
+        ListNode two = new ListNode(2);
+        ListNode three = new ListNode(3);
         ListNode four = new ListNode(4);
         ListNode five = new ListNode(5);
         one.next = two;

@@ -3,9 +3,6 @@ package org.javacore.leetCode.queue;
 import lombok.ToString;
 import org.omg.CORBA.Object;
 
-import java.util.ArrayList;
-import java.util.List;
-
 /**
  * @program: java-core-learning-example
  * @description: 循环队列：解决普通队列出队时空间浪费

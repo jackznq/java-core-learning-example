@@ -1,10 +1,6 @@
 package org.javacore.leetCode.queue;
 
 import lombok.ToString;
-import org.javacore.leetCode.linkedlist.LinkedList;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @program: java-core-learning-example

@@ -1,7 +1,5 @@
 package org.javacore.leetCode.linkedlist;
 
-import org.javacore.leetCode.Solution;
-import org.javacore.leetCode.Solution.ListNode;
 
 import java.util.*;
 
@@ -91,7 +89,7 @@ public class LinkedListSolution {
         if (head == null) return false;
         if (head.next == null) return false;
         if (head.next == head) return true;
-        Map<Solution.ListNode, Integer> listNodes = new HashMap<>();
+        Map<ListNode, Integer> listNodes = new HashMap<>();
         Boolean hasCycle = false;
         while (null != head) {
             if (listNodes.containsKey(head)) {

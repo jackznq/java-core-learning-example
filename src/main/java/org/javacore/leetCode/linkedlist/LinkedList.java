@@ -1,7 +1,6 @@
 package org.javacore.leetCode.linkedlist;
 
 import lombok.ToString;
-import org.javacore.leetCode.Solution;
 
 /**
  * 关于链表的18个问题 @see http://cslibrary.stanford.edu/105/LinkedListProblems.pdf
