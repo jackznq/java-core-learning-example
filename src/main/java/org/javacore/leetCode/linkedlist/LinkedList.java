@@ -145,19 +145,22 @@ public class LinkedList<E extends Comparable<? super E>> {
     }
 
     /**
-     * @param data
+     * @param e
      */
-    public void sortedInsert(Integer data) {
+    public void sortedInsert(E e) {
         this.sorted();
+        System.out.println(this.toString());
         ListNode cur = dummyHead;
+        ListNode pre = dummyHead;
         while (cur != null) {
-            if (cur.e.compareTo(data) > 0) {
-                ListNode next = cur.next;
-                ListNode newNode = new ListNode(data);
-                cur.next = newNode;
+            if (cur.e.compareTo(e) > 0) {
+                ListNode next = pre.next;
+                ListNode newNode = new ListNode(e);
+                pre.next = newNode;
                 newNode.next = next;
                 break;
             }
+            pre = cur;
             cur = cur.next;
         }
     }
@@ -167,8 +170,7 @@ public class LinkedList<E extends Comparable<? super E>> {
         ListNode listNode = new ListNode(arr);
         LinkedList linkedList = new LinkedList(listNode);
 //        linkedList.sorted();
-        System.out.println(linkedList.toString());
-        linkedList.sortedInsert(5);
+        linkedList.sortedInsert(3);
         System.out.println(linkedList.toString());
     }
 }
