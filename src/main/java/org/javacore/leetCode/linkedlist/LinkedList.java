@@ -119,6 +119,7 @@ public class LinkedList<E extends Comparable<? super E>> {
     }
 
     /**
+     * 7
      * 给一个链表排序
      */
     public void sorted() {
@@ -145,11 +146,12 @@ public class LinkedList<E extends Comparable<? super E>> {
     }
 
     /**
+     * 8
+     *
      * @param e
      */
     public void sortedInsert(E e) {
         this.sorted();
-        System.out.println(this.toString());
         ListNode cur = dummyHead;
         ListNode pre = dummyHead;
         while (cur != null) {
@@ -163,14 +165,5 @@ public class LinkedList<E extends Comparable<? super E>> {
             pre = cur;
             cur = cur.next;
         }
-    }
-
-    public static void main(String[] args) {
-        Integer arr[] = {4, 2, 3, 6, 7};
-        ListNode listNode = new ListNode(arr);
-        LinkedList linkedList = new LinkedList(listNode);
-//        linkedList.sorted();
-        linkedList.sortedInsert(3);
-        System.out.println(linkedList.toString());
     }
 }
