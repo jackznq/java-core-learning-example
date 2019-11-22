@@ -5,7 +5,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 @ToString
-public class ListNode<E> {
+public class ListNode<E extends Comparable<? super E>> {
     public E e;
     @Setter
     @Getter
@@ -46,4 +46,6 @@ public class ListNode<E> {
         }
         return sb.toString();
     }
+
+
 }

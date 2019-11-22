@@ -9,7 +9,7 @@ package org.javacore.leetCode.linkedlist;
  * @author: znq
  * @create: 2019-10-27 13:41
  **/
-public class LinkedList<E> {
+public class LinkedList<E extends Comparable<? super E>> {
 
 
     private ListNode<E> dummyHead;
@@ -120,17 +120,43 @@ public class LinkedList<E> {
 
     /**
      * 给一个链表排序
-     *
-     * @param listNode
      */
-    public void insertSorted(ListNode listNode) {
+    public void sorted() {
+        if (dummyHead == null) return;
+        ListNode<E> cur = dummyHead;
+        E temp;
+        while (cur != null) {
+            ListNode<E> next = cur.next;
+            while (next != null) {
+                if (next.e.compareTo(cur.e) < 0) {
+                    temp = next.e;
+                    next.e = cur.e;
+                    cur.e = temp;
+                }
+                next = next.next;
+            }
+            cur = cur.next;
+        }
+    }
 
+    @Override
+    public String toString() {
+        return dummyHead.toString();
     }
 
     /**
      * @param listNode
      */
     public void sortedInsert(ListNode listNode, int data) {
+
+    }
+
+    public static void main(String[] args) {
+        Integer arr[] = {4, 2, 3, 6, 7};
+        ListNode listNode = new ListNode(arr);
+        LinkedList linkedList = new LinkedList(listNode);
+        linkedList.sorted();
+        System.out.println(linkedList.toString());
 
     }
 }

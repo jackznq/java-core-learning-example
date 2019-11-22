@@ -11,9 +11,9 @@ import java.util.*;
 public class LinkedListSolution {
 
     public static void main(String[] args) {
-        int arr1[] = {1, 2, 3, 4, 5};
+        Integer arr1[] = {1, 2, 3, 4, 5};
         ListNode listNode1 = new ListNode(arr1);
-        int arr2[] = {2, 4, 7};
+        Integer arr2[] = {2, 4, 7};
 
         ListNode listNode2 = new ListNode(arr2);
 

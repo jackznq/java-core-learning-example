@@ -7,7 +7,7 @@ import org.javacore.leetCode.linkedlist.LinkedList;
  *
  * @param <E>
  */
-public class LinkedListStack<E> {
+public class LinkedListStack<E extends Comparable<? super E>> {
 
     private LinkedList<E> list;
 
