@@ -118,52 +118,9 @@ public class LinkedList<E extends Comparable<? super E>> {
         }
     }
 
-    /**
-     * 7
-     * 给一个链表排序
-     */
-    public void sorted() {
-        if (dummyHead == null) return;
-        ListNode<E> cur = dummyHead;
-        E temp;
-        while (cur != null) {
-            ListNode<E> next = cur.next;
-            while (next != null) {
-                if (next.e.compareTo(cur.e) < 0) {
-                    temp = next.e;
-                    next.e = cur.e;
-                    cur.e = temp;
-                }
-                next = next.next;
-            }
-            cur = cur.next;
-        }
-    }
-
     @Override
     public String toString() {
         return dummyHead.toString();
     }
 
-    /**
-     * 8
-     *
-     * @param e
-     */
-    public void sortedInsert(E e) {
-        this.sorted();
-        ListNode cur = dummyHead;
-        ListNode pre = dummyHead;
-        while (cur != null) {
-            if (cur.e.compareTo(e) > 0) {
-                ListNode next = pre.next;
-                ListNode newNode = new ListNode(e);
-                pre.next = newNode;
-                newNode.next = next;
-                break;
-            }
-            pre = cur;
-            cur = cur.next;
-        }
-    }
 }

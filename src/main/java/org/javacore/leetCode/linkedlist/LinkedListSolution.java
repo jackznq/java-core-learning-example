@@ -11,14 +11,20 @@ import java.util.*;
 public class LinkedListSolution {
 
     public static void main(String[] args) {
-        Integer arr1[] = {1, 2, 3, 4, 5};
+        Integer arr1[] = {1, 2,3};
         ListNode listNode1 = new ListNode(arr1);
-        Integer arr2[] = {2, 4, 7};
+//        ListUtil.sorted(listNode1);
+//        System.out.println(ListUtil.sortedInsert(listNode1,10).toString());
+        Integer arr2[] = {4, 5, 6};
 
         ListNode listNode2 = new ListNode(arr2);
-
+//        ListUtil.append(listNode1,listNode2);
 //        swapPairs(node1);
-        ListNode listNode = addTwoNumbers(listNode1, listNode2);
+//        ListNode listNode = addTwoNumbers(listNode1, listNode2);
+        ListUtil.moveNode(listNode1,listNode2);
+        System.out.println(listNode1);
+        System.out.println(listNode2);
+//        System.out.println(ListUtil.shuffleMerge(listNode1,listNode2));
         //3
 //        delelteNode(listNode1);
         //4
