@@ -1,6 +1,8 @@
 package org.javacore.leetCode.linkedlist;
 
 
+import org.apache.commons.lang3.ArrayUtils;
+
 import java.util.*;
 
 /**
@@ -21,9 +23,8 @@ public class LinkedListSolution {
 //        ListUtil.append(listNode1,listNode2);
 //        swapPairs(node1);
 //        ListNode listNode = addTwoNumbers(listNode1, listNode2);
-        ListUtil.moveNode(listNode1,listNode2);
-        System.out.println(listNode1);
-        System.out.println(listNode2);
+        ListNode[] listNodes = ListUtil.moveNode(listNode1, listNode2);
+        System.out.println(ArrayUtils.toString(listNodes));
 //        System.out.println(ListUtil.shuffleMerge(listNode1,listNode2));
         //3
 //        delelteNode(listNode1);

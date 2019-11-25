@@ -88,13 +88,22 @@ public class ListUtil {
      * @param sou
      * @param des
      */
-    public static void moveNode(ListNode des, ListNode sou) {
-        des=null;
-        sou=null;
+    public static ListNode[] moveNode(ListNode des, ListNode sou) {
+        ListNode newNode = sou;
+        ListNode[] result = new ListNode[2];
+        if (newNode == null) {
+            return result;
+        }
+        sou = sou.next;
+        result[0] = sou;
+        newNode.next = des;
+        result[1] = newNode;
+        return result;
     }
 
     /**
      * 13
+     *
      * @param listNode1
      * @param listNode2
      * @return
