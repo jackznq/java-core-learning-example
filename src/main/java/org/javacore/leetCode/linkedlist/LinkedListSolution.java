@@ -11,7 +11,7 @@ import java.util.*;
 public class LinkedListSolution {
 
     public static void main(String[] args) {
-        Integer arr2[] = {1, 2,3,4,6,7};
+        Integer arr2[] = {1, 2, 3, 4, 6, 7};
         ListNode listNode1 = new ListNode(arr2);
 //        ListUtil.sorted(listNode1);
 //        System.out.println(ListUtil.sortedInsert(listNode1,10).toString());
@@ -27,7 +27,12 @@ public class LinkedListSolution {
         //3
 //        delelteNode(listNode1);
         //4
-        System.out.println(ListUtil.sortedMerge(listNode1,listNode2));
+//        System.out.println(ListUtil.sortedMerge(listNode1,listNode2));
+        ListNode one = null;
+        ListNode two = null;
+//        List<ListNode> listNodes = ListUtil.divide(listNode1, one, two);
+//        System.out.println(listNodes);
+        System.out.println(ListUtil.reverse(listNode1));
     }
 
     /**

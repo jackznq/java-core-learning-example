@@ -1,5 +1,9 @@
 package org.javacore.leetCode.linkedlist;
 
+import com.google.common.collect.Lists;
+
+import java.util.List;
+
 /**
  * 关于链表的18个问题 @see http://cslibrary.stanford.edu/105/LinkedListProblems.pdf
  *
@@ -169,5 +173,65 @@ public class ListUtil {
             curResult.next = cur2;
         }
         return result.next;
+    }
+
+
+    public static List<ListNode> divide(ListNode head, ListNode one, ListNode two) {
+
+        List result = Lists.newArrayList();
+        // Split the nodes to these 'a' and 'b' lists
+        ListNode current = head;
+        while (current != null) {
+            // Move a node to 'a'
+
+            ListNode newNode = current;    // the front source node
+            current = current.next;    // Advance the source
+
+            newNode.next = one;    // Link the old dest off the new node
+            one = newNode;            // Move dest to point to the new node
+
+            if (current != null) {
+                // Move a node to 'b'
+
+                newNode = current;    // the front source node
+                current = current.next; // Advance the source
+
+                newNode.next = two;    // Link the old dest off the new node
+                two = newNode;            // Move dest to point to the new node
+            }
+        }
+        result.add(one);
+        result.add(two);
+        return result;
+    }
+
+    /**
+     * 15 归并排序
+     *
+     * @param head
+     */
+    public static void mergeSort(ListNode head) {
+
+
+    }
+
+    /**
+     * 17
+     * 链表反转
+     *
+     * @param head
+     * @return
+     */
+    public static ListNode reverse(ListNode head) {
+        ListNode result = null;
+        ListNode cur = head;
+        while (cur != null) {
+            cur = cur.next;
+            head.next = result;
+            result = head;
+            head = cur;
+        }
+
+        return result;
     }
 }
