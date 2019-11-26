@@ -130,4 +130,44 @@ public class ListUtil {
         }
         return dummyHead.next;
     }
+
+    /**
+     * 14
+     *
+     * @param l1
+     * @param l2
+     * @return org.javacore.leetCode.linkedlist.ListNode
+     * @description //有序链表合并
+     * @author ddfhznq
+     * @date 2019-11-26 10:03:36
+     */
+    public static ListNode sortedMerge(ListNode l1, ListNode l2) {
+        if (l1 == null && l2 == null) {
+            return null;
+        }
+        if (l1 == null) return l2;
+        if (l2 == null) return l1;
+        ListNode cur1 = l1;
+        ListNode cur2 = l2;
+        ListNode result = new ListNode(-1);
+        ListNode curResult = result;
+        while (cur1 != null && cur2 != null) {
+            if (cur1.e.compareTo(cur2.e) <= 0) {
+                curResult.next = new ListNode(cur1.e);
+                cur1 = cur1.next;
+            } else {
+                curResult.next = new ListNode(cur2.e);
+                cur2 = cur2.next;
+            }
+            curResult = curResult.next;
+        }
+
+        if (cur1 != null) {
+            curResult.next = cur1;
+        }
+        if (cur2 != null) {
+            curResult.next = cur2;
+        }
+        return result.next;
+    }
 }
