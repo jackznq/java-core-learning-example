@@ -234,4 +234,28 @@ public class ListUtil {
 
         return result;
     }
+
+    /**
+     * 2. Add Two Numbers
+     * @param l1
+     * @param l2
+     * @return
+     */
+    public static ListNode addTwoNumbers(ListNode<Integer> l1, ListNode<Integer> l2) {
+        ListNode<Integer> dummyNode = new ListNode(-1);
+        ListNode<Integer> p = l1, q = l2, cur = dummyNode;
+        int carry = 0;
+        while (p != null || q != null) {
+            int x = (p != null) ? p.e : 0;
+            int y = (q != null) ? q.e : 0;
+            int data = x + y + carry;
+            carry = data / 10;
+            cur.next = new ListNode<Integer>(data % 10);
+            cur = cur.next;
+            if (q != null) q = q.next;
+            if (p != null) p = p.next;
+        }
+
+        return dummyNode.next;
+    }
 }

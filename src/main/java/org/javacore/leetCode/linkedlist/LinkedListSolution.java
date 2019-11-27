@@ -28,12 +28,14 @@ public class LinkedListSolution {
 //        delelteNode(listNode1);
         //4
 //        System.out.println(ListUtil.sortedMerge(listNode1,listNode2));
-        ListNode one = null;
-        ListNode two = null;
 //        List<ListNode> listNodes = ListUtil.divide(listNode1, one, two);
 //        System.out.println(listNodes);
-        System.out.println(ListUtil.reverse(listNode1));
+//        System.out.println(ListUtil.reverse(listNode1));
+        System.out.println(listNode1);
+        System.out.println(listNode2);
+        System.out.println(ListUtil.addTwoNumbers(listNode1, listNode2));
     }
+
 
     /**
      * Reverse a singly linked list.
