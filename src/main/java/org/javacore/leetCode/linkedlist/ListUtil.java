@@ -237,6 +237,7 @@ public class ListUtil {
 
     /**
      * 2. Add Two Numbers
+     *
      * @param l1
      * @param l2
      * @return
@@ -250,7 +251,7 @@ public class ListUtil {
             int y = (q != null) ? q.e : 0;
             int data = x + y + carry;
             carry = data / 10;
-            cur.next = new ListNode<Integer>(data % 10);
+            cur.next = new ListNode(data % 10);
             cur = cur.next;
             if (q != null) q = q.next;
             if (p != null) p = p.next;

@@ -1,5 +1,7 @@
 package org.javacore.prictice.binarytree;
 
+import org.javacore.leetCode.tree.TreeNode;
+
 import java.util.Stack;
 
 /**

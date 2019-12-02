@@ -1,7 +1,7 @@
 package org.javacore.leetCode;
 
 import org.javacore.leetCode.linkedlist.ListNode;
-import org.javacore.prictice.binarytree.TreeNode;
+import org.javacore.leetCode.tree.TreeNode;
 
 import java.math.BigInteger;
 import java.util.*;

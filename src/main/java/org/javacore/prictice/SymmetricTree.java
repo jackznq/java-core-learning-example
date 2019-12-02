@@ -1,7 +1,7 @@
 package org.javacore.prictice;
 
 
-import org.javacore.prictice.binarytree.TreeNode;
+import org.javacore.leetCode.tree.TreeNode;
 
 /**
  * 对称二叉树

@@ -1,4 +1,4 @@
-package org.javacore.prictice.binarytree;
+package org.javacore.leetCode.tree;
 
 import lombok.Data;
 
