@@ -7,10 +7,10 @@ import lombok.Data;
  * Created by ddfhznq on 2017/11/22.
  */
 @Data
-public class TreeNode {
+public class TreeNode<E extends Comparable<E>> {
 
     public int val;
-
+    public E e;
     public TreeNode right;
     public TreeNode left;
 
@@ -18,6 +18,12 @@ public class TreeNode {
         this.left = null;
         this.right = null;
         this.val = val;
+    }
+
+    public TreeNode(E e) {
+        this.e = e;
+        this.left = null;
+        this.right = null;
     }
 
     public static TreeNode createBinaryTreeByArray(int[] array, int index) {
