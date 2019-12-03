@@ -30,28 +30,10 @@ public class TreeNodeTraversal {
      * @param array
      */
     public TreeNodeTraversal(int[] array) {
-        root = createBinaryTreeByArray(array, 0);
+        root = TreeNode.createBinaryTreeByArray(array, 0);
     }
 
-    /**
-     * 用数组构建二叉树
-     * int a[] = {1, 2, 2, 3, 4, 4, 3};
-     *
-     * @param array 传入数组
-     * @param index 数组索引，一般从0开始即根节点开始
-     * @return TreeNode
-     */
-    public TreeNode createBinaryTreeByArray(int[] array, int index) {
-        TreeNode tn = null;
-        if (index < array.length) {
-            int value = array[index];
-            tn = new TreeNode(value);
-            tn.left = createBinaryTreeByArray(array, 2 * index + 1);
-            tn.right = createBinaryTreeByArray(array, 2 * index + 2);
-            return tn;
-        }
-        return tn;
-    }
+
 
     /**
      * 中序遍历
