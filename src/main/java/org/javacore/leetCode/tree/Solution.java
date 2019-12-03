@@ -2,9 +2,7 @@ package org.javacore.leetCode.tree;
 
 import com.google.common.collect.Lists;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 /**
  * Definition for a binary tree node.
@@ -68,59 +66,6 @@ class Solution {
      * @param q
      * @return
      */
-    public static boolean isSameTree(TreeNode p, TreeNode q) {
-
-        if (p == null && q == null) return true;
-
-        if (p == null || q == null) return false;
-        List pList = new ArrayList();
-        inOrderTraversal(p, pList);
-        List qList = new ArrayList();
-        inOrderTraversal(q, qList);
-
-        return pList.equals(qList);
-    }
-
-
-
-
-    /**
-     * 前序遍历
-     *
-     * @param treeNode
-     */
-    private static void preOrderTraversal(TreeNode treeNode, List list) {
-        if (treeNode == null) return;
-        list.add(treeNode.e);
-        preOrderTraversal(treeNode.left, list);
-        preOrderTraversal(treeNode.right, list);
-
-    }
-
-    /**
-     * 中序遍历
-     *
-     * @param treeNode
-     */
-    private static void inOrderTraversal(TreeNode treeNode, List list) {
-        if (treeNode == null) return;
-        inOrderTraversal(treeNode.left, list);
-        list.add(treeNode.e);
-        inOrderTraversal(treeNode.right, list);
-    }
-
-    /**
-     * 后序遍历
-     *
-     * @param treeNode
-     */
-    private static void postOrderTraversal(TreeNode treeNode, List list) {
-
-        if (treeNode == null) return;
-        postOrderTraversal(treeNode.left, list);
-        postOrderTraversal(treeNode.right, list);
-        list.add(treeNode.e);
-    }
 
 
     public static void main(String[] args) {
@@ -139,19 +84,6 @@ class Solution {
         five.right = seven;
         List result = Lists.newArrayList();
 
-        System.out.println("前序遍历");
-        preOrderTraversal(four, result);
-        print(result);
-        result.clear();
-        System.out.println("中序遍历");
-
-        inOrderTraversal(four, result);
-        print(result);
-        result.clear();
-        System.out.println("后序遍历");
-        postOrderTraversal(four, result);
-        print(result);
-        result.clear();
 
         TreeNode one1 = new TreeNode(1);
         TreeNode one2 = new TreeNode(2);
@@ -161,15 +93,7 @@ class Solution {
         two1.right = two2;
 
 
-        boolean sameTree = isSameTree(one1, two1);
-        System.out.println(sameTree);
     }
-
-    private static void print(List list) {
-        if (Objects.isNull(list)) return;
-        list.forEach(System.out::println);
-    }
-
 
 
 }

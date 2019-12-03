@@ -18,11 +18,10 @@ public class SymmetricTree {
     public static boolean isMirror(TreeNode t1, TreeNode t2) {
         if (t1 == null && t2 == null) return true;
         if (t1 == null || t2 == null) return false;
-        return (t1.e .compareTo(t2.e)==0)
+        return (t1.e.compareTo(t2.e) == 0)
             && isMirror(t1.right, t2.left)
             && isMirror(t1.left, t2.right);
     }
-
 
 
     /**
@@ -35,7 +34,7 @@ public class SymmetricTree {
         if (root == null) {
             root = new TreeNode(data);
         } else {
-            if (node.e.compareTo(data)>0) {
+            if (node.e.compareTo(data) > 0) {
                 if (node.left == null) {
                     node.left = new TreeNode(data);
                 } else {
@@ -54,8 +53,9 @@ public class SymmetricTree {
     public static void main(String[] args) {
         int a[] = {1, 2, 3, 4, 5, 6, 7};
         for (int i = 0; i < a.length; i++) {
-            buildTree(root, a[i]);
+//            buildTree(root, a[i]);
         }
-        System.out.println(isSymmetric(root));
+//        System.out.println(isSymmetric(root));
+        System.out.println(5 ^ 30);
     }
 }

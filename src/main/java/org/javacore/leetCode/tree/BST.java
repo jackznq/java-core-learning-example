@@ -56,7 +56,7 @@ public class BST<E extends Comparable<E>> {
             TreeNode node = root;
             while (node != null) {
 
-                if (node.e.compareTo(e) < 0) {
+                if (node.e.compareTo(e) > 0) {
                     if (node.left == null) {
                         size++;
                         node.left = new TreeNode(e);
@@ -64,7 +64,7 @@ public class BST<E extends Comparable<E>> {
                     } else {
                         node = node.left;
                     }
-                } else if (node.e.compareTo(e) > 0) {
+                } else if (node.e.compareTo(e) < 0) {
                     if (node.right == null) {
                         size++;
                         node.right = new TreeNode(e);
