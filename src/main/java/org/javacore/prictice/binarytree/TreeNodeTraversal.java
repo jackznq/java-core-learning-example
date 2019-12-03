@@ -21,7 +21,7 @@ public class TreeNodeTraversal {
     }
 
     public static void printNode(TreeNode node) {
-        System.out.print(node.getVal() + " ");
+        System.out.print(node.e + " ");
     }
 
     /**
@@ -29,8 +29,8 @@ public class TreeNodeTraversal {
      *
      * @param array
      */
-    public TreeNodeTraversal(int[] array) {
-        root = TreeNode.createBinaryTreeByArray(array, 0);
+    public TreeNodeTraversal(Integer[] array) {
+//        root = TreeNode.createBinaryTreeByArray(array, 0);
     }
 
 
@@ -88,15 +88,4 @@ public class TreeNodeTraversal {
         }
     }
 
-    public static void main(String[] args) {
-        int a[] = {1, 2, 3, 4, 5, 6, 7};
-        TreeNodeTraversal treeNode = new TreeNodeTraversal(a);
-//        System.out.println("中序遍历");
-//        theInOrderTraversal(treeNode.getRoot());
-        System.out.println("先序序遍历");
-//        theFirstTraversal_Stack(treeNode.getRoot());
-        String s ="1,2,3";
-        char s1[] =s.toCharArray();
-        System.out.println(s1.toString());
-    }
 }

@@ -91,7 +91,7 @@ class Solution {
      */
     private static void preOrderTraversal(TreeNode treeNode, List list) {
         if (treeNode == null) return;
-        list.add(treeNode.val);
+        list.add(treeNode.e);
         preOrderTraversal(treeNode.left, list);
         preOrderTraversal(treeNode.right, list);
 
@@ -105,7 +105,7 @@ class Solution {
     private static void inOrderTraversal(TreeNode treeNode, List list) {
         if (treeNode == null) return;
         inOrderTraversal(treeNode.left, list);
-        list.add(treeNode.val);
+        list.add(treeNode.e);
         inOrderTraversal(treeNode.right, list);
     }
 
@@ -119,7 +119,7 @@ class Solution {
         if (treeNode == null) return;
         postOrderTraversal(treeNode.left, list);
         postOrderTraversal(treeNode.right, list);
-        list.add(treeNode.val);
+        list.add(treeNode.e);
     }
 
 

@@ -1,15 +1,16 @@
 package org.javacore.leetCode.tree;
 
 import lombok.Data;
+import lombok.ToString;
 
 /**
  * 树节点构建，
  * Created by ddfhznq on 2017/11/22.
  */
 @Data
+@ToString
 public class TreeNode<E extends Comparable<E>> {
 
-    public int val;
     public E e;
     public TreeNode right;
     public TreeNode left;
@@ -17,7 +18,6 @@ public class TreeNode<E extends Comparable<E>> {
     public TreeNode(int val) {
         this.left = null;
         this.right = null;
-        this.val = val;
     }
 
     public TreeNode(E e) {
@@ -26,10 +26,16 @@ public class TreeNode<E extends Comparable<E>> {
         this.right = null;
     }
 
-    public static TreeNode createBinaryTreeByArray(int[] array, int index) {
+    public TreeNode() {
+        this.left = null;
+        this.right = null;
+        this.e = null;
+    }
+
+    public TreeNode createBinaryTreeByArray(E[] array, int index) {
         TreeNode tn = null;
         if (index < array.length) {
-            int value = array[index];
+            E value = array[index];
             tn = new TreeNode(value);
             tn.left = createBinaryTreeByArray(array, 2 * index + 1);
             tn.right = createBinaryTreeByArray(array, 2 * index + 2);

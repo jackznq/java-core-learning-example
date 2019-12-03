@@ -18,7 +18,7 @@ public class SymmetricTree {
     public static boolean isMirror(TreeNode t1, TreeNode t2) {
         if (t1 == null && t2 == null) return true;
         if (t1 == null || t2 == null) return false;
-        return (t1.val == t2.val)
+        return (t1.e .compareTo(t2.e)==0)
             && isMirror(t1.right, t2.left)
             && isMirror(t1.left, t2.right);
     }
@@ -35,7 +35,7 @@ public class SymmetricTree {
         if (root == null) {
             root = new TreeNode(data);
         } else {
-            if (data < node.val) {
+            if (node.e.compareTo(data)>0) {
                 if (node.left == null) {
                     node.left = new TreeNode(data);
                 } else {
