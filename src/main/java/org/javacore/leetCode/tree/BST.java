@@ -1,5 +1,7 @@
 package org.javacore.leetCode.tree;
 
+import java.util.Stack;
+
 /**
  * @program: java-core-learning-example
  * @description: 二分搜索树
@@ -78,10 +80,43 @@ public class BST<E extends Comparable<E>> {
         size++;
     }
 
+    public void preOrderForeach() {//先序遍历
+        //先序遍历
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode node = root;
+        while (node != null || stack.size() > 0) {
+            if (node != null) {
+                stack.push(node);
+                node = node.getLeft();
+
+            } else {
+                node = stack.pop();
+                System.out.println(node.e);
+                node = node.getRight();
+            }
+        }
+    }
+
+    public void inOrderTraversal() {  //中序遍历
+        Stack<TreeNode> stack = new Stack<>();
+        TreeNode node = root;
+        while (node != null || stack.size() > 0) {
+            if (node != null) {
+                stack.push(node);   //直接压栈
+                node = node.getLeft();
+            } else {
+                node = stack.pop(); //出栈并访问
+                System.out.println(node.e);
+                node = node.getRight();
+
+            }
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        generateString(root,0,sb);
+        generateString(root, 0, sb);
         return sb.toString();
     }
 
@@ -114,7 +149,7 @@ public class BST<E extends Comparable<E>> {
         bst.addForeach(2);
         bst.addForeach(5);
         bst.addForeach(7);
-        System.out.println(bst);
+//        System.out.println(bst);
         bst.root = null;
         bst.size = 0;
         bst.addRecur(3);
@@ -123,6 +158,9 @@ public class BST<E extends Comparable<E>> {
         bst.addRecur(2);
         bst.addRecur(5);
         bst.addRecur(7);
+//        System.out.println(bst);
+        bst.inOrderTraversal();
+        System.out.println("----");
         System.out.println(bst);
     }
 }
