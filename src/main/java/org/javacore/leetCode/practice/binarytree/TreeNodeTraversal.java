@@ -1,4 +1,4 @@
-package org.javacore.prictice.binarytree;
+package org.javacore.leetCode.practice.binarytree;
 
 import org.javacore.leetCode.tree.TreeNode;
 

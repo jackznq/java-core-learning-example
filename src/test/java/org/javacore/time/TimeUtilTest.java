@@ -30,6 +30,7 @@ public class TimeUtilTest {
     @Test
     public void testParseLocalDateTimeByUsingDefaultFormatter() throws Exception {
         LocalDateTime time = LocalDateTime.of(2014, 11, 11, 10, 11, 11);
+        System.out.println(TimeUtil.parseTime(time));
         assertEquals(TimeUtil.parseTime(time), "2014-11-11 10:11:11");
     }
 

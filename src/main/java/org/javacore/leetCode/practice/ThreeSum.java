@@ -1,4 +1,4 @@
-package org.javacore.prictice;
+package org.javacore.leetCode.practice;
 
 import com.google.common.collect.Lists;
 

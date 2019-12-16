@@ -1,4 +1,4 @@
-package org.javacore.prictice.string;
+package org.javacore.leetCode.practice.string;
 
 import org.springframework.util.StringUtils;
 

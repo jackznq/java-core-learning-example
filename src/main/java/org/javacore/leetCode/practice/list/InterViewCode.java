@@ -1,4 +1,4 @@
-package org.javacore.prictice.list;
+package org.javacore.leetCode.practice.list;
 
 import org.javacore.leetCode.linkedlist.ListNode;
 

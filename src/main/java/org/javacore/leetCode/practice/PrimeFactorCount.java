@@ -1,4 +1,4 @@
-package org.javacore.prictice;
+package org.javacore.leetCode.practice;
 
 import org.apache.commons.collections.CollectionUtils;
 import org.javacore.utils.PrimeUtils;

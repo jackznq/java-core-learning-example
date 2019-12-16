@@ -1,4 +1,4 @@
-package org.javacore.prictice;
+package org.javacore.leetCode.practice;
 
 
 import org.javacore.leetCode.tree.TreeNode;
@@ -24,31 +24,6 @@ public class SymmetricTree {
     }
 
 
-    /**
-     * 递归创建二叉树
-     *
-     * @param node
-     * @param data
-     */
-    public static void buildTree(TreeNode node, int data) {
-        if (root == null) {
-            root = new TreeNode(data);
-        } else {
-            if (node.e.compareTo(data) > 0) {
-                if (node.left == null) {
-                    node.left = new TreeNode(data);
-                } else {
-                    buildTree(node.left, data);
-                }
-            } else {
-                if (node.right == null) {
-                    node.right = new TreeNode(data);
-                } else {
-                    buildTree(node.right, data);
-                }
-            }
-        }
-    }
 
     public static void main(String[] args) {
         int a[] = {1, 2, 3, 4, 5, 6, 7};

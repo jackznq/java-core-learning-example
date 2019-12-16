@@ -1,4 +1,4 @@
-package org.javacore.prictice;
+package org.javacore.leetCode.practice;
 
 /**
  * 101-200的素数
