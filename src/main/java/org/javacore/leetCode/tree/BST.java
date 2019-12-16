@@ -51,14 +51,13 @@ public class BST<E extends Comparable<E>> {
     public void addForeach(E e) {
         if (root == null) {
             root = new TreeNode(e);
-            size++;
+
         } else {
             TreeNode node = root;
             while (node != null) {
 
                 if (node.e.compareTo(e) > 0) {
                     if (node.left == null) {
-                        size++;
                         node.left = new TreeNode(e);
                         break;
                     } else {
@@ -66,7 +65,6 @@ public class BST<E extends Comparable<E>> {
                     }
                 } else if (node.e.compareTo(e) < 0) {
                     if (node.right == null) {
-                        size++;
                         node.right = new TreeNode(e);
                         break;
                     } else {
@@ -77,21 +75,54 @@ public class BST<E extends Comparable<E>> {
                 }
             }
         }
+        size++;
     }
 
     @Override
     public String toString() {
-        return "BST{" +
-            "root=" + root +
-            '}';
+        StringBuilder sb = new StringBuilder();
+        generateString(root,0,sb);
+        return sb.toString();
+    }
+
+    private void generateString(TreeNode node, int depth, StringBuilder sb) {
+        if (node == null) {
+            sb.append(genetateDepthString(depth) + "\n");
+            return;
+        }
+
+        sb.append(genetateDepthString(depth) + node.e + "\n");
+        generateString(node.left, depth + 1, sb);
+        generateString(node.right, depth + 1, sb);
+
+    }
+
+    private String genetateDepthString(int depth) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = 0; i < depth; i++) {
+            sb.append("--");
+        }
+        return sb.toString();
     }
 
     public static void main(String[] args) {
-        Integer arr[] = {1, 2, 3, 5, 6, 7};
-        TreeNode treeNode = new TreeNode();
-        TreeNode result = treeNode.createBinaryTreeByArray(arr, 0);
-        BST bst = new BST(result);
-        bst.addForeach(4);
-        bst.toString();
+//        Integer arr[] = {1, 2, 3, 5, 6, 7};
+        BST bst = new BST();
+        bst.addForeach(3);
+        bst.addForeach(6);
+        bst.addForeach(1);
+        bst.addForeach(2);
+        bst.addForeach(5);
+        bst.addForeach(7);
+        System.out.println(bst);
+        bst.root = null;
+        bst.size = 0;
+        bst.addRecur(3);
+        bst.addRecur(6);
+        bst.addRecur(1);
+        bst.addRecur(2);
+        bst.addRecur(5);
+        bst.addRecur(7);
+        System.out.println(bst);
     }
 }
