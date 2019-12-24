@@ -1,16 +1,6 @@
 package org.javacore.leetCode.tree;
 
-/**
- * Definition for a binary tree node.
- * public class TreeNode {
- * int val;
- * TreeNode left;
- * TreeNode right;
- * TreeNode(int x) { val = x; }
- * }
- * <p>
- * 235. Lowest Common Ancestor of a Binary Search Tree
- */
+
 class Solution {
 
     public static void main(String[] args) {
