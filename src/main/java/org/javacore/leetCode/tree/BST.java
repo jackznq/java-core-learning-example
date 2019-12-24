@@ -141,6 +141,47 @@ public class BST<E extends Comparable<E>> {
 
     }
 
+    /**
+     * 删除最小值，并且返回
+     *
+     * @return
+     */
+    public TreeNode removeMin() {
+        TreeNode result = minimum();
+        //删除该值
+        root = removeMin(root);
+        return result;
+    }
+
+    private TreeNode removeMin(TreeNode node) {
+        if (node.left == null) {
+            TreeNode right = node.right;
+            size--;
+            node.right = null;
+            return right;
+        }
+        node.left = removeMin(node.left);
+        return node;
+    }
+
+    public TreeNode removeMax() {
+        TreeNode result = maximum();
+        //删除该值
+        root = removeMax(root);
+        return result;
+    }
+
+    private TreeNode removeMax(TreeNode node) {
+        if (node.right == null) {
+            TreeNode left = node.left;
+            size--;
+            node.left = null;
+            return left;
+        }
+        node.right = removeMax(node.right);
+        return node;
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -168,4 +209,36 @@ public class BST<E extends Comparable<E>> {
         return sb.toString();
     }
 
+
+    public TreeNode minimum() {
+        if (size == 0) {
+            throw new IllegalArgumentException("");
+        }
+        return minimum(root);
+    }
+
+    private TreeNode minimum(TreeNode node) {
+        if (node.left == null) {
+            return node;
+        }
+
+        return minimum(node.left);
+
+    }
+
+    public TreeNode maximum() {
+        if (size == 0) {
+            throw new IllegalArgumentException("");
+        }
+        return maximum(root);
+    }
+
+    private TreeNode maximum(TreeNode node) {
+        if (node.right == null) {
+            return node;
+        }
+
+        return maximum(node.right);
+
+    }
 }
