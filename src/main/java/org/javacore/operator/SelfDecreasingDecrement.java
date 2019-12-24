@@ -9,7 +9,7 @@ public class SelfDecreasingDecrement {
 
     public static void main(String[] args) {
         int a = 3;//定义一个变量；
-        int b = ++a;//自增运算  b =4
+        int b = a++;//自增运算  b =4
         int c = 3;
         int d = --c;//自减运算 d =2
         System.out.println("进行自增运算后的值等于" + b);

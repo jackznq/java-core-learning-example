@@ -83,18 +83,21 @@ public class BST<E extends Comparable<E>> {
     public void preOrderForeach() {//先序遍历
         //先序遍历
         Stack<TreeNode> stack = new Stack<>();
-        TreeNode node = root;
-        while (node != null || stack.size() > 0) {
-            if (node != null) {
-                stack.push(node);
-                node = node.getLeft();
-
-            } else {
-                node = stack.pop();
-                System.out.println(node.e);
-                node = node.getRight();
+        TreeNode cur = root;
+        stack.push(cur);
+        while (stack.size() > 0) {
+            TreeNode pop = stack.pop();
+            if (pop != null) {
+                System.out.println(pop.e);
+                if (pop.right != null) {
+                    stack.push(pop.right);
+                }
+                if (pop.left != null) {
+                    stack.push(pop.left);
+                }
             }
         }
+
     }
 
     public void inOrderTraversal() {  //中序遍历
@@ -159,6 +162,8 @@ public class BST<E extends Comparable<E>> {
         bst.addRecur(5);
         bst.addRecur(7);
 //        System.out.println(bst);
+        bst.preOrderForeach();
+        System.out.println("----");
         bst.inOrderTraversal();
         System.out.println("----");
         System.out.println(bst);
