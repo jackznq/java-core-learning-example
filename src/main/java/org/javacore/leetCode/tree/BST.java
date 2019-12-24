@@ -1,5 +1,7 @@
 package org.javacore.leetCode.tree;
 
+import java.util.LinkedList;
+import java.util.Queue;
 import java.util.Stack;
 
 /**
@@ -35,7 +37,7 @@ public class BST<E extends Comparable<E>> {
         root = add(root, e);
     }
 
-    private TreeNode add(TreeNode node, E e) {
+    public TreeNode add(TreeNode node, E e) {
         if (node == null) {
             size++;
             return new TreeNode(e);
@@ -116,6 +118,25 @@ public class BST<E extends Comparable<E>> {
         }
     }
 
+    /**
+     * 有点：更快的找到元素
+     * 采用队列进行广度遍历
+     */
+    public void levelOrder() {
+        Queue<TreeNode> queue = new LinkedList<>();
+        queue.add(root);
+        while (queue.size() > 0) {
+            TreeNode node = queue.poll();
+            System.out.println(node.e);
+            if (node.left != null) {
+                queue.add(node.left);
+            }
+            if (node.right != null) {
+                queue.add(node.right);
+            }
+        }
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -143,29 +164,4 @@ public class BST<E extends Comparable<E>> {
         return sb.toString();
     }
 
-    public static void main(String[] args) {
-//        Integer arr[] = {1, 2, 3, 5, 6, 7};
-        BST bst = new BST();
-        bst.addForeach(3);
-        bst.addForeach(6);
-        bst.addForeach(1);
-        bst.addForeach(2);
-        bst.addForeach(5);
-        bst.addForeach(7);
-//        System.out.println(bst);
-        bst.root = null;
-        bst.size = 0;
-        bst.addRecur(3);
-        bst.addRecur(6);
-        bst.addRecur(1);
-        bst.addRecur(2);
-        bst.addRecur(5);
-        bst.addRecur(7);
-//        System.out.println(bst);
-        bst.preOrderForeach();
-        System.out.println("----");
-        bst.inOrderTraversal();
-        System.out.println("----");
-        System.out.println(bst);
-    }
 }
