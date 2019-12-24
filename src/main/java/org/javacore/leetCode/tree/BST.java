@@ -137,6 +137,10 @@ public class BST<E extends Comparable<E>> {
         }
     }
 
+    public void remove(TreeNode node) {
+
+    }
+
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
