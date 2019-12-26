@@ -1,6 +1,7 @@
 package org.javacore.leetCode.tree;
 
 import java.util.LinkedList;
+import java.util.Objects;
 import java.util.Queue;
 import java.util.Stack;
 
@@ -10,7 +11,7 @@ import java.util.Stack;
  * @author: znq
  * @create: 2019-12-03 19:49
  **/
-public class BST<E extends Comparable<E>> {
+public class BST<E extends Comparable<? super E>> {
 
     private TreeNode root;
 
@@ -62,14 +63,14 @@ public class BST<E extends Comparable<E>> {
 
                 if (node.e.compareTo(e) > 0) {
                     if (node.left == null) {
-                        node.left = new TreeNode(e);
+                        node.left = new TreeNode<>(e);
                         break;
                     } else {
                         node = node.left;
                     }
                 } else if (node.e.compareTo(e) < 0) {
                     if (node.right == null) {
-                        node.right = new TreeNode(e);
+                        node.right = new TreeNode<>(e);
                         break;
                     } else {
                         node = node.right;
@@ -137,8 +138,72 @@ public class BST<E extends Comparable<E>> {
         }
     }
 
-    public void remove(TreeNode node) {
+    /**
+     * @param e
+     */
+    public void remove(E e) {
+        TreeNode v = getTreeNode(e);
+        if (v == null) {
+            return;
+        }
+        root = removeNode(root, e);
+    }
 
+
+    private TreeNode removeNode(TreeNode node, E v) {
+        if (node == null) return null;
+
+        if (node.e.compareTo(v) > 0) {
+            node = removeNode(node.right, v);
+            return node;
+        } else if (node.e.compareTo(v) < 0) {
+            node = removeNode(node.left, v);
+            return node;
+        } else {
+            //右子树
+            if (node.right == null) {
+                TreeNode left = node.left;
+                size--;
+                node.left = null;
+                return left;
+            }
+            //左子树
+            if (node.left == null) {
+                TreeNode right = node.right;
+                size--;
+                node.right = null;
+                return right;
+            }
+
+            //待删除节点左右子树不为空
+            //找到比待删除节点大的最小节点，即待删除节点右子树的最小节点
+            //用这个节点顶替待删除节点的位置
+            TreeNode successor = minimum(node.right);
+            successor.right = removeMin(node.right);
+            successor.left = node.left;
+            node.left = node.right = null;
+            return successor;
+
+        }
+    }
+
+
+    private TreeNode getTreeNode(E e) {
+        if (Objects.isNull(e)) {
+            return null;
+        }
+        TreeNode cur = root;
+        while (cur != null) {
+            int res = cur.e.compareTo(e);
+            if (res < 0) {
+                cur = cur.left;
+            } else if (res > 0) {
+                cur = cur.right;
+            } else {
+                return cur;
+            }
+        }
+        return null;
     }
 
     /**

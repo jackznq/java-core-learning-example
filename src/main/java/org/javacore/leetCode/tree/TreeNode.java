@@ -9,7 +9,7 @@ import lombok.ToString;
  */
 @Data
 @ToString
-public class TreeNode<E extends Comparable<E>> {
+public class TreeNode<E extends Comparable<? super E> >{
 
     public E e;
     public TreeNode right;
@@ -31,17 +31,4 @@ public class TreeNode<E extends Comparable<E>> {
         this.right = null;
         this.e = null;
     }
-
-    public TreeNode createBinaryTreeByArray(E[] array, int index) {
-        TreeNode tn = null;
-        if (index < array.length) {
-            E value = array[index];
-            tn = new TreeNode(value);
-            tn.left = createBinaryTreeByArray(array, 2 * index + 1);
-            tn.right = createBinaryTreeByArray(array, 2 * index + 2);
-            return tn;
-        }
-        return tn;
-    }
-
 }
