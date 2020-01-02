@@ -56,7 +56,7 @@ public class InterViewCode {
 //        printListNode(reverseKNodes(one, 3));
 //        printListNode(removeDuplicatedNode(isPolindromel1));
 //        printListNode(removeValue(one, 4));
-        String[] param = {"gin", "zen", "gig", "msg"};
+        String[]param ={"gin", "zen", "gig", "msg"};
         uniqueMorseRepresentations(param);
 
     }
@@ -422,5 +422,45 @@ public class InterViewCode {
         return head;
     }
 
+    /**
+     * International Morse Code defines a standard encoding where each letter is mapped to a series of dots and dashes, as follows: "a" maps to ".-", "b" maps to "-...", "c" maps to "-.-.", and so on.
+     * <p>
+     * For convenience, the full table for the 26 letters of the English alphabet is given below:
+     * <p>
+     * [".-","-...","-.-.","-..",".","..-.","--.","....","..",".---","-.-",".-..","--","-.","---",".--.","--.-",".-.","...","-","..-","...-",".--","-..-","-.--","--.."]
+     * Now, given a list of words, each word can be written as a concatenation of the Morse code of each letter. For example, "cba" can be written as "-.-..--...", (which is the concatenation "-.-." + "-..." + ".-"). We'll call such a concatenation, the transformation of a word.
+     * <p>
+     * Return the number of different transformations among all words we have.
+     * <p>
+     * Example:
+     * Input: words = ["gin", "zen", "gig", "msg"]
+     * Output: 2
+     * Explanation:
+     * The transformation of each word is:
+     * "gin" -> "--...-."
+     * "zen" -> "--...-."
+     * "gig" -> "--...--."
+     * "msg" -> "--...--."
+     * <p>
+     * There are 2 different transformations, "--...-." and "--...--.".
+     *
+     * @param words
+     * @return
+     */
+    public static int uniqueMorseRepresentations(String[] words) {
+
+//        String [] s ={"ttt","ttt"};
+        String codes[] = {".-", "-...", "-.-.", "-..", ".", "..-.", "--.", "....", "..", ".---", "-.-", ".-..", "--", "-.", "---", ".--.", "--.-", ".-.", "...", "-", "..-", "...-", ".--", "-..-", "-.--", "--.."};
+        TreeSet<String> result = new TreeSet<>();
+        for (String w : words) {
+            StringBuilder sb = new StringBuilder();
+            for (int i = 0; i < w.length(); i++) {
+                sb.append(codes[w.charAt(i) - 'a']);
+            }
+
+            result.add(sb.toString());
+        }
+        return result.size();
+    }
 
 }
