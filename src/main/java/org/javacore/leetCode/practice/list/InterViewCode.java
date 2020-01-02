@@ -4,6 +4,7 @@ import org.javacore.leetCode.linkedlist.ListNode;
 
 import java.util.HashSet;
 import java.util.Stack;
+import java.util.TreeSet;
 
 /**
  * 出自<程序员代码面试指南>
@@ -54,7 +55,10 @@ public class InterViewCode {
         System.out.println();
 //        printListNode(reverseKNodes(one, 3));
 //        printListNode(removeDuplicatedNode(isPolindromel1));
-        printListNode(removeValue(one, 4));
+//        printListNode(removeValue(one, 4));
+        String[] param = {"gin", "zen", "gig", "msg"};
+        uniqueMorseRepresentations(param);
+
     }
 
 
@@ -417,4 +421,6 @@ public class InterViewCode {
         }
         return head;
     }
+
+
 }
