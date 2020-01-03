@@ -39,7 +39,7 @@ public class MyMergeSort {
     }
 
     private static void merge(int[] arr, int l, int mid, int r) {
-        int help[] = new int[r - l + 1];
+        int[] help = new int[r - l + 1];
         int i = 0;
         int p = l;
         int q = mid + 1;
