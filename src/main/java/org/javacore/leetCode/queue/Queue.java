@@ -6,7 +6,7 @@ package org.javacore.leetCode.queue;
  * @author: znq
  * @create: 2019-10-20 22:02
  **/
-public interface Queue<E> {
+public interface Queue<E extends Comparable<? super E>> {
 
 
     /**

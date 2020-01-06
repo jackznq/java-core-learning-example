@@ -65,24 +65,4 @@ public class ArrayQueue<E> implements Queue<E> {
         return 0;
     }
 
-    public static void main(String[] args) {
-        ArrayQueue arrayQueue = new ArrayQueue(10);
-        System.out.println(arrayQueue.isEmpty());
-        arrayQueue.add(10);
-        System.out.println(arrayQueue.poll());
-        System.out.println(arrayQueue.size());
-        System.out.println(arrayQueue.isEmpty());
-        arrayQueue.add(22);
-        arrayQueue.add(21);
-        arrayQueue.add(5);
-        arrayQueue.add(6);
-        arrayQueue.add(7);
-        arrayQueue.add(7);
-        System.out.println(arrayQueue.peek());
-        System.out.println(arrayQueue.size());
-        System.out.println(arrayQueue.poll());
-        System.out.println(arrayQueue.size());
-        System.out.println(arrayQueue.isEmpty());
-
-    }
 }

@@ -88,8 +88,4 @@ public class LoopQueue<E> implements Queue<E> {
         return size;
     }
 
-    public static void main(String[] args) {
-
-
-    }
 }

@@ -51,16 +51,4 @@ class KthLargest {
         return 0;
     }
 
-    public static void main(String[] args) {
-        int k = 3;
-        int[] nums = {4, 5, 8, 2};
-        KthLargest largest = new KthLargest(k, nums);
-        System.out.println(largest.add(3));
-        System.out.println(largest.add(5));
-        System.out.println(largest.add(10));
-        System.out.println(largest.add(9));
-        System.out.println(largest.add(4));
-
-
-    }
 }

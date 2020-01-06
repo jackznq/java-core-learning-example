@@ -87,14 +87,5 @@ class MyQueue {
         return false;
     }
 
-    public static void main(String[] args) {
-        MyQueue myQueue = new MyQueue();
-        myQueue.push(1);
-        myQueue.push(2);
-        int peek = myQueue.peek();
-        myQueue.push(3);
-        int peek1 = myQueue.peek();
-        System.out.println(peek);
-        System.out.println(peek1);
-    }
+
 }

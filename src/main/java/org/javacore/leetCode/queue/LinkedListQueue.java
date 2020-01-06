@@ -91,15 +91,4 @@ public class LinkedListQueue<E> implements Queue<E> {
         return 0;
     }
 
-    public static void main(String[] args) {
-        LinkedListQueue linkedListQueue = new LinkedListQueue();
-        for (int i = 0; i < 10; i++) {
-            linkedListQueue.add(i);
-            System.out.println(linkedListQueue);
-            if (i % 3 == 2) {
-                linkedListQueue.poll();
-                System.out.println(linkedListQueue);
-            }
-        }
-    }
 }

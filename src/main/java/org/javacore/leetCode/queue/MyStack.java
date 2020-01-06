@@ -72,17 +72,4 @@ class MyStack {
         return true;
     }
 
-    public static void main(String[] args) {
-        MyStack stack = new MyStack();
-        stack.push(1);
-        stack.push(2);
-        int top = stack.top();
-        int pop = stack.pop();
-//        int pop1 = stack.pop();
-        boolean empty = stack.empty();
-        System.out.println(top);
-        System.out.println(pop);
-//        System.out.println(pop1);
-        System.out.println(empty);
-    }
 }
