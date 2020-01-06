@@ -168,12 +168,4 @@ public class BSTMap<K extends Comparable<? super K>, V> {
     }
 
 
-    public static void main(String[] args) {
-        BSTMap bstMap = new BSTMap();
-        bstMap.add(1,3);
-        System.out.println(bstMap.getSize());
-        bstMap.remove(1);
-        System.out.println(bstMap.get(1));
-    }
-
 }
