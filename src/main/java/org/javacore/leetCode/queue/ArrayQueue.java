@@ -9,7 +9,7 @@ import java.util.List;
  * @author: znq
  * @create: 2019-10-24 07:05
  **/
-public class ArrayQueue<E> implements Queue<E> {
+public class ArrayQueue<E extends Comparable<? super E>> implements Queue<E> {
 
     private List<E> list;
 

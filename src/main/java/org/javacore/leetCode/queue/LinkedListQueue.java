@@ -9,7 +9,7 @@ import lombok.ToString;
  * @create: 2019-10-24 07:05
  **/
 @ToString
-public class LinkedListQueue<E> implements Queue<E> {
+public class LinkedListQueue<E extends Comparable<E>> implements Queue<E> {
 
     @ToString
     private class Node<E> {

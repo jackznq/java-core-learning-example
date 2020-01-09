@@ -10,7 +10,7 @@ import org.omg.CORBA.Object;
  * @create: 2019-10-24 07:05
  **/
 @ToString
-public class LoopQueue<E> implements Queue<E> {
+public class LoopQueue<E extends Comparable<? super E>> implements Queue<E> {
 
     private E[] data;
 
