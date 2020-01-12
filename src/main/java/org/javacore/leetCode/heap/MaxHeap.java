@@ -1,6 +1,8 @@
 package org.javacore.leetCode.heap;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 import java.util.Random;
 
 /**
@@ -19,6 +21,14 @@ public class MaxHeap<E extends Comparable<E>> {
 
     public MaxHeap() {
         this.arrayList = new ArrayList();
+    }
+
+    public MaxHeap(E[] arr) {
+        List<E> es = Arrays.asList(arr);
+        arrayList.addAll(es);
+        for (int i = parent(arr.length - 1); i >= 0; i--) {
+            siftDown(i);
+        }
     }
 
     public int getSize() {
@@ -99,6 +109,19 @@ public class MaxHeap<E extends Comparable<E>> {
         return arrayList.get(0);
     }
 
+    /**
+     * 替换元素
+     *
+     * @param e
+     * @return
+     */
+    public E replace(E e) {
+        E peak = peak();
+        arrayList.set(0, e);
+        siftDown(0);
+        return peak;
+    }
+
 
     public static void main(String[] args) {
         MaxHeap<Integer> maxHeap = new MaxHeap();
@@ -112,11 +135,13 @@ public class MaxHeap<E extends Comparable<E>> {
         }
 
         for (int z = 1; z < data.length; z++) {
-            if (data[z-1]<data[z]){
+            if (data[z - 1] < data[z]) {
                 throw new IllegalArgumentException("exception");
             }
 
         }
         System.out.println("completed");
     }
+
+
 }
