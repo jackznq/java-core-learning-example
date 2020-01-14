@@ -1,5 +1,7 @@
 package org.javacore.leetCode.queue;
 
+import org.javacore.leetCode.heap.MaxHeap;
+
 /**
  * @program: java-core-learning-example
  * @description: 优先队列
@@ -8,31 +10,40 @@ package org.javacore.leetCode.queue;
  **/
 public class PriorityQueue<E extends Comparable<? super E>> implements Queue<E> {
 
+    private MaxHeap maxHeap;
 
+    public PriorityQueue(MaxHeap maxHeap) {
+        this.maxHeap = maxHeap;
+    }
+
+    public PriorityQueue() {
+        maxHeap = new MaxHeap();
+    }
 
     @Override
     public boolean add(E e) {
-        return false;
+        maxHeap.add(e);
+        return true;
     }
 
     @Override
     public E poll() {
-        return null;
+        return (E) maxHeap.pop();
     }
 
     @Override
     public E peek() {
-        return null;
+        return (E) maxHeap.peak();
     }
 
     @Override
     public boolean isEmpty() {
-        return false;
+        return maxHeap.isEmpty();
     }
 
     @Override
     public int size() {
-        return 0;
+        return maxHeap.getSize();
     }
 
     @Override

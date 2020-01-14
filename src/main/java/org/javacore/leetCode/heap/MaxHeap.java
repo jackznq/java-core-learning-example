@@ -3,7 +3,6 @@ package org.javacore.leetCode.heap;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 /**
  * @program: java-core-learning-example
@@ -11,7 +10,7 @@ import java.util.Random;
  * @author: znq
  * @create: 2020-01-06 14:51
  **/
-public class MaxHeap<E extends Comparable<E>> {
+public class MaxHeap<E extends Comparable<? super E>> {
 
     private ArrayList<E> arrayList;
 
@@ -120,27 +119,6 @@ public class MaxHeap<E extends Comparable<E>> {
         arrayList.set(0, e);
         siftDown(0);
         return peak;
-    }
-
-
-    public static void main(String[] args) {
-        MaxHeap<Integer> maxHeap = new MaxHeap();
-        Random random = new Random();
-        for (int i = 0; i < 100; i++) {
-            maxHeap.add(random.nextInt(10000));
-        }
-        int data[] = new int[100];
-        for (int j = 0; j < 100; j++) {
-            data[j] = maxHeap.pop();
-        }
-
-        for (int z = 1; z < data.length; z++) {
-            if (data[z - 1] < data[z]) {
-                throw new IllegalArgumentException("exception");
-            }
-
-        }
-        System.out.println("completed");
     }
 
 
