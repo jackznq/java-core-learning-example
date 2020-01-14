@@ -288,10 +288,10 @@ public class Solution {
             Comparable e = root.e;
             TreeNode right = root.right;
 
-            if (left != null && left.e .compareTo(e)>0) {
+            if (left != null && left.e.compareTo(e) > 0) {
                 isSmaller = false;
             }
-            if (right != null && right.e.compareTo(e)<0) {
+            if (right != null && right.e.compareTo(e) < 0) {
                 isLarger = false;
 
             }
@@ -316,8 +316,8 @@ public class Solution {
 
     public static boolean isValidBS(TreeNode root, long minVal, long maxVal) {
         if (root == null) return true;
-        if (root.e.compareTo(maxVal) >=0  || root.e.compareTo(minVal) <= 0) return false;
-        return isValidBS(root.left, minVal, (long)root.e) && isValidBS(root.right, (long)root.e, maxVal);
+        if (root.e.compareTo(maxVal) >= 0 || root.e.compareTo(minVal) <= 0) return false;
+        return isValidBS(root.left, minVal, (long) root.e) && isValidBS(root.right, (long) root.e, maxVal);
     }
 
 
@@ -531,7 +531,7 @@ public class Solution {
             map.put(i, map.getOrDefault(i, 0) + 1);
         }
 
-        PriorityQueue<Integer> heap = new PriorityQueue<>((a,b)->map.get(a)-map.get(b));
+        PriorityQueue<Integer> heap = new PriorityQueue<>((a, b) -> map.get(a) - map.get(b));
         for (int count : map.keySet()) {
             heap.add(count);
             if (heap.size() > k) {
@@ -545,4 +545,8 @@ public class Solution {
     }
 
 
+    public int findKthLargest(int[] nums, int k) {
+
+        return 0;
+    }
 }
