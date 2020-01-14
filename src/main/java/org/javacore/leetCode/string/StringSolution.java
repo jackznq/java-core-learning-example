@@ -187,15 +187,17 @@ public class StringSolution {
         }
         PriorityQueue<Integer> heap = new PriorityQueue<>((a, b) -> map.get(a) - map.get(b));
         for (int count : map.keySet()) {
-            heap.add(count);
-            if (heap.size() > k) {
-                heap.poll();
+            //heap.add(count);
+            if (heap.size() < k) {
+                heap.add(count);
+            } else if (map.get(count) > map.get(heap.peek())) {
+                heap.remove();
+                heap.add(count);
             }
         }
         List<Integer> top_k = new LinkedList();
         while (!heap.isEmpty())
             top_k.add(heap.poll());
-        Collections.reverse(top_k);
         return top_k;
     }
 
@@ -217,4 +219,6 @@ public class StringSolution {
         }
         return false;
     }
+
+
 }

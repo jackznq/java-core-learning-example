@@ -1,8 +1,6 @@
 package org.javacore.leetCode.heap;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.util.*;
 
 /**
  * @program: java-core-learning-example
@@ -119,6 +117,17 @@ public class MaxHeap<E extends Comparable<? super E>> {
         arrayList.set(0, e);
         siftDown(0);
         return peak;
+    }
+
+    public static List<Integer> topKFrequent(int[] nums, int k) {
+
+        Map<Integer, Integer> map = new TreeMap<>();
+        for (int i : nums) {
+            map.put(i, map.getOrDefault(i, 0) + 1);
+        }
+
+
+        return null;
     }
 
 
