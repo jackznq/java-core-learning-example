@@ -95,6 +95,8 @@ public class Solution {
 //        int a[] = {4, 6, 7, 3, 5, 8};
 //        Arrays.toString(sortArrayByParityII(a));
         frequencySort("Aabb");
+        int [] arr ={3,2,1,5,6,4};
+        findKthLargest(arr,2);
     }
 
     public static int removeDuplicates(int[] nums) {
@@ -545,8 +547,17 @@ public class Solution {
     }
 
 
-    public int findKthLargest(int[] nums, int k) {
-
-        return 0;
+    public static int findKthLargest(int[] nums, int k) {
+        PriorityQueue<Integer> heap = new PriorityQueue<>((a, b) -> b - a);
+        for (int i : nums) {
+            heap.add(i);
+        }
+        int result = 0;
+        while (k > 0) {
+            result = heap.poll();
+            k--;
+        }
+        System.out.println(result);
+        return result;
     }
 }
