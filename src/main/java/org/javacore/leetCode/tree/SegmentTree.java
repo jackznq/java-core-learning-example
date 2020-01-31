@@ -31,7 +31,7 @@ public class SegmentTree<E> {
 
     private void buildSegmentTree(int index, int left, int right) {
         if (left == right) {
-            data[index] = data[left];
+            tree[index] = data[left];
             return;
         }
         int leftChild = leftChild(index);
@@ -48,6 +48,34 @@ public class SegmentTree<E> {
 
     private int rightChild(int index) {
         return 2 * index + 2;
+    }
+
+
+    public E query(int l, int r) {
+        if (l < 0 || r < 0 || l >= data.length || r >= data.length || l > r) {
+            throw new IllegalArgumentException("args is illegal");
+        }
+        return query(0, 0, data.length - 1, l, r);
+    }
+
+    private E query(int treeIndex, int l, int r, int queryL, int queryR) {
+        if (l == queryL && r == queryR) {
+            return tree[treeIndex];
+        }
+        int mid = l + (r - l) / 2;
+        int leftChild = leftChild(treeIndex);
+        int rightChild = rightChild(treeIndex);
+
+        if (queryL > mid + 1) {
+            return query(rightChild, mid + 1, r, queryL, queryR);
+        } else if (queryR <= mid) {
+            return query(leftChild, l, mid, queryL, queryR);
+        }
+        //查左边
+        E leftResult = query(leftChild, l, mid, queryL, mid);
+        E rightResult = query(rightChild, mid + 1, r, mid + 1, queryR);
+
+        return merger.merge(leftResult, rightResult);
     }
 
     interface Merger<E> {
@@ -75,9 +103,9 @@ public class SegmentTree<E> {
 
     public static void main(String[] args) {
         Integer arr[] = {-2, 3, 4, 0, 8, 6};
-        SegmentTree segmentTree = new SegmentTree(arr, (Merger<Integer>) (a, b) -> a + b);
-        System.out.println(segmentTree.toString());
-
+        SegmentTree<Integer> segmentTree = new SegmentTree(arr, (Merger<Integer>) (a, b) -> a + b);
+//        System.out.println(segmentTree.toString());
+        System.out.println(segmentTree.query(0,5));
     }
 }
 
