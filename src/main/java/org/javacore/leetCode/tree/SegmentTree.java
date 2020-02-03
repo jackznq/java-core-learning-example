@@ -101,11 +101,30 @@ public class SegmentTree<E> {
         return sb.toString();
     }
 
-    public static void main(String[] args) {
-        Integer arr[] = {-2, 3, 4, 0, 8, 6};
-        SegmentTree<Integer> segmentTree = new SegmentTree(arr, (Merger<Integer>) (a, b) -> a + b);
-//        System.out.println(segmentTree.toString());
-        System.out.println(segmentTree.query(0,5));
+    public void set(int index, E val) {
+        if (index < 0 || index > data.length) {
+            throw new IllegalArgumentException("index is Ilegal");
+        }
+        data[index] = val;
+        set(0, 0, data.length - 1, index, val);
     }
+
+    private void set(int treeIndex, int l, int r, int index, E e) {
+        if (l == r) {
+            tree[treeIndex] = e;
+            return;
+        }
+        int mid = l + (r - l) / 2;
+        int leftChild = leftChild(treeIndex);
+        int rightChild = rightChild(treeIndex);
+        if (index >= mid + 1) {
+            set(rightChild, mid + 1, r, index, e);
+        } else {
+            set(leftChild, l, mid, index, e);
+        }
+        tree[treeIndex] = merger.merge(tree[leftChild], tree[rightChild]);
+    }
+
+
 }
 
