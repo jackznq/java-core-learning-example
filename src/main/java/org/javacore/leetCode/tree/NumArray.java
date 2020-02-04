@@ -154,13 +154,6 @@ class NumArray {
         }
     }
 
-    public static void main(String[] args) {
-        int arr[] = {0,9,5,7,3};
-        NumArray numArray = new NumArray(arr);
-        numArray.sumRange(4,4);
-        numArray.sumRange(2,4);
-        numArray.sumRange(3,3);
-    }
 }
 
 /**
