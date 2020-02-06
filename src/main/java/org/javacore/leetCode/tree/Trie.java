@@ -67,7 +67,25 @@ public class Trie {
         return cur.isWord;
     }
 
-    public static void main(String[] args) {
+    public boolean isPrefix(String prefix) {
+        Node cur = root;
+        for (int i = 0; i < prefix.length(); i++) {
+            char c = prefix.charAt(i);
+            if (cur.next.get(c) == null) {
+                return false;
+            }
+            cur = cur.next.get(c);
+        }
+        return true;
+    }
 
+    public static void main(String[] args) {
+        String abd = "abd";
+        String abdd = "abdd";
+        Trie trie = new Trie();
+        trie.add(abd);
+        trie.add(abdd);
+        System.out.println(trie.contains(abd));
+        System.out.println(trie.contains(abdd));
     }
 }
