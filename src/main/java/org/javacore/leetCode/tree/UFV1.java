@@ -4,10 +4,10 @@ package org.javacore.leetCode.tree;
  * 并查集 通过树实现
  * 该树比较特殊，孩子指向父亲
  */
-class UFV2 extends AbstractUF {
+class UFV1 extends AbstractUF {
 
 
-    public UFV2(int size) {
+    public UFV1(int size) {
         super(size);
     }
 
@@ -23,18 +23,6 @@ class UFV2 extends AbstractUF {
         if (pv == qv)
             return;
         parent[pv] = qv;
-    }
-
-
-    @Override
-    public int find(int p) {
-        if (p < 0 || p > parent.length) {
-            throw new IllegalArgumentException("illegal args");
-        }
-        while (p != parent[p]) {
-            p = parent[p];
-        }
-        return p;
     }
 
 
