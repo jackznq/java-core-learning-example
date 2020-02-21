@@ -1,7 +1,7 @@
 package org.javacore.leetCode.tree;
 
 /**
- * 并查集
+ * 并查集 通过数组实现
  */
 class UFV1 implements UF {
 
