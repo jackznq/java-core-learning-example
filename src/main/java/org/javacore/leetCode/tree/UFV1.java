@@ -19,10 +19,14 @@ class UFV1 extends AbstractUF {
     @Override
     public void connectElements(int p, int q) {
         int pv = find(p);
-        int qv = find(p);
+        int qv = find(q);
         if (pv == qv)
             return;
-        parent[pv] = qv;
+        for (int i = 0; i < parent.length; i++) {
+            if (parent[i] == pv) {
+                parent[i] = qv;
+            }
+        }
     }
 
 

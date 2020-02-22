@@ -7,8 +7,14 @@ package org.javacore.leetCode.tree;
 class UFV2 extends AbstractUF {
 
 
+    private int[] sz;
+
     public UFV2(int size) {
         super(size);
+        sz = new int[size];
+        for (int i = 0; i < size; i++) {
+            sz[i] = 1;
+        }
     }
 
     @Override
@@ -19,10 +25,16 @@ class UFV2 extends AbstractUF {
     @Override
     public void connectElements(int p, int q) {
         int pv = find(p);
-        int qv = find(p);
+        int qv = find(q);
         if (pv == qv)
             return;
-        parent[pv] = qv;
+        if (sz[pv] < sz[qv]) {
+            parent[pv] = qv;
+            sz[qv] += sz[pv];
+        } else {
+            parent[qv] = pv;
+            sz[pv] += sz[qv];
+        }
     }
 
 
