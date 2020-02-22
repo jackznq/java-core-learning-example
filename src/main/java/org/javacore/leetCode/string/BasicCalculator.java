@@ -1,7 +1,5 @@
 package org.javacore.leetCode.string;
 
-import java.util.Arrays;
-
 /**
  * @Date 18/11/28 上午10:58
  * @Auther znq
@@ -29,11 +27,4 @@ public class BasicCalculator {
 
     }
 
-    public static void main(String[] args) {
-        String s = "23 t";
-        s.trim();
-        char[] chars = s.toCharArray();
-
-        System.out.println(Arrays.toString(chars));
-    }
 }
