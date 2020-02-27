@@ -120,7 +120,7 @@ public class BST<E extends Comparable<? super E>> {
     }
 
     /**
-     * 有点：更快的找到元素
+     * 优点:更快的找到元素
      * 采用队列进行广度遍历
      */
     public void levelOrder() {

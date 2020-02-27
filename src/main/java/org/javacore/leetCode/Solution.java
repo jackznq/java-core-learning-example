@@ -287,13 +287,13 @@ public class Solution {
         Boolean isSmaller = true;
         if (root != null) {
             TreeNode left = root.left;
-            Comparable e = root.e;
+            Comparable e = root.k;
             TreeNode right = root.right;
 
-            if (left != null && left.e.compareTo(e) > 0) {
+            if (left != null && left.k.compareTo(e) > 0) {
                 isSmaller = false;
             }
-            if (right != null && right.e.compareTo(e) < 0) {
+            if (right != null && right.k.compareTo(e) < 0) {
                 isLarger = false;
 
             }
@@ -318,8 +318,8 @@ public class Solution {
 
     public static boolean isValidBS(TreeNode root, long minVal, long maxVal) {
         if (root == null) return true;
-        if (root.e.compareTo(maxVal) >= 0 || root.e.compareTo(minVal) <= 0) return false;
-        return isValidBS(root.left, minVal, (long) root.e) && isValidBS(root.right, (long) root.e, maxVal);
+        if (root.k.compareTo(maxVal) >= 0 || root.k.compareTo(minVal) <= 0) return false;
+        return isValidBS(root.left, minVal, (long) root.k) && isValidBS(root.right, (long) root.k, maxVal);
     }
 
 
