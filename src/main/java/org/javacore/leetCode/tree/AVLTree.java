@@ -78,12 +78,24 @@ public class AVLTree<K extends Comparable<? super K>, V> {
         if (Math.abs(balanceFactor) >= 2) {
             System.out.println("不平衡");
         }
+        //LL
         if (balanceFactor > 1 && getBalanceFactor(node.left) >= 0) {
             return rightRotate(node);
         }
-
+        //RR
         if (balanceFactor < -1 && getBalanceFactor(node.right) <= 0) {
             return leftRotate(node);
+        }
+        //LR
+        if (balanceFactor > 1 && getBalanceFactor(node.left) < 0) {
+            node.left = leftRotate(node.left);
+            return rightRotate(node);
+        }
+
+        //RL
+        if (balanceFactor < -1 && getBalanceFactor(node.right) > 0) {
+            node.right = rightRotate(node.right);
+            return leftRotate(node.left);
         }
         return node;
     }
@@ -109,6 +121,5 @@ public class AVLTree<K extends Comparable<? super K>, V> {
         x.height = Math.max(getHeight(x.right), getHeight(x.left)) + 1;
         return x;
     }
-
 
 }
