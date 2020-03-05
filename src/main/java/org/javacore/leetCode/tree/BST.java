@@ -38,7 +38,7 @@ public class BST<E extends Comparable<? super E>> {
         root = add(root, e);
     }
 
-    public TreeNode add(TreeNode node, E e) {
+    private TreeNode add(TreeNode node, E e) {
         if (node == null) {
             size++;
             return new TreeNode(e);
@@ -109,11 +109,11 @@ public class BST<E extends Comparable<? super E>> {
         while (node != null || stack.size() > 0) {
             if (node != null) {
                 stack.push(node);   //直接压栈
-                node = node.getLeft();
+                node = node.left;
             } else {
                 node = stack.pop(); //出栈并访问
                 System.out.println(node.e);
-                node = node.getRight();
+                node = node.right;
 
             }
         }
@@ -307,5 +307,17 @@ public class BST<E extends Comparable<? super E>> {
 
     }
 
+
+    public static void main(String[] args) {
+        BST bst = new BST();
+        bst.addRecur(10);
+        bst.addRecur(8);
+        bst.addRecur(9);
+        bst.addRecur(4);
+        bst.addRecur(16);
+        bst.addRecur(18);
+        bst.addRecur(12);
+        bst.inOrderTraversal();
+    }
 
 }
