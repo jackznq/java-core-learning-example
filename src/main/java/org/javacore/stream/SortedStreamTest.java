@@ -18,10 +18,11 @@ package org.javacore.stream;
 
 import java.util.Arrays;
 import java.util.Comparator;
+import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static java.util.stream.Collectors.toList;
+import static java.util.stream.Collectors.*;
 
 public class SortedStreamTest {
     public static void main(String[] args) {
@@ -53,6 +54,9 @@ public class SortedStreamTest {
         //所有交易中，最高的交易额是多少？
         System.out.println(transactions.stream().max(Comparator.comparing(Transaction::getValue)).get());
         System.out.println(transactions.stream().map(Transaction::getValue).reduce(Integer::max).get());
+
+        IntSummaryStatistics collect = transactions.stream().collect(summarizingInt(Transaction::getValue));
+        System.out.println();
     }
 }
 
