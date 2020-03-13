@@ -6,7 +6,8 @@ import java.util.List;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.joining;
+import static java.util.stream.Collectors.reducing;
 
 /**
  * @program: java-core-learning-example
@@ -19,7 +20,8 @@ public class StreamTest {
 //        rangeClosed();
 //        gougu();
 //        fibo();
-        join();
+//        join();
+        System.out.println(prime(129));
     }
 
 
@@ -73,4 +75,16 @@ public class StreamTest {
     }
 
     public static List<Transaction> transactions;
+
+
+    /**
+     * 是否是质数
+     *
+     * @param candidate
+     * @return
+     */
+    public static boolean prime(int candidate) {
+        int sqrt = (int) Math.sqrt(candidate);
+        return IntStream.range(2, sqrt).noneMatch(i -> candidate % i == 0);
+    }
 }
