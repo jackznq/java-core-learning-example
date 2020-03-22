@@ -20,16 +20,15 @@ public class Shop {
 
     private double price;
 
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
     public Shop(String name) {
         this.name = name;
     }
 
-    public double getPrice(String product) {
-        return calculatePrice(product);
+    public String getPrice(String product) {
+        double v = calculatePrice(product);
+        Discount.Code code = Discount.Code.values()[
+            new Random().nextInt(Discount.Code.values().length)];
+        return String.format("%s:%.2f:%s", name, v, code);
     }
 
     public static void delay() {
@@ -80,24 +79,43 @@ public class Shop {
                     return t;
                 });
         long start = System.nanoTime();
-        System.out.println(findPrices("myPhone27S",executor));
+        findPrices("myPhone27S",executor).stream().forEach(System.out::println);
         long duration = (System.nanoTime() - start) / 1_000_000;
         System.out.println("Done in " + duration + " msecs");
     }
 
     private static List<String> findPrices(String product, Executor executor) {
 
-        List<CompletableFuture<String>> collect = shops.stream().
-            map(shop -> (CompletableFuture.supplyAsync(() -> shop.getName() + " price is " +
-                shop.getPrice(product), executor))).collect(toList());
-        return collect.stream().map(CompletableFuture::join).collect(toList());
+//        List<CompletableFuture<String>> collect = shops.stream().
+//            map(shop -> (CompletableFuture.supplyAsync(() -> shop.getName() + " price is " +
+//                shop.getPrice(product), executor))).collect(toList());
+//        return collect.stream().map(CompletableFuture::join).collect(toList());
+        List<CompletableFuture<String>> priceFutures =
+            shops.stream()
+                .map(shop -> CompletableFuture.supplyAsync(() -> shop.getPrice(product), executor))
+                //←─以异步方式取得每个shop中指定产品的原始价格
+                .map(future -> future.thenApply(Quote::parse))   // ←─Quote对象存在时，对其返回的值进行转换
+                .map(future -> future.thenCompose(quote ->   // ←─使用另一个异步任务构造期望的Future，申请折扣
+                    CompletableFuture.supplyAsync(
+                        () -> Discount.applyDiscount(quote), executor)))
+                .collect(toList());
+
+        return priceFutures.stream()
+            .map(CompletableFuture::join)   // ←─等待流中的所有Future执行完毕，并提取各自的返回值
+            .collect(toList());
     }
 
 
     public static List<String> findPrices(String product) {
-        return shops.stream()
-            .map(shop -> String.format("%s price is %.2f",
-                shop.getName(), shop.getPrice(product)))
+//        return shops.stream()
+//            .map(shop -> String.format("%s price is %.2f",
+//                shop.getName(), shop.getPrice(product)))
+//            .collect(toList());
+        return shops
+            .stream()
+            .map(shop -> shop.getPrice(product))
+            .map(Quote::parse)
+            .map(Discount::applyDiscount)
             .collect(toList());
     }
 }
