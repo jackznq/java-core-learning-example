@@ -16,13 +16,13 @@ package org.javacore.stream;
  * limitations under the License.
  */
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Comparator;
-import java.util.IntSummaryStatistics;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static java.util.stream.Collectors.*;
+import static java.util.stream.Collectors.toList;
 
 public class SortedStreamTest {
     public static void main(String[] args) {
@@ -31,13 +31,13 @@ public class SortedStreamTest {
         Trader alan = new Trader("Alan", "Cambridge");
         Trader brian = new Trader("Brian", "Cambridge");
 
-        List<Transaction> transactions = Arrays.asList(
+        List<Transaction> transactions = new ArrayList<>(Arrays.asList(
             new Transaction(brian, 2011, 300),
             new Transaction(raoul, 2012, 1000),
             new Transaction(raoul, 2011, 400),
             new Transaction(mario, 2012, 710),
             new Transaction(mario, 2012, 700),
-            new Transaction(alan, 2012, 950));
+            new Transaction(alan, 2012, 950)));
 
         //找出2011年发生的所有交易，并按交易额排序（从低到高）。
         System.out.println(transactions.stream().filter(e -> e.getYear() == 2011).sorted(Comparator.comparing(Transaction::getValue)).collect(toList()));
@@ -55,8 +55,10 @@ public class SortedStreamTest {
         System.out.println(transactions.stream().max(Comparator.comparing(Transaction::getValue)).get());
         System.out.println(transactions.stream().map(Transaction::getValue).reduce(Integer::max).get());
 
-        IntSummaryStatistics collect = transactions.stream().collect(summarizingInt(Transaction::getValue));
-        System.out.println();
+        transactions.removeIf((e -> e.getValue() > 500));
+        System.out.println(transactions);
+        System.out.println(Runtime.getRuntime().availableProcessors());
+
     }
 }
 
