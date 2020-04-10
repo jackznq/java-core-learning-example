@@ -153,10 +153,10 @@ public class BST<E extends Comparable<? super E>> {
      * @param e
      */
     public void remove(E e) {
-        TreeNode v = getTreeNode(e);
-        if (v == null) {
-            return;
-        }
+//        TreeNode v = getTreeNode(e);
+//        if (v == null) {
+//            return;
+//        }
         root = removeNode(root, e);
     }
 
@@ -164,11 +164,11 @@ public class BST<E extends Comparable<? super E>> {
     private TreeNode removeNode(TreeNode node, E v) {
         if (node == null) return null;
 
-        if (node.e.compareTo(v) > 0) {
-            node = removeNode(node.right, v);
+        if (node.e.compareTo(v) < 0) {
+            node.right = removeNode(node.right, v);
             return node;
-        } else if (node.e.compareTo(v) < 0) {
-            node = removeNode(node.left, v);
+        } else if (node.e.compareTo(v) > 0) {
+            node.left = removeNode(node.left, v);
             return node;
         } else {
             //右子树
@@ -199,6 +199,7 @@ public class BST<E extends Comparable<? super E>> {
     }
 
 
+    @Deprecated
     private TreeNode getTreeNode(E e) {
         if (Objects.isNull(e)) {
             return null;
@@ -214,7 +215,7 @@ public class BST<E extends Comparable<? super E>> {
                 return cur;
             }
         }
-        return null;
+        return cur;
     }
 
     /**
@@ -261,7 +262,8 @@ public class BST<E extends Comparable<? super E>> {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        generateString(root, 0, sb);
+        int result=0;
+        generateString(root, result, sb);
         return sb.toString();
     }
 

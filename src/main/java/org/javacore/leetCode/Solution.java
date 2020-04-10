@@ -1,6 +1,7 @@
 package org.javacore.leetCode;
 
 import org.javacore.leetCode.linkedlist.ListNode;
+import org.javacore.leetCode.tree.BST;
 import org.javacore.leetCode.tree.TreeNode;
 
 import java.math.BigInteger;
@@ -95,10 +96,16 @@ public class Solution {
 //        int a[] = {4, 6, 7, 3, 5, 8};
 //        Arrays.toString(sortArrayByParityII(a));
 //        frequencySort("Aabb");
-        Integer[] arr = {10, 5, 15, 3, 7, 18};
+        Integer[] arr = {5, 3, 6,2  , 7};
 //        findKthLargest(arr, 2);
-//        BST bst = new BST(arr);
-//        TreeNode root = bst.getRoot();
+        BST bst = new BST(arr);
+        TreeNode root = bst.getRoot();
+        System.out.println(root);
+//        System.out.println(maxDepth(root));
+        TreeNode treeNode = deleteNode(root, 5);
+        System.out.println(treeNode);
+
+
 //        int i = rangeSumBST(root, 7, 15);
 //        System.out.println(i);
 
@@ -575,4 +582,94 @@ public class Solution {
 //        if (R < root.val) return rangeSumBST(root.left, L, R);
 //        return root.val + rangeSumBST(root.left, L, root.val - 1) + rangeSumBST(root.right, root.val + 1, R);
 //    }
+
+    /**
+     * 104. Maximum Depth of Binary Tree
+     *
+     * @param root
+     * @return
+     */
+    public int maxDepth(TreeNode root) {
+        if (root == null) {
+            return 0;
+        }
+        return 1 + Math.max(maxDepth(root.right), maxDepth(root.left));
+    }
+//    public static int maxDepth(TreeNode root) {
+//
+//        if (root == null) {
+//            return 0;
+//        }
+//        List result = new ArrayList();
+//        maxDepth(root, result);
+//        return result.size();
+//    }
+//
+//    public static void maxDepth(TreeNode root, List result) {
+//
+//        if (root == null) {
+//            return;
+//        }
+//        result.add(1);
+//        maxDepth(root.left, result);
+//        maxDepth(root.right, result);
+//    }
+
+
+    /**
+     * 450. Delete Node in a BST
+     *
+     * @param root
+     * @param key
+     * @return
+     */
+    public static TreeNode deleteNode(TreeNode root, int key) {
+
+        if (root == null) return null;
+        if (root.e.compareTo(key) < 0) {
+            root.right = deleteNode(root.right, key);
+            return root;
+        } else if (root.e.compareTo(key) > 0) {
+            root.left = deleteNode(root.left, key);
+            return root;
+        } else {
+            if (root.right == null) {
+                TreeNode left = root.left;
+                root.left = null;
+                return left;
+            }
+            if (root.left == null) {
+                TreeNode right = root.right;
+                root.right = null;
+                return right;
+            }
+
+            TreeNode successor = minimum(root.right);
+            successor.right = removeMin(root.right);
+            successor.left = root.left;
+            root.left = root.right = null;
+            return successor;
+        }
+    }
+
+    private static TreeNode minimum(TreeNode node) {
+        if (node.left == null) {
+            return node;
+        }
+
+        return minimum(node.left);
+
+    }
+
+    private static TreeNode removeMin(TreeNode treeNode) {
+        if (treeNode.left == null) {
+            TreeNode right = treeNode.right;
+            treeNode.right = null;
+            return right;
+        }
+        treeNode.left = removeMin(treeNode.left);
+        return treeNode;
+    }
+
+
 }
