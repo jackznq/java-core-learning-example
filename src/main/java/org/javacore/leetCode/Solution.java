@@ -94,9 +94,14 @@ public class Solution {
 //        System.out.println(partition.toString());
 //        int a[] = {4, 6, 7, 3, 5, 8};
 //        Arrays.toString(sortArrayByParityII(a));
-        frequencySort("Aabb");
-        int [] arr ={3,2,1,5,6,4};
-        findKthLargest(arr,2);
+//        frequencySort("Aabb");
+        Integer[] arr = {10, 5, 15, 3, 7, 18};
+//        findKthLargest(arr, 2);
+//        BST bst = new BST(arr);
+//        TreeNode root = bst.getRoot();
+//        int i = rangeSumBST(root, 7, 15);
+//        System.out.println(i);
+
     }
 
     public static int removeDuplicates(int[] nums) {
@@ -560,4 +565,14 @@ public class Solution {
         System.out.println(result);
         return result;
     }
+
+    /**
+     * 938. Range Sum of BST
+     */
+//    public int rangeSumBST(TreeNode root, int L, int R) {
+//        if (root == null || L > R) return 0;
+//        if (L > root.val) return rangeSumBST(root.right, L, R);
+//        if (R < root.val) return rangeSumBST(root.left, L, R);
+//        return root.val + rangeSumBST(root.left, L, root.val - 1) + rangeSumBST(root.right, root.val + 1, R);
+//    }
 }

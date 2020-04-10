@@ -22,6 +22,17 @@ public class BST<E extends Comparable<? super E>> {
         size = 0;
     }
 
+    public BST(E[] es) {
+        if (es.length == 0) {
+            root = null;
+            size = 0;
+        } else {
+            for (E e : es) {
+                addRecur(e);
+            }
+        }
+    }
+
     public BST(TreeNode root) {
         this.root = root;
     }
@@ -308,16 +319,20 @@ public class BST<E extends Comparable<? super E>> {
     }
 
 
-    public static void main(String[] args) {
-        BST bst = new BST();
-        bst.addRecur(10);
-        bst.addRecur(8);
-        bst.addRecur(9);
-        bst.addRecur(4);
-        bst.addRecur(16);
-        bst.addRecur(18);
-        bst.addRecur(12);
-        bst.inOrderTraversal();
-    }
+//    public static void main(String[] args) {
+//        BST bst = new BST();
+//        bst.addRecur(10);
+//        bst.addRecur(8);
+//        bst.addRecur(9);
+//        bst.addRecur(4);
+//        bst.addRecur(16);
+//        bst.addRecur(18);
+//        bst.addRecur(12);
+//        bst.inOrderTraversal();
+//    }
 
+
+    public TreeNode getRoot() {
+        return root;
+    }
 }
