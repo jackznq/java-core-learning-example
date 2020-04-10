@@ -11,13 +11,13 @@ import java.util.*;
 public class LinkedListSolution {
 
     public static void main(String[] args) {
-        Integer arr2[] = {1, 2, 3, 4, 6, 7};
+        Integer arr2[] = {1, 2, 3, 4, 5};
         ListNode listNode1 = new ListNode(arr2);
 //        ListUtil.sorted(listNode1);
 //        System.out.println(ListUtil.sortedInsert(listNode1,10).toString());
-        Integer arr1[] = {4, 5, 6};
+//        Integer arr1[] = {4, 5, 6};
 
-        ListNode listNode2 = new ListNode(arr1);
+//        ListNode listNode2 = new ListNode(arr1);
 //        ListUtil.append(listNode1,listNode2);
 //        swapPairs(node1);
 //        ListNode listNode = addTwoNumbers(listNode1, listNode2);
@@ -31,9 +31,9 @@ public class LinkedListSolution {
 //        List<ListNode> listNodes = ListUtil.divide(listNode1, one, two);
 //        System.out.println(listNodes);
 //        System.out.println(ListUtil.reverse(listNode1));
-        System.out.println(listNode1);
-        System.out.println(listNode2);
-        System.out.println(ListUtil.addTwoNumbers(listNode1, listNode2));
+//        System.out.println(ListUtil.addTwoNumbers(listNode1, listNode2));
+        ListNode listNode = reverseBetween(listNode1, 1, 4);
+        System.out.println(listNode);
     }
 
 
@@ -239,6 +239,63 @@ public class LinkedListSolution {
         }
         return sb.toString();
     }
+
+    public static ListNode<Integer> reverseBetween(ListNode<Integer> head, int m, int n) {
+
+        if (head == null || m == n) {
+            return head;
+        }
+        ListNode<Integer> cur = head, pre = null;
+        int position = m;
+        while (m > 1) {
+            pre = cur;
+            cur = cur.next;
+            m--;
+        }
+        ListNode listNode = reverseBetween(cur, n - position);
+        if (pre != null) {
+            pre.next = listNode;
+            return head;
+        }
+        return listNode;
+    }
+
+    //
+    private static ListNode reverseBetween(ListNode<Integer> head, int n) {
+        ListNode<Integer> pre = null, tail = head;
+        while (n >= 0) {
+            ListNode next = head.next;
+            head.next = pre;
+            pre = head;
+            head = next;
+
+            n--;
+        }
+        if (head == null) {
+            return pre;
+        }
+        tail.next = head;
+        return pre;
+    }
+
+//    public static ListNode<Integer> reverseBetween(ListNode<Integer> head, int m, int n) {
+//        if (head == null || m == n) return head;
+//        ListNode dummy = new ListNode(0);
+//        ListNode pre = dummy;
+//        dummy.next = head;
+//
+//        for(int i = 0;i<m-1;i++) pre = pre.next;
+//
+//        ListNode start = pre.next;
+//        for (int i = 0; i < n - m; i++) {
+//            ListNode then = start.next;
+//            start.next = then.next;
+//            then.next = pre.next;
+//            pre.next = then;
+//        }
+//        return dummy.next;
+//
+//    }
 
 }
 
