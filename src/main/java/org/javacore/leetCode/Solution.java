@@ -96,14 +96,13 @@ public class Solution {
 //        int a[] = {4, 6, 7, 3, 5, 8};
 //        Arrays.toString(sortArrayByParityII(a));
 //        frequencySort("Aabb");
-        Integer[] arr = {5, 3, 6,2  , 7};
+        Integer[] arr = {1, 2, 3, 4, 5};
 //        findKthLargest(arr, 2);
         BST bst = new BST(arr);
         TreeNode root = bst.getRoot();
-        System.out.println(root);
 //        System.out.println(maxDepth(root));
-        TreeNode treeNode = deleteNode(root, 5);
-        System.out.println(treeNode);
+//        TreeNode treeNode = deleteNode(root, 5);
+        System.out.println(Math.abs(maxDepth(root.left) - maxDepth(root.right)) <= 1);
 
 
 //        int i = rangeSumBST(root, 7, 15);
@@ -589,7 +588,7 @@ public class Solution {
      * @param root
      * @return
      */
-    public int maxDepth(TreeNode root) {
+    public static int maxDepth(TreeNode root) {
         if (root == null) {
             return 0;
         }
@@ -671,5 +670,30 @@ public class Solution {
         return treeNode;
     }
 
+
+    /**
+     * 1302. Deepest Leaves Sum
+     *
+     * @param root
+     * @return
+     */
+    public int deepestLeavesSum(TreeNode root) {
+
+        if (root == null) {
+            return 0;
+        }
+        TreeMap<Integer, Integer> treeMap = new TreeMap();
+        rec(root, treeMap, 0);
+        return treeMap.lastEntry().getValue();
+    }
+
+    private void rec(TreeNode treeNode, Map<Integer, Integer> map, int depth) {
+        if (treeNode == null) {
+            return;
+        }
+        map.put(depth, map.getOrDefault(depth, 0) + (int) treeNode.e);
+        rec(treeNode.left, map, depth + 1);
+        rec(treeNode.right, map, depth + 1);
+    }
 
 }
