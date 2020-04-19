@@ -77,7 +77,7 @@ public class LinkedList<E extends Comparable<? super E>> {
 
     public E remove(int index) {
         if (index < 0 || index > size) {
-            throw new IllegalArgumentException("get faild");
+            throw new IllegalArgumentException("get failed");
         }
         ListNode pre = dummyHead;
         for (int i = 0; i < index; i++) {
