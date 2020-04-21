@@ -1,6 +1,7 @@
 package org.javacore.leetCode.practice.list;
 
 import org.javacore.leetCode.linkedlist.ListNode;
+import org.javacore.leetCode.linkedlist.MyLinkedList;
 
 import java.util.HashSet;
 import java.util.Stack;
@@ -52,12 +53,16 @@ public class InterViewCode {
 //        System.out.println(isPolindromel2(isPolindromel1));
 //        printListNode(addList(isPolindromel1, one));
 //        printListNode(one);
-        System.out.println();
 //        printListNode(reverseKNodes(one, 3));
 //        printListNode(removeDuplicatedNode(isPolindromel1));
 //        printListNode(removeValue(one, 4));
-        String[]param ={"gin", "zen", "gig", "msg"};
-        uniqueMorseRepresentations(param);
+//        String[]param ={"gin", "zen", "gig", "msg"};
+//        uniqueMorseRepresentations(param);
+        MyLinkedList myLinkedList = new MyLinkedList();
+        myLinkedList.addAtHead(2);
+        myLinkedList.addAtTail(3);
+        myLinkedList.get(1);
+
 
     }
 
@@ -130,7 +135,7 @@ public class InterViewCode {
         }
         System.out.println("print common part");
         while (one != null && two != null) {
-            if (one.e == two.e) {
+            if (one.e.equals(two.e)) {
                 System.out.println("commont part is " + one.e);
                 one = one.next;
                 two = two.next;
@@ -462,5 +467,6 @@ public class InterViewCode {
         }
         return result.size();
     }
+
 
 }

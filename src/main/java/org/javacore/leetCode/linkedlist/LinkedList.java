@@ -21,7 +21,7 @@ public class LinkedList<E extends Comparable<? super E>> {
     }
 
     public LinkedList() {
-        dummyHead = null;
+        dummyHead = new ListNode(0);
         size = 0;
     }
 
@@ -53,7 +53,7 @@ public class LinkedList<E extends Comparable<? super E>> {
     }
 
     public void addLast(E e) {
-        this.add(size, e);
+        this.add(size-1, e);
     }
 
     public E get(int index) {
