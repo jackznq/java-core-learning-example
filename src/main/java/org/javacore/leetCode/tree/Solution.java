@@ -1,20 +1,43 @@
 package org.javacore.leetCode.tree;
 
 
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
+import java.util.Queue;
+
 class Solution {
 
-    public static void main(String[] args) {
+    /**
+     * 102. Binary Tree Level Order Traversal
+     *
+     * @param root
+     * @return
+     */
+    public List<List<Integer>> levelOrder(TreeNode root) {
+        List<List<Integer>> result = new ArrayList();
+        if (root == null) {
+            return result;
+        }
+        Queue<TreeNode> queue = new LinkedList();
+        queue.offer(root);
+        while (!queue.isEmpty()) {
+            int size = queue.size();
+            List<Integer> integerList = new ArrayList<>();
+            for (int i = 0; i < size; i++) {
+                TreeNode poll = queue.poll();
+                integerList.add((Integer) poll.getE());
+                if (poll.left != null) {
+                    queue.offer(poll.left);
+                }
+                if (poll.right != null) {
+                    queue.offer(poll.right);
+                }
 
-        //并查集测试
-        int size =10000000;
-        int m =10000000;
-
-        UFV2 uf2 =new UFV2(size);
-        System.out.println(uf2.testUF(uf2,m));
-        UFV3 ufv3 =new UFV3(size);
-        System.out.println(ufv3.testUF(ufv3,m));
-        UFV4 ufv4 =new UFV4(size);
-        System.out.println(ufv4.testUF(ufv4,m));
+            }
+            result.add(integerList);
+        }
+        return result;
     }
 
 
