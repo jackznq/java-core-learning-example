@@ -1,7 +1,5 @@
 package org.javacore.leetCode.tree;
 
-import java.util.TreeMap;
-
 /**
  * @program: java-core-learning-example
  * @description: trie
@@ -10,71 +8,46 @@ import java.util.TreeMap;
  **/
 public class Trie {
 
-    private class Node {
+    private TrieNode root;
 
-        private boolean isWord;
-
-        private TreeMap<Character, Node> next;
-
-        public Node(boolean isWord) {
-            this.isWord = isWord;
-            next = new TreeMap<>();
-        }
-
-        public Node() {
-            this(false);
-        }
-    }
-
-    private Node root;
-
-    private int size;
 
     public Trie() {
-        this.root = new Node();
-        size = 0;
-
-    }
-
-    public int getSize() {
-        return size;
+        this.root = new TrieNode();
+        root.c = ' ';
     }
 
     public void add(String word) {
-        Node cur = root;
+        TrieNode cur = root;
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
-            if (cur.next.get(c) == null) {
-                cur.next.put(c, new Node());
+            if (cur.children[c - 'a'] == null) {
+                cur.children[c - 'a'] = new TrieNode(c);
             }
-            cur = cur.next.get(c);
+            cur = cur.children[c - 'a'];
         }
-        if (!cur.isWord) {
-            size++;
-            cur.isWord = true;
-        }
+        cur.isWord = true;
     }
 
     public boolean contains(String word) {
-        Node cur = root;
+        TrieNode ws = root;
         for (int i = 0; i < word.length(); i++) {
             char c = word.charAt(i);
-            if (cur.next.get(c) == null) {
+            if (ws.children[c - 'a'] == null) {
                 return false;
             }
-            cur = cur.next.get(c);
+            ws = ws.children[c - 'a'];
         }
-        return cur.isWord;
+        return ws.isWord;
     }
 
     public boolean isPrefix(String prefix) {
-        Node cur = root;
+        TrieNode cur = root;
         for (int i = 0; i < prefix.length(); i++) {
             char c = prefix.charAt(i);
-            if (cur.next.get(c) == null) {
+            if (cur.children[c - 'a'] == null) {
                 return false;
             }
-            cur = cur.next.get(c);
+            cur = cur.children[c - 'a'];
         }
         return true;
     }
@@ -86,6 +59,23 @@ public class Trie {
         trie.add(abd);
         trie.add(abdd);
         System.out.println(trie.contains(abd));
-        System.out.println(trie.contains(abdd));
+        System.out.println(trie.contains("2233"));
+    }
+
+    class TrieNode {
+
+        public char c;
+
+        public boolean isWord;
+
+        public TrieNode[] children = new TrieNode[256];
+
+        public TrieNode() {
+        }
+
+        public TrieNode(char c) {
+//            TrieNode trieNode = new TrieNode();
+            this.c = c;
+        }
     }
 }
