@@ -1,4 +1,4 @@
-package org.javacore;
+package org.javacore.thread;
 
 import java.util.concurrent.CountDownLatch;
 
