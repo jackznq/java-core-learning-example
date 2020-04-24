@@ -98,22 +98,33 @@ public class LinkedListSolution {
      * @param head
      * @return
      */
+//    public static boolean hasCycle(ListNode head) {
+//        if (head == null||head.next == null) return false;
+//        if (head.next == head) return true;
+//        Map<ListNode, Integer> listNodes = new HashMap<>();
+//        Boolean hasCycle = false;
+//        while (null != head) {
+//            if (listNodes.containsKey(head)) {
+//                hasCycle = true;
+//                break;
+//            } else {
+//                listNodes.put(head, null);
+//            }
+//            head = head.next;
+//        }
+//        return hasCycle;
+//    }
     public static boolean hasCycle(ListNode head) {
-        if (head == null) return false;
-        if (head.next == null) return false;
-        if (head.next == head) return true;
-        Map<ListNode, Integer> listNodes = new HashMap<>();
-        Boolean hasCycle = false;
-        while (null != head) {
-            if (listNodes.containsKey(head)) {
-                hasCycle = true;
-                break;
-            } else {
-                listNodes.put(head, null);
+        ListNode fast = head;
+        ListNode slow = head;
+        while (fast != null && fast.next != null) {
+            fast = fast.next.next;
+            slow = slow.next;
+            if (fast == slow) {
+                return true;
             }
-            head = head.next;
         }
-        return hasCycle;
+        return false;
     }
 
     /**
