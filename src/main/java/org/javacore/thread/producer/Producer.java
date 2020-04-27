@@ -1,5 +1,6 @@
 package org.javacore.thread.producer;
 
+import java.util.UUID;
 import java.util.concurrent.BlockingQueue;
 
 /**
@@ -9,19 +10,25 @@ public class Producer implements Runnable {
 
     BlockingQueue<String> queue;
 
-    public Producer(BlockingQueue<String> queue) {
+    private int timeOut;
+
+    public Producer(BlockingQueue<String> queue, int timeOut) {
         this.queue = queue;
+        this.timeOut = timeOut;
     }
 
     @Override
     public void run() {
+        while (true) {
 
-        String name = "生产者线程" + Thread.currentThread().getName();
-        System.out.println(name);
-        try {
-            queue.put(name);
-        } catch (InterruptedException e) {
-            e.printStackTrace();
+            try {
+                String name = UUID.randomUUID() + "name";
+                queue.put(name);
+                System.out.println(name+"当前库存为:"+queue.size());
+                Thread.sleep(1000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
         }
     }
 }

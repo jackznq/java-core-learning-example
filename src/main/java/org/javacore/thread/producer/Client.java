@@ -1,21 +1,26 @@
 package org.javacore.thread.producer;
 
+import java.util.concurrent.ArrayBlockingQueue;
 import java.util.concurrent.BlockingQueue;
-import java.util.concurrent.LinkedBlockingQueue;
 
 /**
  * Created by znq on 2018/3/7.
  */
 public class Client {
 
-    public static void main(String[] args) {
-        BlockingQueue<String> queue =new LinkedBlockingQueue<>(2);
+    public static void main(String[] args) throws Exception {
 
-        Producer producer = new Producer(queue);
-        Consumer consumer = new Consumer(queue);
-        for (int i = 0;i<5;i++){
-            new Thread(producer).start();
-            new Thread(consumer).start();
-        }
+        BlockingQueue<String> stock = new ArrayBlockingQueue<>(10);
+        Thread p1 = new Thread(new Producer(stock, 2000));
+        Thread p2 = new Thread(new Producer(stock, 500));
+        Thread c1 = new Thread(new Consumer(stock,"zhangsan"));
+//        Thread c2 = new Thread(new Consumer(stock, "lisi"));
+//        Thread c3 = new Thread(new Consumer(stock, "wangwu"));
+
+        p1.start();
+        p2.start();
+        c1.start();
+//        c2.start();
+//        c3.start();
     }
 }
