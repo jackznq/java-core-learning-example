@@ -1,7 +1,6 @@
 package org.javacore.leetCode.queue;
 
 import lombok.ToString;
-import org.omg.CORBA.Object;
 
 /**
  * @program: java-core-learning-example
@@ -12,7 +11,7 @@ import org.omg.CORBA.Object;
 @ToString
 public class LoopQueue<E extends Comparable<? super E>> implements Queue<E> {
 
-    private E[] data;
+    private Object[] data;
 
     //front == tail  queue is empty
     //(tail+1)%c=front queue is full
@@ -22,7 +21,7 @@ public class LoopQueue<E extends Comparable<? super E>> implements Queue<E> {
     private int size;
 
     public LoopQueue(int capacity) {
-        data = (E[]) new Object[capacity + 1];
+        data =  new Object[capacity + 1];
         front = tail = size = 0;
     }
 
@@ -50,7 +49,7 @@ public class LoopQueue<E extends Comparable<? super E>> implements Queue<E> {
     }
 
     private void resize(int newCapacity) {
-        E[] newData = (E[]) new Object[newCapacity + 1];
+        Object[] newData =  new Object[newCapacity + 1];
         for (int i = 0; i < size; i++) {
             newData[i] = data[(i + front) % data.length];
         }
@@ -65,7 +64,7 @@ public class LoopQueue<E extends Comparable<? super E>> implements Queue<E> {
         if (isEmpty()) {
             throw new IllegalStateException("queue is empty");
         }
-        E e = data[front];
+        E e = (E)data[front];
         data[front] = null;
         front = (front + 1) % data.length;
         size--;
@@ -75,7 +74,7 @@ public class LoopQueue<E extends Comparable<? super E>> implements Queue<E> {
     @Override
     public E peek() {
         if (isEmpty()) throw new IllegalStateException("queue is empty");
-        return data[front];
+        return (E)data[front];
     }
 
     @Override
@@ -86,6 +85,18 @@ public class LoopQueue<E extends Comparable<? super E>> implements Queue<E> {
     @Override
     public int size() {
         return size;
+    }
+
+    public static void main(String[] args) {
+        Queue queue = new LoopQueue<Integer>(5);
+        queue.add(1);
+        queue.add(1);
+        queue.add(1);
+        queue.add(1);
+        queue.add(1);
+        queue.add(1);
+        queue.add(1);
+        System.out.println(queue.getCapacity());
     }
 
 }

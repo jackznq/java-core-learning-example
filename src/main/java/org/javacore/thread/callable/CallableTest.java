@@ -25,5 +25,6 @@ public class CallableTest {
             sum+=f.get();
         }
         System.out.println(sum);
+        service.shutdown();
     }
 }

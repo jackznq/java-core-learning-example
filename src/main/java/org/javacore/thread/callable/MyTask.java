@@ -13,7 +13,7 @@ public class MyTask implements Callable<Integer>{
         this.data = data;
     }
     @Override
-    public Integer call() throws Exception {
+    public Integer call()  {
         int sum = 0;
         for (int i = 0;i<data;i++){
             sum +=i;
