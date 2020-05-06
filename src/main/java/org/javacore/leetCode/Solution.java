@@ -1,7 +1,6 @@
 package org.javacore.leetCode;
 
 import org.javacore.leetCode.linkedlist.ListNode;
-import org.javacore.leetCode.tree.BST;
 import org.javacore.leetCode.tree.TreeNode;
 
 import java.math.BigInteger;
@@ -98,15 +97,17 @@ public class Solution {
 //        frequencySort("Aabb");
         Integer[] arr = {1, 2, 3, 4, 5};
 //        findKthLargest(arr, 2);
-        BST bst = new BST(arr);
-        TreeNode root = bst.getRoot();
+//        BST bst = new BST(arr);
+//        TreeNode root = bst.getRoot();
 //        System.out.println(maxDepth(root));
 //        TreeNode treeNode = deleteNode(root, 5);
-        System.out.println(Math.abs(maxDepth(root.left) - maxDepth(root.right)) <= 1);
+//        System.out.println(Math.abs(maxDepth(root.left) - maxDepth(root.right)) <= 1);
 
 
 //        int i = rangeSumBST(root, 7, 15);
 //        System.out.println(i);
+        int []dp={1,100,1,1,1,100,1,1};
+        minCostClimbingStairs(dp);
 
     }
 
@@ -696,4 +697,17 @@ public class Solution {
         rec(treeNode.right, map, depth + 1);
     }
 
+
+    public static int minCostClimbingStairs(int[] cost) {
+        int [] mc = new int[cost.length + 1];
+        mc[0] = cost[0];
+        mc[1] = cost[1];
+
+        for(int i = 2; i <= cost.length; i++){
+            int costV = (i==cost.length)?0:cost[i];
+            mc[i] = Math.min(mc[i-1] + costV, mc[i-2] + costV);
+            System.out.println(Arrays.toString(mc));
+        }
+        return mc[cost.length];
+    }
 }
