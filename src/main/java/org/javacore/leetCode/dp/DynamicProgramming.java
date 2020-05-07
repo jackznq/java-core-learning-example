@@ -1,5 +1,7 @@
 package org.javacore.leetCode.dp;
 
+import java.util.Arrays;
+
 /**
  * @program: java-core-learning-example
  * @description: 动态规划
@@ -46,15 +48,38 @@ public class DynamicProgramming {
         return res[row - 1][col - 1];
     }
 
+    /**
+     * TODO
+     *
+     * @param grid
+     * @return
+     */
+    public static int minPathSum2(int[][] grid) {
+        if (grid == null || grid.length == 0 || grid[0] == null || grid[0].length == 0) {
+            return 0;
+        }
+        int row = grid.length;
+        int col = grid[0].length;
+        int[][] res = new int[row][col];
+        res[0][0] = grid[0][0];
+
+        return res[row - 1][col - 1];
+    }
+
+    /**
+     * 62
+     *
+     * @param m
+     * @param n
+     * @return
+     */
     public int uniquePaths(int m, int n) {
         int[][] res = new int[m][n];
         for (int i = 0; i < res.length; i++) {
             res[i][0] = 1;
         }
 
-        for (int i = 0; i < res[0].length; i++) {
-            res[0][i] = 1;
-        }
+        Arrays.fill(res[0], 1);
 
         for (int i = 1; i < res.length; i++) {
             for (int j = 1; j < res[0].length; j++) {
@@ -62,5 +87,17 @@ public class DynamicProgramming {
             }
         }
         return res[m - 1][n - 1];
+    }
+
+    /**
+     * 63 //// TODO: 2020-05-07
+     *
+     * @param m
+     * @param n
+     * @return
+     */
+    public int uniquePaths2(int m, int n) {
+        int[][] res = new int[m][n];
+        return 0;
     }
 }
