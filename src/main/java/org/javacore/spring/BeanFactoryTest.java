@@ -1,6 +1,6 @@
 package org.javacore.spring;
 
-import org.javacore.spi.spiapi.SpiDemo;
+import org.javacore.spring.aop.AopConfig;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -16,13 +16,12 @@ public class BeanFactoryTest {
 //        BeanFactory beanFactory = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 //        User user = (User) beanFactory.getBean("user");
 //        System.out.println(user);
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(SpringConfig.class);
-        User bean = applicationContext.getBean(User.class);
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(AopConfig.class);
+//        User bean = applicationContext.getBean(User.class);
 //        String[] beanNamesForType = applicationContext.getBeanDefinitionNames();
-        System.out.println(bean);
-        SpiDemo spiDemo = (SpiDemo)applicationContext.getBean(SpiDemo.class);
-        System.out.println(spiDemo);
-//        Arrays.stream(beanNamesForType).forEach(System.out::println);
+        MathCalculator mathCalculator = applicationContext.getBean(MathCalculator.class);
+        mathCalculator.div(1 , 0);
+//        System.out.println(bean);
         applicationContext.close();
     }
 }
