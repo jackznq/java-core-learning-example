@@ -1,5 +1,6 @@
 package org.javacore.spring;
 
+import org.javacore.spi.spiapi.SpiDemo;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -19,6 +20,8 @@ public class BeanFactoryTest {
         User bean = applicationContext.getBean(User.class);
 //        String[] beanNamesForType = applicationContext.getBeanDefinitionNames();
         System.out.println(bean);
+        SpiDemo spiDemo = (SpiDemo)applicationContext.getBean(SpiDemo.class);
+        System.out.println(spiDemo);
 //        Arrays.stream(beanNamesForType).forEach(System.out::println);
         applicationContext.close();
     }
