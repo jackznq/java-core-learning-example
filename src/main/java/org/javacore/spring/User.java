@@ -2,16 +2,15 @@ package org.javacore.spring;
 
 import org.springframework.beans.factory.DisposableBean;
 import org.springframework.beans.factory.InitializingBean;
-import org.springframework.stereotype.Component;
 
 import javax.annotation.PostConstruct;
 import javax.annotation.PreDestroy;
 
+
 /**
- * Created by ddfhznq on 2017/11/7.
+ * bean生命周期初始化
  */
-@Component
-public class User implements InitializingBean, DisposableBean {
+public class User implements DisposableBean, InitializingBean {
 
     private String name;
 
@@ -64,7 +63,7 @@ public class User implements InitializingBean, DisposableBean {
     }
 
     public void init() {
-        System.out.println("user init.....");
+        System.out.println("user @initMethod.....");
 
     }
 

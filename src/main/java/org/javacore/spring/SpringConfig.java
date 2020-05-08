@@ -1,5 +1,6 @@
 package org.javacore.spring;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -13,9 +14,9 @@ import org.springframework.context.annotation.Configuration;
 @ComponentScan(value = "org.javacore")
 public class SpringConfig {
 
-//    @Bean(initMethod = "init",destroyMethod = "destroy")
-//    public User user() {
-//        return new User("zhangsan", 28, "nan");
-//
-//    }
+    @Bean(initMethod = "init",destroyMethod = "myDestroy")
+    public User user() {
+        return new User();
+
+    }
 }

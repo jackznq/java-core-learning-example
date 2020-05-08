@@ -17,25 +17,25 @@ public class MyBeanPostProcessor implements BeanPostProcessor {
     @Override
     public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
         System.out.println("postProcessBeforeInitialization " + beanName + "=>>" + bean);
-        if (bean instanceof User) {
-            User user = (User) bean;
-            user.setAge(30);
-            user.setName("znq");
-            return user;
-        }
+//        if (bean instanceof User) {
+//            User user = (User) bean;
+//            user.setAge(30);
+//            user.setName("znq");
+//            return user;
+//        }
         return bean;
     }
 
     @Override
     public Object postProcessAfterInitialization(Object bean, String beanName) throws BeansException {
         System.out.println("postProcessAfterInitialization " + beanName + "=>>" + bean);
-        if (bean instanceof User) {
-            User user = (User) bean;
-            user.setAge(35);
-            user.setName("znq1");
-            user.setSex("1");
-            return user;
-        }
+//        if (bean instanceof User) {
+//            User user = (User) bean;
+//            user.setAge(35);
+//            user.setName("znq1");
+//            user.setSex("1");
+//            return user;
+//        }
         return bean;
     }
 }
