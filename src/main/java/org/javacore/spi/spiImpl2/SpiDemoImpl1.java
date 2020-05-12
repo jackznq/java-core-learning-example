@@ -9,7 +9,7 @@ import org.javacore.spi.spiapi.SpiDemo;
  * @create: 2020-05-08 17:27
  **/
 //@Service("spiDemoImpl2")
-public class SpiDemoImpl2 implements SpiDemo {
+public class SpiDemoImpl1 implements SpiDemo {
 
     @Override
     public void say() {
