@@ -17,6 +17,7 @@ public class RedisTest {
 //        jedis = new Jedis("172.161.130");
         //权限认证
 //        jedis.auth("admin");
+
     }
 
     /**

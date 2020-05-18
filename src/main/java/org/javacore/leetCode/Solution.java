@@ -106,9 +106,15 @@ public class Solution {
 
 //        int i = rangeSumBST(root, 7, 15);
 //        System.out.println(i);
-        int []dp={1,100,1,1,1,100,1,1};
-        minCostClimbingStairs(dp);
+        int[] dp = {1, 100, 1, 1, 1, 100, 1, 1};
+//        minCostClimbingStairs(dp);
 
+        ListNode _83l = new ListNode(1);
+        ListNode two = new ListNode(1);
+        _83l.next = two;
+        ListNode three = new ListNode(1);
+        two.next = three;
+        System.out.println(deleteDuplicates(_83l));
     }
 
     public static int removeDuplicates(int[] nums) {
@@ -699,15 +705,37 @@ public class Solution {
 
 
     public static int minCostClimbingStairs(int[] cost) {
-        int [] mc = new int[cost.length + 1];
+        int[] mc = new int[cost.length + 1];
         mc[0] = cost[0];
         mc[1] = cost[1];
 
-        for(int i = 2; i <= cost.length; i++){
-            int costV = (i==cost.length)?0:cost[i];
-            mc[i] = Math.min(mc[i-1] + costV, mc[i-2] + costV);
+        for (int i = 2; i <= cost.length; i++) {
+            int costV = (i == cost.length) ? 0 : cost[i];
+            mc[i] = Math.min(mc[i - 1] + costV, mc[i - 2] + costV);
             System.out.println(Arrays.toString(mc));
         }
         return mc[cost.length];
     }
+
+    /**
+     * leetCode 83
+     *
+     * @param head
+     * @return
+     */
+    public static ListNode deleteDuplicates(ListNode head) {
+        if (head == null || head.next == null) {
+            return head;
+        }
+        ListNode cur = head;
+        while (cur != null && cur.next != null) {
+            if (cur.e.compareTo(cur.next.e) == 0) {
+                cur.next = cur.next.next;
+            } else {
+                cur = cur.next;
+            }
+        }
+        return head;
+    }
+
 }

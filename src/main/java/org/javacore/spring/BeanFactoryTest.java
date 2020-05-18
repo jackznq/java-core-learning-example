@@ -1,6 +1,5 @@
 package org.javacore.spring;
 
-import org.javacore.spring.aop.AopConfig;
 import org.junit.Test;
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
@@ -16,12 +15,14 @@ public class BeanFactoryTest {
 //        BeanFactory beanFactory = new ClassPathXmlApplicationContext("ApplicationContext.xml");
 //        User user = (User) beanFactory.getBean("user");
 //        System.out.println(user);
-        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext(AopConfig.class);
+        AnnotationConfigApplicationContext applicationContext = new AnnotationConfigApplicationContext("org.javacore.spring");
 //        User bean = applicationContext.getBean(User.class);
 //        String[] beanNamesForType = applicationContext.getBeanDefinitionNames();
-        MathCalculator mathCalculator = applicationContext.getBean(MathCalculator.class);
-        mathCalculator.div(1 , 0);
+//        MathCalculator mathCalculator = applicationContext.getBean(MathCalculator.class);
+//        mathCalculator.div(1 , 0);
 //        System.out.println(bean);
+        A bean = applicationContext.getBean(A.class);
+        bean.printA();
         applicationContext.close();
     }
 }

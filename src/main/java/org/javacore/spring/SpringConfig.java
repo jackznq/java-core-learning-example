@@ -1,6 +1,5 @@
 package org.javacore.spring;
 
-import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
@@ -11,12 +10,13 @@ import org.springframework.context.annotation.Configuration;
  * @create: 2020-05-08 10:53
  **/
 @Configuration
-@ComponentScan(value = "org.javacore")
+@ComponentScan(value = "org.javacore.spring")
 public class SpringConfig {
 
-    @Bean(initMethod = "init",destroyMethod = "myDestroy")
-    public User user() {
-        return new User();
+//    @Bean(initMethod = "init",destroyMethod = "myDestroy")
+//    public User user() {
+//        return new User();
+//
+//    }
 
-    }
 }

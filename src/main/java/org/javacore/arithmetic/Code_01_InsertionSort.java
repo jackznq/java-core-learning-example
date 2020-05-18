@@ -9,8 +9,10 @@ public class Code_01_InsertionSort {
             return;
         }
         for (int i = 1; i < arr.length; i++) {
-            for (int j = i - 1; j >= 0 && arr[j] > arr[j + 1]; j--) {
-                swap(arr, j, j + 1);
+            for (int j = i - 1; j >= 0; j--) {
+                if (arr[j] > arr[j + 1]) {
+                    swap(arr, j, j + 1);
+                }
             }
         }
     }
@@ -102,18 +104,35 @@ public class Code_01_InsertionSort {
         printArray(arr);
     }
 
+    //    public static void insertSort(int[] arr) {
+//        if (null == arr) {
+//            return;
+//        }
+//
+//        for (int i = 1; i < arr.length; i++) {
+//            for (int j = i - 1; j >= 0; j--) {
+//                if (arr[j] > arr[j + 1]) {
+//                    swap(arr, j, j + 1);
+//                }
+//            }
+//        }
+//
+//    }
     public static void insertSort(int[] arr) {
-        if (null == arr) {
-            return;
-        }
-
-        for (int i = 1; i < arr.length; i++) {
-            for (int j = i - 1; j >= 0; j--) {
-                if (arr[j] > arr[j + 1]) {
-                    swap(arr, j, j + 1);
+        //20, 5, 6, 4, 2, 8
+        int n = arr.length;
+        for (int i = 1; i < n; ++i) {
+            int value = arr[i];
+            int j = 0;//插入的位置
+            for (j = i - 1; j >= 0; j--) {
+                if (arr[j] > value) {
+                    arr[j + 1] = arr[j];//移动数据
+                } else {
+                    break;
                 }
             }
+            arr[j + 1] = value; //插入数据
         }
-
     }
+
 }
