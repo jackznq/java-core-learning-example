@@ -114,7 +114,12 @@ public class Solution {
         _83l.next = two;
         ListNode three = new ListNode(1);
         two.next = three;
-        System.out.println(deleteDuplicates(_83l));
+//        System.out.println(deleteDuplicates(_83l));
+        String hello = "hello";
+        char[] chars = hello.toCharArray();
+        reverseString(chars);
+
+        System.out.println(Arrays.toString(chars));
     }
 
     public static int removeDuplicates(int[] nums) {
@@ -737,5 +742,26 @@ public class Solution {
         }
         return head;
     }
+
+    public static void reverseString(char[] s) {
+        if (s == null || s.length == 0) {
+            return;
+        }
+
+        int l = 0;
+        int len = s.length;
+        int r = len - 1;
+        for (int i = 0; i < len / 2; i++) {
+            if (l != r) {
+                char temp = s[l];
+                s[l] = s[r];
+                s[r] = temp;
+                l++;
+                r--;
+            }
+        }
+
+    }
+
 
 }
