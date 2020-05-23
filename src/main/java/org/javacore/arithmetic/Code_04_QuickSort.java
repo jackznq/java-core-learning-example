@@ -14,13 +14,13 @@ public class Code_04_QuickSort {
     public static void quickSort(int[] arr, int l, int r) {
         if (l < r) {
             swap(arr, l + (int) (Math.random() * (r - l + 1)), r);
-            int[] p = partition(arr, l, r);
-            quickSort(arr, l, p[0] - 1);
-            quickSort(arr, p[1] + 1, r);
+            int p = partition(arr, l, r);
+            quickSort(arr, l, p - 1);
+            quickSort(arr, p + 1, r);
         }
     }
 
-    public static int[] partition(int[] arr, int l, int r) {
+    public static int partition(int[] arr, int l, int r) {
         int less = l - 1;
         int more = r;
         while (l < more) {
@@ -33,7 +33,7 @@ public class Code_04_QuickSort {
             }
         }
         swap(arr, more, r);
-        return new int[]{less + 1, more};
+        return more;
     }
 
     public static void swap(int[] arr, int i, int j) {
@@ -101,7 +101,7 @@ public class Code_04_QuickSort {
     // for test
     public static void main(String[] args) {
         int testTime = 500000;
-        int maxSize = 100;
+        int maxSize = 15;
         int maxValue = 100;
         boolean succeed = true;
         for (int i = 0; i < testTime; i++) {
