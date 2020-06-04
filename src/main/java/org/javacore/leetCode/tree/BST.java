@@ -114,6 +114,7 @@ public class BST<E extends Comparable<? super E>> {
 
     }
 
+
     public void inOrderTraversal() {  //中序遍历
         Stack<TreeNode> stack = new Stack<>();
         TreeNode node = root;
@@ -321,17 +322,13 @@ public class BST<E extends Comparable<? super E>> {
     }
 
 
-//    public static void main(String[] args) {
-//        BST bst = new BST();
-//        bst.addRecur(10);
-//        bst.addRecur(8);
-//        bst.addRecur(9);
-//        bst.addRecur(4);
-//        bst.addRecur(16);
-//        bst.addRecur(18);
-//        bst.addRecur(12);
-//        bst.inOrderTraversal();
-//    }
+    public static void main(String[] args) {
+        Integer[]arr= {10,3,2,9,5,4,1};
+        BST bst = new BST(arr);
+        bst.preOrderForeach();
+        bst.inOrderTraversal();
+        System.out.println(bst.toString());
+    }
 
 
     public TreeNode getRoot() {
