@@ -64,6 +64,7 @@ public class InterViewCode {
         myLinkedList.get(1);
 
 
+        System.out.println(2<<10);
     }
 
 

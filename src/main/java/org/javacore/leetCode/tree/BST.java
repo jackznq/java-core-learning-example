@@ -101,7 +101,7 @@ public class BST<E extends Comparable<? super E>> {
         stack.push(cur);
         while (stack.size() > 0) {
             TreeNode pop = stack.pop();
-            if (pop != null) {
+//            if (pop != null) {
                 System.out.println(pop.e);
                 if (pop.right != null) {
                     stack.push(pop.right);
@@ -109,7 +109,7 @@ public class BST<E extends Comparable<? super E>> {
                 if (pop.left != null) {
                     stack.push(pop.left);
                 }
-            }
+//            }
         }
 
     }
@@ -326,8 +326,8 @@ public class BST<E extends Comparable<? super E>> {
         Integer[]arr= {10,3,2,9,5,4,1};
         BST bst = new BST(arr);
         bst.preOrderForeach();
-        bst.inOrderTraversal();
-        System.out.println(bst.toString());
+//        bst.inOrderTraversal();
+//        System.out.println(bst.toString());
     }
 
 

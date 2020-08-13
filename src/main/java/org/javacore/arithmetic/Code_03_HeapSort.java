@@ -8,7 +8,7 @@ public class Code_03_HeapSort {
         if (arr == null || arr.length < 2) {
             return;
         }
-        for (int i = 0; i < arr.length; i++) {
+        for (int i = 0; i <parent(arr.length); i++) {
             heapInsert(arr, i);
         }
         int size = arr.length;
@@ -18,6 +18,13 @@ public class Code_03_HeapSort {
             swap(arr, 0, --size);
         }
     }
+    private static int parent(int index) {
+        if (index == 0) {
+            throw new IllegalArgumentException("没有父亲节点");
+        }
+        return (index - 1) / 2;
+    }
+
 
     public static void heapInsert(int[] arr, int index) {
         while (arr[index] > arr[(index - 1) / 2]) {

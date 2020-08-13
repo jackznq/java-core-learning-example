@@ -47,14 +47,11 @@ public class QuickSort {
             if (l >= h) {
                 break;
             } else {
-                int temp = arr[l];
-                arr[l] = arr[h];
-                arr[h] = temp;
+                swap(arr,l,h);
             }
         }
-        int temp = arr[lo];
-        arr[lo] = arr[h];
-        arr[h] = temp;
+
+        swap(arr,lo,h);
         return l;
     }
 
