@@ -308,6 +308,10 @@ public class LinkedListSolution {
 //
 //    }
 
+    public ListNode removeNthFromEnd(ListNode head, int n) {
+        return null;
+    }
+
 
 }
 

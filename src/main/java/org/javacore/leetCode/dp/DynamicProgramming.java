@@ -1,6 +1,8 @@
 package org.javacore.leetCode.dp;
 
 import java.util.Arrays;
+import java.util.Comparator;
+import java.util.PriorityQueue;
 
 /**
  * @program: java-core-learning-example
@@ -10,6 +12,7 @@ import java.util.Arrays;
  **/
 public class DynamicProgramming {
     public native void get();
+
     public static void main(String[] args) {
         int[] dp = {7, 1, 5, 3, 6, 4};
 //        maxProfit(dp);
@@ -17,7 +20,10 @@ public class DynamicProgramming {
         int[] value = {3, 4, 8, 9, 6}; // 物品的价值
         int n = 5; // 物品个数
         int w = 9; // 背包承受的最大重量
-        knapsack3(items, value, n, w);
+//        knapsack3(items, value, n, w);
+        int profit [] = {1,2,3};
+        int cost [] = {0,1,1};
+        System.out.println(findMaximizedCapital(2,0,profit,cost));
     }
 
     public static int maxProfit(int[] prices) {
@@ -155,4 +161,42 @@ public class DynamicProgramming {
         int[][] res = new int[m][n];
         return 0;
     }
+
+    public static int findMaximizedCapital(int k, int W, int[] Profits, int[] Capital) {
+        Project[] projects = new Project[Profits.length];
+        for (int i = 0; i < projects.length; i++) {
+            projects[i] = new Project( Capital[i],Profits[i]);
+        }
+        PriorityQueue<Project> minCost = new PriorityQueue((Comparator<Project>) (o1, o2) -> o1.cost-o2.cost);
+        PriorityQueue<Project> maxProfit = new PriorityQueue((Comparator<Project>) (o1, o2) -> o2.profit-o1.profit);
+
+        for (int i = 0; i < projects.length; i++) {
+            minCost.add(projects[i]);
+        }
+
+        for (int i = 0; i < k; i++) {
+            while (!minCost.isEmpty() && minCost.peek().cost <= W) {
+                maxProfit.add(minCost.poll());
+            }
+            if (maxProfit.isEmpty()) {
+                return W;
+
+            }
+            W += maxProfit.poll().profit;
+        }
+
+        return W;
+    }
+
+    static class Project {
+        private int cost;
+        private int profit;
+
+        public Project(int cost, int profit) {
+            this.cost = cost;
+            this.profit = profit;
+        }
+    }
+
+
 }
