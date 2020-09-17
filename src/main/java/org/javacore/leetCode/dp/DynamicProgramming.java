@@ -11,7 +11,6 @@ import java.util.PriorityQueue;
  * @create: 2020-05-07 16:16
  **/
 public class DynamicProgramming {
-    public native void get();
 
     public static void main(String[] args) {
         int[] dp = {7, 1, 5, 3, 6, 4};
