@@ -1,14 +1,13 @@
 package org.javacore.leetCode.linkedlist;
 
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 import lombok.ToString;
 
 @ToString
+
+@Data
 public class ListNode<E extends Comparable<? super E>> {
     public E e;
-    @Setter
-    @Getter
     public ListNode<E> next;
 
     public ListNode(E x) {
