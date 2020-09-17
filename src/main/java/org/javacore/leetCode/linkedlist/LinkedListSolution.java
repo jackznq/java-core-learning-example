@@ -32,8 +32,8 @@ public class LinkedListSolution {
 //        System.out.println(listNodes);
 //        System.out.println(ListUtil.reverse(listNode1));
 //        System.out.println(ListUtil.addTwoNumbers(listNode1, listNode2));
-        ListNode listNode = reverseBetween(listNode1, 1, 4);
-        System.out.println(listNode);
+//        ListNode listNode = reverseBetween(listNode1, 1, 4);
+//        System.out.println(listNode);
     }
 
 
