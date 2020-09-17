@@ -21,15 +21,16 @@ public class DynamicProgramming {
         int n = 5; // 物品个数
         int w = 9; // 背包承受的最大重量
 //        knapsack3(items, value, n, w);
-        int profit [] = {1,2,3};
-        int cost [] = {0,1,1};
+        int profit[] = {1, 2, 3};
+        int cost[] = {0, 1, 1};
 //        System.out.println(findMaximizedCapital(2,0,profit,cost));
     }
 
     public static int maxProfit(int[] prices) {
         if (prices.length <= 1)
             return 0;
-        int buy = -prices[0], sell = 0;
+        int buy = -prices[0];
+        int sell = 0;
         for (int i = 1; i < prices.length; i++) {
             sell = Math.max(sell, prices[i] + buy);
             buy = Math.max(buy, sell - prices[i]);
@@ -165,10 +166,10 @@ public class DynamicProgramming {
     public static int findMaximizedCapital(int k, int W, int[] Profits, int[] Capital) {
         Project[] projects = new Project[Profits.length];
         for (int i = 0; i < projects.length; i++) {
-            projects[i] = new Project( Capital[i],Profits[i]);
+            projects[i] = new Project(Capital[i], Profits[i]);
         }
-        PriorityQueue<Project> minCost = new PriorityQueue((Comparator<Project>) (o1, o2) -> o1.cost-o2.cost);
-        PriorityQueue<Project> maxProfit = new PriorityQueue((Comparator<Project>) (o1, o2) -> o2.profit-o1.profit);
+        PriorityQueue<Project> minCost = new PriorityQueue((Comparator<Project>) (o1, o2) -> o1.cost - o2.cost);
+        PriorityQueue<Project> maxProfit = new PriorityQueue((Comparator<Project>) (o1, o2) -> o2.profit - o1.profit);
 
         for (int i = 0; i < projects.length; i++) {
             minCost.add(projects[i]);
