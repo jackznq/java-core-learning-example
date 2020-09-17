@@ -23,7 +23,7 @@ public class DynamicProgramming {
 //        knapsack3(items, value, n, w);
         int profit [] = {1,2,3};
         int cost [] = {0,1,1};
-        System.out.println(findMaximizedCapital(2,0,profit,cost));
+//        System.out.println(findMaximizedCapital(2,0,profit,cost));
     }
 
     public static int maxProfit(int[] prices) {
