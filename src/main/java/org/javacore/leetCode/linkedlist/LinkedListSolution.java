@@ -1,7 +1,9 @@
 package org.javacore.leetCode.linkedlist;
 
 
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 /**
  * @Date 18/11/26 下午9:55
