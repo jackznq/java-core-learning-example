@@ -1,6 +1,8 @@
 package org.javacore.leetCode.linkedlist;
 
 
+import org.javacore.leetCode.tree.TreeNode;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
@@ -38,6 +40,35 @@ public class LinkedListSolution {
 //        System.out.println(listNode);
     }
 
+    /**
+     * 1367. Linked List in Binary Tree
+     *
+     * @param head 头
+     * @param root 根
+     * @return boolean
+     */
+    public boolean isSubPath(ListNode head, TreeNode root) {
+        List<Boolean> result = new ArrayList();
+        return result.contains(true);
+
+    }
+
+    private void match(ListNode head, TreeNode root, List result) {
+        if (root == null) {
+            result.add(false);
+            return;
+        }
+        if (head == null) {
+            result.add(true);
+            return;
+        }
+        if (root.e.equals(head.e)) {
+            head = head.next;
+        }
+
+        match(head, root.left, result);
+        match(head, root.right, result);
+    }
 
     /**
      * Reverse a singly linked list.
