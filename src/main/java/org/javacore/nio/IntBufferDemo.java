@@ -1,5 +1,7 @@
 package org.javacore.nio;
 
+import lombok.extern.slf4j.Slf4j;
+
 import java.nio.ByteBuffer;
 import java.nio.IntBuffer;
 
@@ -22,14 +24,17 @@ import java.nio.IntBuffer;
 /**
  * @author Jeff Lee
  * @since 2015-10-12 18:53:01
- *  通过IntBuffer操作ByteBuffer的int型数据
+ * 通过IntBuffer操作ByteBuffer的int型数据
  */
+@Slf4j
 public class IntBufferDemo {
     private static final int BSIZE = 1024;// 1字节
+
     public static void main(String[] args) {
         // 创建1字节大小的字节缓冲区
         ByteBuffer bb = ByteBuffer.allocate(BSIZE);
         // int视图缓冲区
+//        IntBuffer ib = bb.asIntBuffer();
         IntBuffer ib = bb.asIntBuffer();
         // 存储一个数组
         ib.put(new int[]{1, 2, 3, 4, 5, 6});
@@ -37,14 +42,24 @@ public class IntBufferDemo {
         System.out.println(ib.get(3));
         // 存储一个int数据
         ib.put(3, 44);
+        System.out.println("before flip:capacity: " + ib.capacity() + " limit: " + ib.limit() + " position: " + ib.position());
         // 反转缓冲区
         ib.flip();
         // 如果当前位置还有元素
+        System.out.println("capacity: " + ib.capacity() + " limit: " + ib.limit() + " position: " + ib.position());
         while (ib.hasRemaining()) {
             // 获取当前位置的元素
             int i = ib.get();
             System.out.println(i);
         }
-
+        System.out.println("capacity: " + ib.capacity() + " limit: " + ib.limit() + " position: " + ib.position());
+        ib.rewind();
+        System.out.println("after rewind: capacity: " + ib.capacity() + " limit: " + ib.limit() + " position: " + ib.position());
+        while (ib.hasRemaining()) {
+            // 获取当前位置的元素
+            int i = ib.get();
+            System.out.println(i);
+        }
+        System.out.println("capacity: " + ib.capacity() + " limit: " + ib.limit() + " position: " + ib.position());
     }
 }
